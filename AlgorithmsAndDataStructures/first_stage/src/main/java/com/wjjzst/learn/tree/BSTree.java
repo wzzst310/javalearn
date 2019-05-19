@@ -42,6 +42,7 @@ public class BSTree<E> extends BinaryTree<E> {
             } else if (cmp > 0) {
                 node = node.right;
             } else {
+                node.element = element;
                 return;
             }
         }

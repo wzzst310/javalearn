@@ -1,4 +1,4 @@
-package com.wjjzst.learn.tree.printer;
+package com.wjjzst.learn.common.printer;
 
 public class Strings {
 	public static String repeat(String string, int count) {

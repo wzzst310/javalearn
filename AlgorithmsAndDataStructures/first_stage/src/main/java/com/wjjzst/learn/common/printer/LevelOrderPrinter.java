@@ -1,4 +1,4 @@
-package com.wjjzst.learn.tree.printer;
+package com.wjjzst.learn.common.printer;
 
 import java.util.ArrayList;
 import java.util.Collection;

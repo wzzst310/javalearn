@@ -1,8 +1,8 @@
 package com.wjjzst.learn.tree;
 
 
+import com.wjjzst.learn.common.printer.BinaryTrees;
 import com.wjjzst.learn.tree.old.BinarySearchTree;
-import com.wjjzst.learn.tree.printer.BinaryTrees;
 
 import java.util.ArrayList;
 import java.util.Arrays;

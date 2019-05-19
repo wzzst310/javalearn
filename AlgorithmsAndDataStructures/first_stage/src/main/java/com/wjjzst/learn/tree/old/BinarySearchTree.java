@@ -1,7 +1,7 @@
 package com.wjjzst.learn.tree.old;
 
 
-import com.wjjzst.learn.tree.printer.BinaryTreeInfo;
+import com.wjjzst.learn.common.printer.BinaryTreeInfo;
 
 import java.util.Comparator;
 import java.util.LinkedList;

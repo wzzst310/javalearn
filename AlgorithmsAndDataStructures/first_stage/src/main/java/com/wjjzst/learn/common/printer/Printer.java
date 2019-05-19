@@ -1,4 +1,4 @@
-package com.wjjzst.learn.tree.printer;
+package com.wjjzst.learn.common.printer;
 
 public abstract class Printer {	
 	/**

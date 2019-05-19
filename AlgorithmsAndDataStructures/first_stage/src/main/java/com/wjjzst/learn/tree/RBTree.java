@@ -76,7 +76,7 @@ public class RBTree<E> extends BBSTree<E> {
         // 此时node的parent已经完全不指向node了 指向的是replacement
         // TODO 待理解
         // 判断被删除的node是左还是右
-        boolean left = parent.left == null;
+        boolean left = parent.left == null || node.isLeftChild();
         // 不能根据下面这种方法获取兄弟节点 parent已经完全不指向node了
         // Node<E> sibling = node.sibling();
         Node<E> sibling = left ? parent.right : parent.left;

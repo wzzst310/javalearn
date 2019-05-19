@@ -1,4 +1,4 @@
-package com.wjjzst.learn;
+package com.wjjzst.learn.common;
 
 public abstract class AbstractList<E> implements List<E> {
 
@@ -21,7 +21,7 @@ public abstract class AbstractList<E> implements List<E> {
 
     @Override
     public boolean contains(E element) {
-        return indexOf(element) != ELEMENE_NOE_FOUND;
+        return indexOf(element) != ELEMENT_NOE_FOUND;
     }
 
     @Override

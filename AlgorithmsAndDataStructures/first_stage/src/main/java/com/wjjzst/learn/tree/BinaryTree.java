@@ -1,7 +1,7 @@
 package com.wjjzst.learn.tree;
 
 
-import com.wjjzst.learn.tree.printer.BinaryTreeInfo;
+import com.wjjzst.learn.common.printer.BinaryTreeInfo;
 
 import java.util.*;
 
@@ -17,7 +17,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         return size;
     }
 
-    public boolean isEmpyt() {
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -361,7 +361,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
     public static abstract class Visitor<E> {
         boolean stop;
 
-        abstract boolean visit(E element);
+        protected abstract boolean visit(E element);
     }
 
     protected Node<E> createNode(E element, Node<E> parent) {

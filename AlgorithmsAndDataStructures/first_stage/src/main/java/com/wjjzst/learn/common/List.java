@@ -1,7 +1,7 @@
-package com.wjjzst.learn;
+package com.wjjzst.learn.common;
 
 public interface List<E> {
-    static final int ELEMENE_NOE_FOUND = -1;
+    static final int ELEMENT_NOE_FOUND = -1;
 
     void add(E element);
 

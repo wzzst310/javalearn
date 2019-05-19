@@ -1,6 +1,6 @@
 package com.wjjzst.learn.linkedlist;
 
-import com.wjjzst.learn.AbstractList;
+import com.wjjzst.learn.common.AbstractList;
 
 public class LinkedList<E> extends AbstractList<E> {
 
@@ -9,7 +9,7 @@ public class LinkedList<E> extends AbstractList<E> {
     private Node<E> last;
 
 
-    private class Node<E> {
+    private static class Node<E> {
         public Node(E element, Node<E> prev, Node<E> next) {
             this.element = element;
             this.next = next;
@@ -78,7 +78,7 @@ public class LinkedList<E> extends AbstractList<E> {
         } else {
             prev.next = next;
         }
-        if (last == null) { //删尾节点处理
+        if (next == null) { //删尾节点处理
             last = prev;
         } else {
             next.prev = prev;
@@ -125,7 +125,7 @@ public class LinkedList<E> extends AbstractList<E> {
                 node = node.next;
             }
         }
-        return ELEMENE_NOE_FOUND;
+        return ELEMENT_NOE_FOUND;
     }
 
     private Node<E> node(int index) {

@@ -1,7 +1,8 @@
 package com.wjjzst.learn.tree;
 
 
-import com.wjjzst.learn.tree.printer.BinaryTreeInfo;
+
+import com.wjjzst.learn.common.printer.BinaryTreeInfo;
 
 import java.util.HashMap;
 import java.util.LinkedList;

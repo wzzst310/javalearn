@@ -1,6 +1,6 @@
 package com.wjjzst.learn.linkedlist.circle;
 
-import com.wjjzst.learn.AbstractList;
+import com.wjjzst.learn.common.AbstractList;
 
 public class CircleLinkedList<E> extends AbstractList<E> {
 
@@ -135,7 +135,7 @@ public class CircleLinkedList<E> extends AbstractList<E> {
                 node = node.next;
             }
         }
-        return ELEMENE_NOE_FOUND;
+        return ELEMENT_NOE_FOUND;
     }
 
     private Node<E> node(int index) {

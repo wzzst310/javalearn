@@ -1,8 +1,6 @@
 package com.wjjzst.learn.dynamicarray;
 
-import com.wjjzst.learn.AbstractList;
-
-import java.util.ArrayList;
+import com.wjjzst.learn.common.AbstractList;
 
 /**
  * @Author: Wjj
@@ -95,7 +93,7 @@ public class OptimizedArrayList<E> extends AbstractList<E> {
                 }
             }
         }
-        return ELEMENE_NOE_FOUND;
+        return ELEMENT_NOE_FOUND;
     }
 
     private int index(int index) {

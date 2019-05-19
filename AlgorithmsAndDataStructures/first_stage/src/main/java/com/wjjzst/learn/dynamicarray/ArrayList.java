@@ -1,7 +1,7 @@
 package com.wjjzst.learn.dynamicarray;
 
 
-import com.wjjzst.learn.AbstractList;
+import com.wjjzst.learn.common.AbstractList;
 
 public class ArrayList<E> extends AbstractList<E> {
 
@@ -87,7 +87,7 @@ public class ArrayList<E> extends AbstractList<E> {
                 }
             }
         }
-        return ELEMENE_NOE_FOUND;
+        return ELEMENT_NOE_FOUND;
     }
 
 
