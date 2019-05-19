@@ -1,6 +1,8 @@
 package com.wjjzst.learn.map;
 
 
+import java.util.Comparator;
+
 /**
  * @Author: Wjj
  * @Date: 2019/5/20 0:38
@@ -12,10 +14,19 @@ public class TreeMap<K, V> implements Map<K, V> {
     private int size;
     private Node<K, V> root;
 
+    private Comparator comparator;
+
+    public TreeMap(Comparator<K> comparator) {
+        this.comparator = comparator;
+    }
+
+    public TreeMap() {
+
+    }
+
     public int size() {
         return size;
     }
-
 
     public boolean isEmpty() {
         return false;
@@ -28,6 +39,40 @@ public class TreeMap<K, V> implements Map<K, V> {
 
 
     public V put(K key, V value) {
+        keyNotNullCheck(key);
+        // 根节点为空是
+        if (root == null) {
+            root = new Node<>(key, value, null);
+            size++;
+            afterPut(root);//新添加节点之后处理
+            return null;
+        }
+        // 根节点不为空时候
+        Node<K, V> parent = root; //找到父节点
+        Node<K, V> node = root;
+        int cmp = 0;
+        while (node != null) {
+            cmp = compare(key, node.key);
+            parent = node;
+            if (cmp < 0) {
+                node = node.left;
+            } else if (cmp > 0) {
+                node = node.right;
+            } else {
+                node.key = key;
+                V oldValue = node.value;
+                node.value = value;
+                return oldValue;
+            }
+        }
+        Node<K, V> newNode = new Node<>(key, value, parent);
+        if (cmp < 0) {
+            parent.left = newNode;
+        } else if (cmp > 0) {
+            parent.right = newNode;
+        }
+        size++;
+        afterPut(newNode); //新添加节点之后处理
         return null;
     }
 
@@ -94,7 +139,7 @@ public class TreeMap<K, V> implements Map<K, V> {
 
     }
 
-    private void afterAdd(Node<K, V> node) {
+    private void afterPut(Node<K, V> node) {
         Node<K, V> parent = node.parent;
         // 添加的是根节点  或者上溢到了根节点
         if (parent == null) {
@@ -114,7 +159,7 @@ public class TreeMap<K, V> implements Map<K, V> {
             black(parent);
             black(uncle);
             //把祖父节点染成红色并当作新添加的节点
-            afterAdd(grandparent);
+            afterPut(grandparent);
             return;
         }
         //叔父节点不是红色  需要旋转
@@ -220,6 +265,20 @@ public class TreeMap<K, V> implements Map<K, V> {
                 black(parent); // 父节点变成黑色  因为父节点代替调整到被删除节点的位置(被删除的时黑色的)
                 rotateRight(parent); // 父节点右旋转
             }
+        }
+    }
+
+    private int compare(K k1, K k2) {
+        // 如果有传进来有比较
+        if (comparator != null) {
+            return comparator.compare(k1, k2);
+        }
+        return ((Comparable<K>) k1).compareTo(k2);
+    }
+
+    private void keyNotNullCheck(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("key must not be null");
         }
     }
 
