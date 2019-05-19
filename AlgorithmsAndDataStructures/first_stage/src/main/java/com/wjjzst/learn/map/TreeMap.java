@@ -1,18 +1,101 @@
-package com.wjjzst.learn.tree;
+package com.wjjzst.learn.map;
+
 
 /**
  * @Author: Wjj
- * @Date: 2019/5/10 0:43
+ * @Date: 2019/5/20 0:38
  * @desc:
  */
-public class RBTree<E> extends BBSTree<E> {
+public class TreeMap<K, V> implements Map<K, V> {
     private static final boolean RED = false;
     private static final boolean BLACK = true;
+    private int size;
+    private Node<K, V> root;
+
+    public int size() {
+        return size;
+    }
 
 
-    @Override
-    protected void afterAdd(Node<E> node) {
-        Node<E> parent = node.parent;
+    public boolean isEmpty() {
+        return false;
+    }
+
+
+    public void clear() {
+
+    }
+
+
+    public V put(K key, V value) {
+        return null;
+    }
+
+
+    public V get(K key) {
+        return null;
+    }
+
+
+    public V remove(K key) {
+        return null;
+    }
+
+
+    public boolean containsKey(K key) {
+        return false;
+    }
+
+
+    public boolean containsValue(V value) {
+        return false;
+    }
+
+
+    public void traversal(Visitor<K, V> visitor) {
+
+    }
+
+    //左旋转
+    private void rotateLeft(Node<K, V> grandparent) {
+        Node<K, V> parent = grandparent.right;
+        Node<K, V> child = parent.left;
+        grandparent.right = child;
+        parent.left = grandparent;
+        afterRotate(grandparent, parent, child);
+    }
+
+    //右旋转
+    private void rotateRight(Node<K, V> grandparent) {
+        Node<K, V> parent = grandparent.left;
+        Node<K, V> child = parent.right;
+        grandparent.left = child;
+        parent.right = grandparent;
+        afterRotate(grandparent, parent, child);
+    }
+
+    // 更新完之后做的事情
+    private void afterRotate(Node<K, V> grandparent, Node<K, V> parent, Node<K, V> child) {
+        // 新子树根节点代替原子树根节点
+        parent.parent = grandparent.parent;
+        if (grandparent.isLeftChild()) {
+            grandparent.parent.left = parent;
+        } else if (grandparent.isRightChild()) {
+            grandparent.parent.right = parent;
+        } else {// 根节点情况
+            root = parent;
+        }
+        // 更新child为parent
+        if (child != null) {
+            child.parent = grandparent;
+        }
+        // 更新grandparent的parent
+        grandparent.parent = parent;
+
+    }
+
+    private void afterAdd(Node<K, V> node) {
+        Node<K, V> parent = node.parent;
         // 添加的是根节点  或者上溢到了根节点
         if (parent == null) {
             black(node);
@@ -23,9 +106,9 @@ public class RBTree<E> extends BBSTree<E> {
             return;
         }
         // 叔父节点
-        Node<E> uncle = parent.sibling();
+        Node<K, V> uncle = parent.sibling();
         // 祖父节点 祖父节点最终终会变成红色
-        Node<E> grandparent = red(parent.parent);
+        Node<K, V> grandparent = red(parent.parent);
         // 如果叔父节点是红色 则说明原来的节点有三个值 新加的元素后发生上溢现象 grandparent上去
         if (isRed(uncle)) {
             black(parent);
@@ -54,8 +137,8 @@ public class RBTree<E> extends BBSTree<E> {
         }
     }
 
-    @Override
-    protected void afterRemove(Node<E> node) {
+
+    private void afterRemove(Node<K, V> node) {
         // 如果被删除的节点是红色的则不用做任何处理
         // if (isRed(node)) {
         //    return;
@@ -65,7 +148,7 @@ public class RBTree<E> extends BBSTree<E> {
             black(node);
             return;
         }
-        Node<E> parent = node.parent;
+        Node<K, V> parent = node.parent;
         // 删除的是根节点
         if (parent == null) {
             return;
@@ -78,8 +161,8 @@ public class RBTree<E> extends BBSTree<E> {
         // 判断被删除的node是左还是右
         boolean left = parent.left == null || node.isLeftChild();
         // 不能根据下面这种方法获取兄弟节点 parent已经完全不指向node了
-        // Node<E> sibling = node.sibling();
-        Node<E> sibling = left ? parent.right : parent.left;
+        // Node<K,V> sibling = node.sibling();
+        Node<K, V> sibling = left ? parent.right : parent.left;
         if (left) { //被删除的节点在左边,兄弟节点在右边
             if (isRed(sibling)) { //兄弟节点是红色 兄弟节点染成黑色 父节点染成红色 对父节点左旋 使兄弟节点左节点成为自己的兄弟节点
                 black(sibling);
@@ -140,63 +223,77 @@ public class RBTree<E> extends BBSTree<E> {
         }
     }
 
-    private boolean isBlack(Node<E> node) {
+    private boolean isBlack(Node<K, V> node) {
         return colorOf(node) == BLACK;
     }
 
-    private boolean isRed(Node<E> node) {
+    private boolean isRed(Node<K, V> node) {
         return colorOf(node) == RED;
     }
 
-    private boolean colorOf(Node<E> node) {
-        return node == null ? BLACK : ((RBNode<E>) node).color;
+    private boolean colorOf(Node<K, V> node) {
+        return node == null ? BLACK : node.color;
     }
 
-    private RBNode<E> color(Node<E> node, boolean color) {
+    private Node<K, V> color(Node<K, V> node, boolean color) {
         if (node != null) {
-            ((RBNode<E>) node).color = color;
+            node.color = color;
         }
-        return (RBNode<E>) node;
+        return node;
     }
 
-    private RBNode<E> black(Node<E> node) {
+    private Node<K, V> black(Node<K, V> node) {
         return color(node, BLACK);
     }
 
-    private RBNode<E> red(Node<E> node) {
+    private Node<K, V> red(Node<K, V> node) {
         return color(node, RED);
     }
 
-    @Override
-    protected Node<E> createNode(E element, Node<E> parent) {
-        return new RBNode<>(element, parent);
-    }
 
-    private static class RBNode<E> extends Node<E> {
-
+    private static class Node<K, V> {
+        private K key;
+        private V value;
+        private Node<K, V> left;
+        private Node<K, V> right;
+        private Node<K, V> parent;
         public boolean color = RED;
 
-        public RBNode(E element, Node<E> parent) {
-            super(element, parent);
+        public Node(K key, V value, Node<K, V> parent) {
+            this.key = key;
+            this.value = value;
+            this.parent = parent;
+        }
+
+        public boolean isLeaf() {
+            return left == null && right == null;
+        }
+
+        public boolean hasTwoChildren() {
+            return left != null && right != null;
+        }
+
+        //判断自己是不是父节点的左子树
+        public boolean isLeftChild() {
+            return parent != null && this == parent.left;
+        }
+
+        //判断自己是不是父节点的左子树
+        public boolean isRightChild() {
+            return parent != null && this == parent.right;
+        }
+
+        // 获取兄弟节点
+        public Node<K, V> sibling() {
+            if (isLeftChild()) {
+                return parent.right;
+            } else if (isRightChild()) {
+                return parent.left;
+            } else {
+                return null;
+            }
         }
 
 
-    }
-
-    @Override
-    public Object string(Object node) {
-        RBNode<E> rbNode = (RBNode<E>) node;
-        StringBuilder sb = new StringBuilder();
-        if (rbNode.color == RED) {
-            sb.append("R_");
-        }
-        sb.append(rbNode.element).append("_p(");
-        if (rbNode.parent == null) {
-            sb.append("null");
-        } else {
-            sb.append((rbNode.parent.element));
-        }
-        sb.append(")");
-        return sb.toString();
     }
 }
