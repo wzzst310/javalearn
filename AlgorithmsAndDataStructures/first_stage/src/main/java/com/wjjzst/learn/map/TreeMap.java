@@ -2,6 +2,8 @@ package com.wjjzst.learn.map;
 
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @Author: Wjj
@@ -29,12 +31,13 @@ public class TreeMap<K, V> implements Map<K, V> {
     }
 
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
 
     public void clear() {
-
+        root = null;
+        size = 0;
     }
 
 
@@ -76,29 +79,113 @@ public class TreeMap<K, V> implements Map<K, V> {
         return null;
     }
 
+    public V remove(Node<K, V> node) {
+        if (node == null) {
+            return null;
+        }
+        size--;
+        V oldValue = node.value;
+        // 度为2的节点
+        if (node.hasTwoChildren()) {
+            // 找到后继节点
+            Node<K, V> successor = successor(node);
+            // 后继节点的值覆盖原本度为2的节点
+            node.key = successor.key;
+            node.value = successor.value;
+            // 删除后继节点
+            node = successor;
+        }
+        // 删除度为0,1的节点的子节点
+        Node<K, V> replacement = node.left != null ? node.left : node.right;
+        // 度为1的节点替代节点必定存在
+        if (replacement != null) {
+            // 取代节点的父节点指向原本节点的父节点
+            replacement.parent = node.parent; // 根节点parent==null
+            // 取决于当前节点是父节点的左右  取代节点才能插入上去
+            // 度为1的节点是跟节点
+            if (node.parent == null) {
+                root = replacement;
+            } else if (node == node.parent.left) {
+                node.parent.left = replacement;
+            } else {
+                node.parent.right = replacement;
+            }
+            afterRemove(replacement);
+        } else if (node.parent == null) {// 度为0的节点  根节点
+            root = null;
+            afterRemove(node);
+        } else { // 度为0的节点 其他节点
+            if (node == node.parent.left) {
+                // node.parent.left = replacement; //此时replacement = null
+                node.parent.left = null;
+            } else {
+                node.parent.right = null;
+            }
+            afterRemove(node);
+        }
+        // 虽然没有节点指向node 但是node仍然指向他的父节点 node.parent = replacement.parent
+        // node删掉了 node.parent高度就会改变就需要平衡
+        // afterRemove(node); //删了replacement 改变的是node 需要调整的也是node
+        return oldValue;
+    }
+
 
     public V get(K key) {
-        return null;
+        Node<K, V> node = node(key);
+        return node == null ? null : node.value;
     }
 
 
     public V remove(K key) {
-        return null;
+        return remove(node(key));
     }
 
 
     public boolean containsKey(K key) {
-        return false;
+        return node(key) != null;
     }
 
 
     public boolean containsValue(V value) {
+        if (root == null) {
+            return false;
+        }
+        Queue<Node<K, V>> queue = new LinkedList<>();
+        queue.offer(root);
+        do {
+            Node<K, V> node = queue.poll();
+            if (valEquals(node.value, value)) {
+                return true;
+            }
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        } while (!queue.isEmpty());
         return false;
     }
 
 
     public void traversal(Visitor<K, V> visitor) {
+        if (visitor == null) {
+            return;
+        }
+        traversal(root, visitor);
+    }
 
+    // 中序遍历
+    public void traversal(Node<K, V> node, Visitor<K, V> visitor) {
+        if (node == null || visitor.stop) {
+            return;
+        }
+        traversal(node.left, visitor);
+        if (visitor.stop) {
+            return;
+        }
+        visitor.stop = visitor.visit(node.key, node.value);
+        traversal(node.right, visitor);
     }
 
     //左旋转
@@ -268,6 +355,47 @@ public class TreeMap<K, V> implements Map<K, V> {
         }
     }
 
+    private boolean valEquals(V v1, V v2) {
+        return v1 == null ? v2 == null : v1.equals(v2);
+    }
+
+    // 找后驱节点
+    private Node<K, V> successor(Node<K, V> node) {
+        if (node == null) {
+            return null;
+        }
+        // 后驱节点在左子树当中(left.right.right.right.right...)
+        Node<K, V> p = node.right;
+        if (p != null) {
+            while (p.left != null) {
+                p = p.left;
+            }
+            return p;
+        }
+        // 从父节点,祖父节点中寻找后驱节点
+        while (node.parent != null && node == node.parent.right) {
+            node = node.parent;
+        }
+        // node = node.parent.left 跳出来
+        return node.parent;
+    }
+
+    private Node<K, V> node(K key) {
+        Node<K, V> node = root;
+        while (node != null) {
+            int cmp = compare(key, node.key);
+            if (cmp == 0) {
+                return node;
+            } else if (cmp < 0) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+        // 树里面没有找到要删除的节点
+        return null;
+    }
+
     private int compare(K k1, K k2) {
         // 如果有传进来有比较
         if (comparator != null) {
@@ -316,34 +444,34 @@ public class TreeMap<K, V> implements Map<K, V> {
         private Node<K, V> left;
         private Node<K, V> right;
         private Node<K, V> parent;
-        public boolean color = RED;
+        private boolean color = RED;
 
-        public Node(K key, V value, Node<K, V> parent) {
+        private Node(K key, V value, Node<K, V> parent) {
             this.key = key;
             this.value = value;
             this.parent = parent;
         }
 
-        public boolean isLeaf() {
+        private boolean isLeaf() {
             return left == null && right == null;
         }
 
-        public boolean hasTwoChildren() {
+        private boolean hasTwoChildren() {
             return left != null && right != null;
         }
 
         //判断自己是不是父节点的左子树
-        public boolean isLeftChild() {
+        private boolean isLeftChild() {
             return parent != null && this == parent.left;
         }
 
         //判断自己是不是父节点的左子树
-        public boolean isRightChild() {
+        private boolean isRightChild() {
             return parent != null && this == parent.right;
         }
 
         // 获取兄弟节点
-        public Node<K, V> sibling() {
+        private Node<K, V> sibling() {
             if (isLeftChild()) {
                 return parent.right;
             } else if (isRightChild()) {
