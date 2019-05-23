@@ -294,11 +294,11 @@ public class HashMap<K, V> implements Map<K, V> {
             return 0;
         }
         int hash = key.hashCode();
-        return hash ^ (hash >>> 16) & (table.length - 1);
+        return (hash ^ (hash >>> 16)) & (table.length - 1);
     }
 
     private int index(Node<K, V> node) {
-        return node.hash ^ (node.hash >>> 16) & (table.length - 1);
+        return (node.hash ^ (node.hash >>> 16)) & (table.length - 1);
     }
 
     /*private int compare(K k1, K k2, int h1, int h2) {

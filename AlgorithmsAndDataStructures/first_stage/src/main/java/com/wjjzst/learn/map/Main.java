@@ -204,7 +204,7 @@ public class Main {
 	}
 	
 	static void test1() {
-		String filepath = "C:/Program Files/Java/jdk1.8.0_201/src/java/util/concurrent";
+		String filepath = "C:/Program Files/Java/jdk1.8.0_201/src/java/util";
 		FileInfo fileInfo = Files.read(filepath, null);
 		String[] words = fileInfo.words();
 
@@ -213,7 +213,7 @@ public class Main {
 		System.out.println("-------------------------------------");
 		
 //		java.util.HashMap<String, Integer> map = new java.util.HashMap<>();
-//		
+//
 //		for (String word : words) {
 //			Integer count = map.get(word);
 //			count = count == null ? 0 : count;
