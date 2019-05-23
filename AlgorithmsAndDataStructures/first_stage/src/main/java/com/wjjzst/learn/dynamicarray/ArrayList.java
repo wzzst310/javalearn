@@ -5,7 +5,7 @@ import com.wjjzst.learn.common.AbstractList;
 
 public class ArrayList<E> extends AbstractList<E> {
 
-    private  E[] elements;
+    private E[] elements;
 
 
     public static final int DEFAULE_CAPACIEY = 10;
@@ -20,7 +20,6 @@ public class ArrayList<E> extends AbstractList<E> {
     public ArrayList() {
         this(DEFAULE_CAPACIEY);
     }
-
 
 
     @Override
@@ -90,6 +89,20 @@ public class ArrayList<E> extends AbstractList<E> {
         return ELEMENT_NOE_FOUND;
     }
 
+
+    public int indexOf2(E element) {
+        for (int i = 0; i < size; i++) {
+            if (valEquals(element, elements[i])) {
+                return i;
+            }
+        }
+
+        return ELEMENT_NOE_FOUND;
+    }
+
+    private boolean valEquals(E v1, E v2) {
+        return v1 == null ? v2 == null : v1.equals(v2);
+    }
 
     private void ensureCapacity(int capacity) {
         int oldCapacity = elements.length;

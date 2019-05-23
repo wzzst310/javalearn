@@ -46,8 +46,9 @@ public class TreeMap<K, V> implements Map<K, V> {
         // 根节点为空是
         if (root == null) {
             root = new Node<>(key, value, null);
+            black(root);
             size++;
-            afterPut(root);//新添加节点之后处理
+            //afterPut(root);//新添加节点之后处理
             return null;
         }
         // 根节点不为空时候
@@ -113,7 +114,6 @@ public class TreeMap<K, V> implements Map<K, V> {
             afterRemove(replacement);
         } else if (node.parent == null) {// 度为0的节点  根节点
             root = null;
-            afterRemove(node);
         } else { // 度为0的节点 其他节点
             if (node == node.parent.left) {
                 // node.parent.left = replacement; //此时replacement = null

@@ -12,7 +12,7 @@ import com.wjjzst.learn.common.file.Files;
 public class Main {
     static void testSet() {
         //Set<Integer> set = new ListSet<>();
-        Set<Integer> set = new TreeSet<>();
+        Set<Integer> set = new OldTreeSet<>();
         for (int i = 0; i < 6; i++) {
             set.add(i);
         }
@@ -57,9 +57,9 @@ public class Main {
 //			}
 //		});
 
-        Times.test("TreeSet", new Times.Task() {
+        Times.test("OldTreeSet", new Times.Task() {
             public void execute() {
-                testSet(new TreeSet<>(), words);
+                testSet(new OldTreeSet<>(), words);
                 //testSet(new ListSet<>(), words);
             }
         });

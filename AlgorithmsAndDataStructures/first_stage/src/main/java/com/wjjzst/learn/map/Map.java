@@ -30,7 +30,7 @@ public interface Map<K, V> {
 
         boolean stop;
 
-        abstract boolean visit(K key, V value);
+        protected abstract boolean visit(K key, V value);
     }
 
 }
