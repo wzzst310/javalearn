@@ -176,21 +176,21 @@ public class Main {
             map.put("test" + i, i);
             map.put(new Key(i), i);
         }
-//        for (int i = 5; i <= 7; i++) {
-//            Asserts.test(map.remove(new Key(i)) == i);
-//        }
+        for (int i = 5; i <= 7; i++) {
+            Asserts.test(map.remove(new Key(i)) == i);
+        }
         for (int i = 1; i <= 3; i++) {
             map.put(new Key(i), i + 5);
         }
-//        Asserts.test(map.size() == 21);
-//        Asserts.test(map.get(new Key(1)) == 6);
-//        Asserts.test(map.get(new Key(2)) == 7);
-//        Asserts.test(map.get(new Key(3)) == 8);
-//        Asserts.test(map.get(new Key(4)) == 4);
-//        Asserts.test(map.get(new Key(5)) == null);
-//        Asserts.test(map.get(new Key(6)) == null);
-//        Asserts.test(map.get(new Key(7)) == null);
-//        Asserts.test(map.get(new Key(8)) == 8);
+        Asserts.test(map.size() == 21);
+        Asserts.test(map.get(new Key(1)) == 6);
+        Asserts.test(map.get(new Key(2)) == 7);
+        Asserts.test(map.get(new Key(3)) == 8);
+        Asserts.test(map.get(new Key(4)) == 4);
+        Asserts.test(map.get(new Key(5)) == null);
+        Asserts.test(map.get(new Key(6)) == null);
+        Asserts.test(map.get(new Key(7)) == null);
+        Asserts.test(map.get(new Key(8)) == 8);
         map.traversal(new Map.Visitor<Object, Integer>() {
             @Override
             protected boolean visit(Object key, Integer value) {
@@ -228,7 +228,7 @@ public class Main {
 //		}
 //		System.out.println(map.size()); // 17188
 
-        HashMap<String, Integer> map = new HashMap<>();
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
         Times.test(map.getClass().getName(), new Times.Task() {
             @Override
             public void execute() {
@@ -255,8 +255,13 @@ public class Main {
 //		test1();
 //		test2(new HashMap<>());
 //		test3(new HashMap<>());
-        test4(new HashMap<>());
+//      test4(new HashMap<>());
 //		test5(new HashMap<>());
+        test1();
+		test2(new LinkedHashMap<>());
+		test3(new LinkedHashMap<>());
+        test4(new LinkedHashMap<>());
+		test5(new LinkedHashMap<>());
         /*java.util.HashMap<Long, Long> map = new java.util.HashMap<>();
         System.out.println(1 << 2);*/
     }
