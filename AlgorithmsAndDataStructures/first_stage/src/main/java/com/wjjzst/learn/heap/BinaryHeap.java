@@ -9,10 +9,9 @@ import java.util.Comparator;
  * @Date: 2019/5/27 23:55
  * @desc:
  */
-public class BinaryHeap<E> implements Heap<E>, BinaryTreeInfo {
+public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
+
     private E[] elements;
-    private int size;
-    private Comparator comparator;
     private static final int DEFAULT_CAPACITY = 10;
 
 
@@ -21,19 +20,10 @@ public class BinaryHeap<E> implements Heap<E>, BinaryTreeInfo {
     }
 
     public BinaryHeap(Comparator comparator) {
-        this.comparator = comparator;
+        super(comparator);
         this.elements = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
-    @Override
-    public int size() {
-        return size;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
     @Override
     public void clear() {
@@ -59,12 +49,47 @@ public class BinaryHeap<E> implements Heap<E>, BinaryTreeInfo {
 
     @Override
     public E remove() {
+        emptyCheck();
+        int lastIndex = --size;
+
+
+        E root = elements[0];
+        elements[0] = elements[lastIndex];
+        elements[lastIndex] = null;
+        siftDown(0);
+
         return null;
     }
 
     @Override
     public E replace(E element) {
         return null;
+    }
+
+
+    private void siftDown(int index) {  //下滤
+        E element = elements[index];
+        // 小于第一个叶子的索引 (即非叶子节点的数量)
+        // 必须保证index位置不是叶子节点
+        int half = size >> 1;
+        while (index < half) {
+            // index 的节点有2中情况
+            // 1. 只有左子节点
+            // 2. 同时有左右子节点
+            // 默认跟左子节点比较
+            int childIndex = (index << 1) + 1;
+            E child = elements[childIndex];
+            int rightIndex = childIndex + 1;
+            // 选出左右子节点最大的那个
+            if (rightIndex < size && compare(elements[rightIndex], child) > 0) {
+                child = elements[childIndex = rightIndex];
+            }
+            if (compare(element, child) >= 0) {
+                break;
+            }
+
+            // 讲子节点存放到
+        }
     }
 
     private void siftUp(int index) { // 从这个元素开始上滤
@@ -83,9 +108,6 @@ public class BinaryHeap<E> implements Heap<E>, BinaryTreeInfo {
         elements[index] = element;
     }
 
-    private int compare(E e1, E e2) {
-        return comparator != null ? comparator.compare(e1, e2) : ((Comparable) e1).compareTo(e2);
-    }
 
     private void emptyCheck() {
         if (size == 0) {
@@ -120,22 +142,19 @@ public class BinaryHeap<E> implements Heap<E>, BinaryTreeInfo {
 
     @Override
     public Object left(Object node) {
-        Integer index = (Integer) node;
-        index = (index << 1) + 1;
+        Integer index = ((int) node << 1) + 1;
         return index >= size ? null : index;
     }
 
     @Override
     public Object right(Object node) {
-        Integer index = (Integer) node;
-        index = (index << 1) + 2;
+        Integer index = ((int) node << 1) + 2;
         return index >= size ? null : index;
     }
 
     @Override
     public Object string(Object node) {
-        Integer index = (Integer) node;
-        return elements[index];
+        return elements[(int) node];
     }
 
     @Override
