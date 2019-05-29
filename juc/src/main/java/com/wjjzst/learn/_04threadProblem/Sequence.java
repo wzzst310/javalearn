@@ -8,6 +8,9 @@ package com.wjjzst.learn._04threadProblem;
 public class Sequence {
     private int value;
 
+    /*public synchronized int getNext() {
+        return value++;
+    }*/
     public int getNext() {
         return value++;
     }
@@ -20,33 +23,39 @@ public class Sequence {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName() + " " + s.getNext());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (true) {
+                    System.out.println(Thread.currentThread().getName() + " " + s.getNext());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }, "线程一").start();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName() + " " + s.getNext());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (true) {
+                    System.out.println(Thread.currentThread().getName() + " " + s.getNext());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }, "线程二").start();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName() + " " + s.getNext());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (true) {
+                    System.out.println(Thread.currentThread().getName() + " " + s.getNext());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }, "线程三").start();
