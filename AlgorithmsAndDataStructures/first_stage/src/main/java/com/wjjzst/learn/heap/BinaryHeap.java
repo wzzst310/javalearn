@@ -3,6 +3,7 @@ package com.wjjzst.learn.heap;
 import com.wjjzst.learn.common.printer.BinaryTreeInfo;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 /**
  * @Author: Wjj
@@ -16,12 +17,31 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
 
 
     public BinaryHeap() {
-        this(null);
+        this(null, null);
     }
 
     public BinaryHeap(Comparator comparator) {
         super(comparator);
         this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+    }
+
+    public BinaryHeap(E[] elements, Comparator comparator) {
+        super(comparator);
+        if (elements == null || elements.length == 0) {
+            this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+        } else {
+            size = elements.length;
+            int capacity = Math.max(DEFAULT_CAPACITY, elements.length);
+            this.elements = (E[]) new Objects[capacity];
+            for (int i = 0; i < elements.length; i++) {
+                this.elements[i] = elements[i];
+            }
+            this.elements = elements;
+        }
+    }
+
+    public BinaryHeap(E[] elements) {
+        this(elements, null);
     }
 
 
@@ -51,14 +71,12 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
     public E remove() {
         emptyCheck();
         int lastIndex = --size;
-
-
         E root = elements[0];
         elements[0] = elements[lastIndex];
         elements[lastIndex] = null;
         siftDown(0);
 
-        return null;
+        return root;
     }
 
     @Override
@@ -76,6 +94,19 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
         return root;
     }
 
+    /**
+     * 批量建堆
+     */
+    private void heapify() {
+        // 自上而下的上滤  每次向最后插入元素上滤
+        /*for (int i = 1; i < size; i++) {
+            siftUp(i);
+        }*/
+        // 自下而上的下滤  左右子节点都建好堆后合并
+        for (int i = (size >> 1) - 1; i >= 0; i--) {
+            siftDown(i);
+        }
+    }
 
     private void siftDown(int index) {  //下滤
         E element = elements[index];
@@ -113,7 +144,7 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
             E parent = elements[parentIndex];
             // 小于父节点 就不执行了
             if (compare(element, parent) <= 0) {            // 大堆
-                // if (compare(parent, element) <= 0) {     // 小堆
+                // if (compare(parent, element) <= 0) {     // 小堆 重写compare方法可以调整
                 break;
             }
             elements[index] = parent;

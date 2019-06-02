@@ -137,7 +137,7 @@ public class MyBinaryTree<E> implements BinaryTreeInfo {
         /*if (root == null) {
             return;
         }
-        Queue<Node<E>> queue = new LinkedList<>();
+        BaseQueue<Node<E>> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             Node<E> node = queue.poll();

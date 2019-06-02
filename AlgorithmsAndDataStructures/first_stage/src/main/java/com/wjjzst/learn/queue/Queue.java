@@ -1,38 +1,21 @@
 package com.wjjzst.learn.queue;
 
-import com.wjjzst.learn.linkedlist.LinkedList;
-
 /**
  * @Author: Wjj
- * @Date: 2019-04-26 00:05
+ * @Date: 2019/6/2 10:13
+ * @desc:
  */
-public class Queue<E> {
-    private LinkedList<E> list;
+public interface Queue<E> {
 
-    /**
-     * // (进)尾 >> >> >> >> >> >> >> 头(出)
-     */
-    public Queue() {
-        list = new LinkedList<>();
-    }
+    int size();
 
-    public int size() {
-        return list.size();
-    }
+    void enQueue(E element);
 
-    public void enQueue(E element) {
-        list.add(element);
-    }
+    E deQueue();
 
-    public E deQueue() {
-        return list.remove(0);
-    }
+    E front();
 
-    public E front() {
-        return list.get(0);
-    }
+    boolean isEmpty();
 
-    public boolean isEmpty() {
-        return list.isEmpty();
-    }
+    void clear();
 }
