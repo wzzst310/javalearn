@@ -3,16 +3,46 @@ package com.wjjzst.learn._04threadProblem;
 /**
  * @Author: Wjj
  * @Date: 2019/5/29 8:38
- * @desc:
+ * @desc: synchronized就是内置锁(互斥锁)
+ * monitorenter
+ * monitoroexit
+ *
+ *
+ *
+ *
  */
 public class Sequence {
-    private int value;
+    private static int value;
 
+    /**
+     * synchronized放在普通方法上,内置锁就是当前类的
+     * @return
+     */
     /*public synchronized int getNext() {
         return value++;
     }*/
     public int getNext() {
         return value++;
+    }
+
+    /**
+     * 修饰静态方法,内置锁是当前的class字节码对象
+     * Sequence.class
+     */
+    public static synchronized  int getPrevious(){
+        return value--;
+    }
+
+    /**
+     * 锁住静态代码块
+     * @return
+     */
+    public int xx(){
+        // synchronized (this){
+        synchronized (Sequence.class){
+
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
