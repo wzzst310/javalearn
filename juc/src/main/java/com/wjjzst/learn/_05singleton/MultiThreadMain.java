@@ -10,9 +10,10 @@ public class MultiThreadMain {
             threadPool.execute(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println(LazySingleton.getInstance());
+                    System.out.println(Thread.currentThread().getName() + "--" + LazySingleton.getInstance());
                 }
             });
         }
+        threadPool.shutdown();
     }
 }
