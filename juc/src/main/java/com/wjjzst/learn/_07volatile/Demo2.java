@@ -3,7 +3,7 @@ package com.wjjzst.learn._07volatile;
 /**
  * @Author: Wjj
  * @Date: 2019/6/5 0:20
- * @desc:   加了volatile 其他线程修改之后 当前线程立马能够知道
+ * @desc:     其他线程修改之后 当前线程立马能够知道
  * volatile 只能保证度和写的操作 在多个线程中的可见性 但不能保证(原子性的操作) 在多个线程之间的可见性
  * synchronize 能完全取代volatile 反之不行 volatile更轻量化(只有set和get的时候)
  *
