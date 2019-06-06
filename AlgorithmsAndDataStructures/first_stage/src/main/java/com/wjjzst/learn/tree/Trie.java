@@ -10,20 +10,24 @@ import com.wjjzst.learn.map.HashMap;
 public class Trie<V> {
 
     private int size;
-    private Node<V> root = new Node<>();
-    public int size(){
+    private Node<V> root;
+
+    public int size() {
         return size;
     }
-    public boolean isEmpty(){
-        return size == 0 ;
+
+    public boolean isEmpty() {
+        return size == 0;
     }
-    public void clear(){
+
+    public void clear() {
         size = 0;
-        root.getChildren().clear();
+        root = null;
     }
-    public V get(String key){
+
+    public V get(String key) {
         Node<V> node = node(key);
-        return node == null ? null:node.value;
+        return node != null && node.word ? node.value : null;
     }
 
     private Node<V> node(String key) {
@@ -31,38 +35,47 @@ public class Trie<V> {
         Node<V> node = root;
         int len = key.length();
         for (int i = 0; i < len; i++) {
-            char c = key.charAt(i);
-            node = node.getChildren().get(c);
-            if(node == null){
+            if (node == null || node.children == null || node.children.isEmpty()) {
                 return null;
             }
+            char c = key.charAt(i);
+            node = node.children.get(c);
         }
-        return node.word?node:null;
+        return node;
     }
-    private void keyCheck(String key){
-        if(key == null || key.length()==0){
+
+    private void keyCheck(String key) {
+        if (key == null || key.length() == 0) {
             throw new IllegalArgumentException("key must not be empty");
         }
     }
 
 
-    public boolean contains(String key){
-        return node(key) != null;
+    public boolean contains(String key) {
+        Node<V> node = node(key);
+        return node != null && node.word;
     }
-    public V add(String key,V value){
+
+    public V add(String key, V value) {
         keyCheck(key);
+        // 创建根节点
+        if (root == null) {
+            root = new Node<>();
+        }
         Node<V> node = root;
         int len = key.length();
         for (int i = 0; i < len; i++) {
             char c = key.charAt(i);
-            Node<V> childNode = node.getChildren().get(c);
-            if(childNode == null){
+            boolean emptyChildren = node.children == null;
+            Node<V> childNode = emptyChildren ? null : node.children.get(c);
+            if (childNode == null) {
                 childNode = new Node<>();
-                node.getChildren().put(c,childNode);
+                node.children = emptyChildren ? new HashMap<>() : node.children;
+                node.children.put(c, childNode);
             }
             node = childNode;
         }
-        if(node.word){
+        if (node.word) {
             V oldValue = node.value;
             node.value = value;
             return oldValue;
@@ -73,26 +86,14 @@ public class Trie<V> {
         size++;
         return null;
     }
-    public boolean startsWith(String prefix){
-        keyCheck(prefix);
-        Node<V> node = root;
-        int len = prefix.length();
-        for (int i = 0; i < len; i++) {
-            char c = prefix.charAt(i);
-            node = node.getChildren().get(c);
-            if(node == null){
-                return false;
-            }
-        }
-        return true;
+
+    public boolean startsWith(String prefix) {
+        return node(prefix) != null;
     }
-    private static class Node<V>{
-        HashMap<Character,Node<V>> children;
+
+    private static class Node<V> {
+        HashMap<Character, Node<V>> children;
         V value;
         boolean word;
-        public HashMap<Character,Node<V>> getChildren(){
-            return children == null? children= new HashMap<>():children;
-
-        }
     }
 }
