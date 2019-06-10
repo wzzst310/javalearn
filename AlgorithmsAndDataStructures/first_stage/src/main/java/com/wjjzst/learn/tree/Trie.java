@@ -30,6 +30,33 @@ public class Trie<V> {
         return node != null && node.word ? node.value : null;
     }
 
+    public V remove(String key) {
+        // 找到最后一个节点
+        Node<V> node = node(key);
+        // 如果不是单词结尾,不用做任何处理
+        if (node == null || !node.word) {
+            return null;
+        }
+        size--;
+        V oldValue = node.value;
+        // 如果还有子节点
+        if (node.children != null && !node.children.isEmpty()) {
+            node.word = false;
+            node.value = null;
+            return oldValue;
+        }
+        // 如果没有子节点
+        Node<V> parent = null;
+        while ((parent = node.parent) != null) {
+            parent.children.remove(node.character);
+            if (parent.word || !parent.children.isEmpty()) {
+                break;
+            }
+            node = parent;
+        }
+        return oldValue;
+    }
+
     private Node<V> node(String key) {
         keyCheck(key);
         Node<V> node = root;
@@ -60,7 +87,7 @@ public class Trie<V> {
         keyCheck(key);
         // 创建根节点
         if (root == null) {
-            root = new Node<>();
+            root = new Node<>(null);
         }
         Node<V> node = root;
         int len = key.length();
@@ -69,7 +96,8 @@ public class Trie<V> {
             boolean emptyChildren = node.children == null;
             Node<V> childNode = emptyChildren ? null : node.children.get(c);
             if (childNode == null) {
-                childNode = new Node<>();
+                childNode = new Node<>(node);
+                childNode.character = c;
                 node.children = emptyChildren ? new HashMap<>() : node.children;
                 node.children.put(c, childNode);
             }
@@ -92,8 +120,14 @@ public class Trie<V> {
     }
 
     private static class Node<V> {
+        Node<V> parent;
         HashMap<Character, Node<V>> children;
+        Character character;
         V value;
         boolean word;
+
+        public Node(Node<V> parent) {
+            this.parent = parent;
+        }
     }
 }
