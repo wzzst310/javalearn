@@ -2,6 +2,7 @@ package com.wjjzst.learn.tree;
 
 
 import com.wjjzst.learn.common.printer.BinaryTreeInfo;
+import com.wjjzst.learn.stack.Stack;
 
 import java.util.*;
 
@@ -44,13 +45,46 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         preorderTraversal(node.right);
     }
 
-    public void preorder(Visitor<E> visitor) {
+
+    //非递归方式
+    private void preorder(Visitor<E> visitor) {
+        if (visitor == null || root == null) {
+            return;
+        }
+        Node<E> node = root;
+        Stack<Node<E>> stack = new Stack<>(); // 装所有的右子节点
+        while (true) {
+            if (node != null) {
+
+                // 访问node节点
+                if (visitor.visit(node.element)) {
+                    return;
+                }
+                // 将右字节点入栈
+                if (node.right != null) {
+                    stack.push(node.right);
+                }
+                // 往左走
+                node = node.left;
+                //如果 左节点为空了 且stack 都空了 那么直接停止遍历
+            } else if (stack.isEmpty()) {
+                return;
+                //如果 左节点为空了 且stack 不为空 那么可以将栈顶的node.right 接着走之前的逻辑
+            } else {
+                node = stack.pop();
+            }
+        }
+
+    }
+
+    //递归方式
+    public void preorder1(Visitor<E> visitor) {
         if (visitor == null) {
             return;
         }
         preorder(root, visitor);
-    }
 
+    }
 
     private void preorder(Node<E> node, Visitor<E> visitor) {
         if (node == null || visitor.stop) {
@@ -81,7 +115,34 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         inorderTraversal(node.right);
     }
 
+    //非递归方式
     public void inorder(Visitor<E> visitor) {
+        if (visitor == null || root == null) {
+            return;
+        }
+        Node<E> node = root;
+        Stack<Node<E>> stack = new Stack<>(); // 装所有的左子节点
+        while (true) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            } else if (stack.isEmpty()) {
+                return;
+            } else {
+                node = stack.pop();
+                //访问node节点
+                if (visitor.visit(node.element)) {
+                    return;
+                }
+                // 让右节点进行中序遍历
+                node = node.right;
+            }
+        }
+    }
+
+
+    //递归方式
+    public void inorder1(Visitor<E> visitor) {
         if (visitor == null) {
             return;
         }
@@ -119,7 +180,33 @@ public class BinaryTree<E> implements BinaryTreeInfo {
     }
 
     public void postorder(Visitor<E> visitor) {
-        if ( visitor == null) {
+        if (visitor == null || root == null) {
+            return;
+        }
+        Stack<Node<E>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node<E> top = stack.peek();
+            if (top.isLeaf()) {
+                Node<E> node = stack.pop();
+                //访问node节点
+                if (visitor.visit(node.element)) {
+                    return;
+                }
+            } else {
+                if (top.right != null) {
+                    stack.push(top.right);
+                }
+                if (top.left != null) {
+                    stack.push(top.left);
+                }
+            }
+
+        }
+    }
+
+    public void postorder1(Visitor<E> visitor) {
+        if (visitor == null) {
             return;
         }
         postorder(root, visitor);
