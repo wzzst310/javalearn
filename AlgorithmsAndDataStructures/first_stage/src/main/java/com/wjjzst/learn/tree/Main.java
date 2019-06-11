@@ -138,12 +138,51 @@ public class Main {
         Asserts.test(trie.startsWith("cata"));
         Asserts.test(!trie.startsWith("hehe"));
         Asserts.test(trie.get("小码哥") == 5);
-		Asserts.test(trie.remove("cat") == 1);
-		Asserts.test(trie.remove("catalog") == 3);
-		Asserts.test(trie.remove("cast") == 4);
-		Asserts.test(trie.size() == 2);
-		Asserts.test(trie.startsWith("do"));
-		Asserts.test(!trie.startsWith("c"));
+        Asserts.test(trie.remove("cat") == 1);
+        Asserts.test(trie.remove("catalog") == 3);
+        Asserts.test(trie.remove("cast") == 4);
+        Asserts.test(trie.size() == 2);
+        Asserts.test(trie.startsWith("do"));
+        Asserts.test(!trie.startsWith("c"));
+    }
+
+    static void testOrder() {
+        // 创建BST
+        Integer data[] = new Integer[]{
+                7, 4, 9, 2, 5, 8, 11
+        };
+        BSTree<Integer> bst = new BSTree<>();
+        for (int i = 0; i < data.length; i++) {
+            bst.add(data[i]);
+        }
+        // 树状打印
+        BinaryTrees.println(bst);
+        // 遍历器
+        StringBuilder sb = new StringBuilder();
+        BSTree.Visitor<Integer> visitor = new BSTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                sb.append(element).append(" ");
+                //return false;
+                return element == 8;
+            }
+        };
+        // 遍历
+        sb.delete(0, sb.length());
+        bst.preorder(visitor);
+        //Asserts.test(sb.toString().equals("7 4 2 5 9 8 11 "));
+        Asserts.test(sb.toString().equals("7 4 2 5 9 8 "));
+
+        sb.delete(0, sb.length());
+        bst.inorder(visitor);
+        //Asserts.test(sb.toString().equals("2 4 5 7 8 9 11 "));
+        Asserts.test(sb.toString().equals("2 4 5 7 8 "));
+
+        sb.delete(0, sb.length());
+        bst.postorder(visitor);
+        //Asserts.test(sb.toString().equals("2 5 4 8 11 9 7 "));
+        Asserts.test(sb.toString().equals("2 5 4 8 "));
+
     }
 
     public static void main(String[] args) {
@@ -151,7 +190,8 @@ public class Main {
         //List<Integer> list = generateList();
         //testAVL(list);
         //testRB(list);
-        testTrie();
+        //testTrie();
+        testOrder();
 
 
     }

@@ -47,7 +47,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
 
 
     //非递归方式
-    private void preorder(Visitor<E> visitor) {
+    public void preorder(Visitor<E> visitor) {
         if (visitor == null || root == null) {
             return;
         }
@@ -73,6 +73,31 @@ public class BinaryTree<E> implements BinaryTreeInfo {
             } else {
                 node = stack.pop();
             }
+        }
+
+    }
+
+    //非递归方式2
+    public void preorder2(Visitor<E> visitor) {
+        if (visitor == null || root == null) {
+            return;
+        }
+        Stack<Node<E>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node<E> node = stack.pop();
+            // 父节点弹出的时候就访问了
+            if (visitor.visit(node.element)) {
+                return;
+            }
+            // 压进去先右后左 出队就是先做后右 前序遍历是先右后左
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+
         }
 
     }
@@ -179,18 +204,21 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         System.out.println(node.element);
     }
 
+    //如果上次弹出的是当前弹出的子节点 该节点虽然有子节点但是不入栈
     public void postorder(Visitor<E> visitor) {
         if (visitor == null || root == null) {
             return;
         }
+        // 用来记录上一次弹出访问的节点
+        Node<E> prev = null;
         Stack<Node<E>> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             Node<E> top = stack.peek();
-            if (top.isLeaf()) {
-                Node<E> node = stack.pop();
+            if (top.isLeaf() || (prev != null && prev.parent == top)) {
+                prev = stack.pop();
                 //访问node节点
-                if (visitor.visit(node.element)) {
+                if (visitor.visit(prev.element)) {
                     return;
                 }
             } else {
@@ -262,6 +290,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
             if (visitor.visit(node.element)) {
                 return;
             }
+            //层序遍历是先左入队再右入队
             if (node.left != null) {
                 queue.offer(node.left);
             }
