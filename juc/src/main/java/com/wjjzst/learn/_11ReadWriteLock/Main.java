@@ -1,4 +1,4 @@
-package com.wjjzst.learn._11ReadWriteLock;
+package com.wjjzst.learn._11readWriteLock;
 
 /**
  * @Author: Wjj
