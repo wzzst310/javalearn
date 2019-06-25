@@ -6,13 +6,22 @@ package com.wjjzst.juc.learn._16join;
  * @desc:
  */
 public class Test {
-    private static void b(A a) {
+    private void b(A a) {
         a.a();
     }
 
     public static void main(String[] args) {
-        A a = new A(1);
-        b(a);
+        Test t = new Test();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                A a = new A(1);
+                t.b(a);
+            }
+        });
+        thread.setDaemon(true);
+        thread.start();
+        System.out.println("haha");
     }
 }
 
@@ -36,7 +45,21 @@ class A {
         return ((A) obj).getA() == a;
     }
 
+    /*public synchronized void a() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(equals(new A(1)));
+    }*/
+
     public synchronized void a() {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println(equals(new A(1)));
     }
 }
