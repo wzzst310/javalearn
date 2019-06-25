@@ -9,11 +9,11 @@ public class Demo {
     public void a(Thread joinThread) {
         System.out.println("方法a执行了...");
         joinThread.start();
-            try {
-                joinThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            joinThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("a方法执行完毕...");
 
     }
@@ -36,6 +36,7 @@ public class Demo {
                 demo.b();
             }
         });
+        // joinThread.setDaemon(true);
         new Thread(new Runnable() {
             @Override
             public void run() {
