@@ -17,9 +17,10 @@ public class Demo {
         /*if (Thread.currentThread().getName().equals("Thread-11")) {
             throw new RuntimeException();
         }*/
-       /*if (Thread.currentThread().getName().equals("Thread-7")) {
-            Thread.currentThread().interrupt();
-        }*/
+        if (Thread.currentThread().getName().equals("Thread-7")) {
+            //Thread.currentThread().interrupt();
+            barrier.reset();
+        }
         try {
             barrier.await();
         } catch (Exception e) {
@@ -30,7 +31,7 @@ public class Demo {
 
     public static void main(String[] args) {
         Demo demo = new Demo();
-        CyclicBarrier barrier = new CyclicBarrier(10, new Runnable() {
+        CyclicBarrier barrier = new CyclicBarrier(1000, new Runnable() {
             @Override
             public void run() { //最后一个线程执行此代码
                 System.out.println(Thread.currentThread().getName());
@@ -45,5 +46,20 @@ public class Demo {
                 }
             }).start();
         }
+        //监控等待线程数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("等待的线程数" + barrier.getNumberWaiting());
+                    System.out.println("is broken " + barrier.isBroken());
+                }
+            }
+        }).start();
     }
 }
