@@ -14,9 +14,12 @@ public class Demo {
             e.printStackTrace();
         }
         System.out.println(Thread.currentThread().getName() + " 到达会议室,等待开会...");
-        if (Thread.currentThread().getName().equals("Thread-11")) {
+        /*if (Thread.currentThread().getName().equals("Thread-11")) {
             throw new RuntimeException();
-        }
+        }*/
+       /*if (Thread.currentThread().getName().equals("Thread-7")) {
+            Thread.currentThread().interrupt();
+        }*/
         try {
             barrier.await();
         } catch (Exception e) {
