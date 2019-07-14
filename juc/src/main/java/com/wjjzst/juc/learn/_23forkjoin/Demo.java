@@ -37,11 +37,9 @@ public class Demo extends RecursiveTask<Integer> {
     }
 
     public static void main(String[] args) {
-        ForkJoinPool pool = new ForkJoinPool(16);
+        ForkJoinPool pool = new ForkJoinPool(8);
         Future<Integer> future = null;
-        for (int i = 0; i < 100; i++) {
-            future = pool.submit(new Demo(1, 1000000000));
-        }
+        future = pool.submit(new Demo(1, 1000000000));
         System.out.println(".....");
         try {
             System.out.println("计算的值为: " + future.get());
