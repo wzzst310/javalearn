@@ -17,6 +17,7 @@
     <modules>
         <module>AlgorithmsAndDataStructures</module>
         <module>juc</module>
+        <module>jvm</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
