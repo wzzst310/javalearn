@@ -11,7 +11,6 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Tmall1 extends Tmall{
     private int count;
-    public final int MAX_COUNT = 10;
     private Lock lock = new ReentrantLock();
     private Condition p = lock.newCondition();
     private Condition t = lock.newCondition();
