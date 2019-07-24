@@ -18,6 +18,7 @@
         <module>AlgorithmsAndDataStructures</module>
         <module>juc</module>
         <module>jvm</module>
+        <module>web</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,6 +31,8 @@
         <targetJavaProject>${basedir}/src/main/java</targetJavaProject> <!-- Java接口和实体类 -->
         <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject><!-- XML生成路径 -->
         <targetXMLPackage>mybatis\sqlmap</targetXMLPackage>
+        <druid.version>1.1.10</druid.version>
+        <flyway.version>5.0.3</flyway.version>
     </properties>
 
     <dependencies>
