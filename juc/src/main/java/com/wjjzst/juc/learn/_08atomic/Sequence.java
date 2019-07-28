@@ -14,6 +14,8 @@ public class Sequence {
     private AtomicInteger value = new AtomicInteger(0);
     // AtomicBoolean
     // AtomicLong;
+    private LongAdder longAddr = new LongAdder();
+    // DoubleAdder
 
     // 原子性更新数组
     private int[] s = {1, 2, 3, 4, 5};
@@ -32,6 +34,7 @@ public class Sequence {
         as.addAndGet(2, 10);
         as.getAndIncrement(2);
         as.getAndAdd(2, 10);
+        longAddr.increment();
         User u = new User();
         u.setAge(9);
         this.user.getAndSet(u);
