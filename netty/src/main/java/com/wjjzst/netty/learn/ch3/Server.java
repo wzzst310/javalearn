@@ -1,6 +1,9 @@
 package com.wjjzst.netty.learn.ch3;
 
 import com.wjjzst.netty.learn.ch6.AuthHandler;
+import com.wjjzst.netty.learn.ch6.InBoundHandlerA;
+import com.wjjzst.netty.learn.ch6.InBoundHandlerB;
+import com.wjjzst.netty.learn.ch6.InBoundHandlerC;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -27,7 +30,10 @@ public final class Server {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {
-                            ch.pipeline().addLast(new AuthHandler());
+                            //ch.pipeline().addLast(new AuthHandler());
+                            ch.pipeline().addLast(new InBoundHandlerA());
+                            ch.pipeline().addLast(new InBoundHandlerC());
+                            ch.pipeline().addLast(new InBoundHandlerB());
                             //..
 
                         }
