@@ -1,6 +1,5 @@
 package com.wjjzst.netty.learn.ch6.exceptionspread;
 
-
 import com.wjjzst.netty.learn.ch6.BusinessException;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
