@@ -20,6 +20,7 @@
         <module>jvm</module>
         <module>web</module>
         <module>netty</module>
+        <module>queue</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
