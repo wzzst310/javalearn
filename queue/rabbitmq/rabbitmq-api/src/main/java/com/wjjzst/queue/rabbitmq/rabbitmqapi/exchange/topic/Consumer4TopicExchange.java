@@ -1,4 +1,4 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqapi.exchange.direct;
+package com.wjjzst.queue.rabbitmq.rabbitmqapi.exchange.topic;
 
 import com.rabbitmq.client.*;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeoutException;
  * @Date: 2019/8/22 1:03
  * @desc:
  */
-public class Consumer4DirectExchange {
+public class Consumer4TopicExchange {
     public static void main(String[] args) throws IOException, TimeoutException {
         // 1 创建连接工厂ConnectionFactory 并进行配置
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -27,10 +27,11 @@ public class Consumer4DirectExchange {
         // 3 通过connection创建一个channel
         Channel channel = connection.createChannel();
         // 4声明(创建) 一个队列
-        String exchangeName = "test_direct_exchange";
-        String exchangeType = "direct";
-        String queueName = "test_direct_queue";
-        String routingKey = "test.direct";
+        String exchangeName = "test_topic_exchange";
+        String exchangeType = "topic";
+        String queueName = "test_topic_queue";
+        String routingKey = "user.*";    //* 匹配不多不少一个词
+        // String routingKey = "user.#";   //#匹配一个或多个词
         // 表示声明了一个交换机
         channel.exchangeDeclare(exchangeName, exchangeType, true, false, false, null);
         // 表示声明了一个队列
