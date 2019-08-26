@@ -37,7 +37,7 @@ public class Producer {
             msg += " ----> " + i;
             // basicPublish(String exchange, String routingKey, BasicProperties props, byte[] body)
             // 不传exchange: AMQP default(第一个)
-            // channel.basicPublish(exchangeName, routingKey, true, null, msg.getBytes());
+            channel.basicPublish(exchangeName, routingKey, true, null, msg.getBytes());
             channel.basicPublish(exchangeName, routingKeyError, true, null, msg.getBytes());
         }
         channel.addConfirmListener(new ConfirmListener() {
