@@ -21,6 +21,11 @@ public class MyConsumer extends DefaultConsumer {
     public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
         System.err.println("-------- handle return --------");
         System.err.println("body: " + new String(body));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if ((Integer) properties.getHeaders().get("num") == 0) {
             channel.basicNack(envelope.getDeliveryTag(), false, true);// 第三个参数重回队列
         } else {

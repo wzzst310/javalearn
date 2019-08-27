@@ -34,7 +34,7 @@ public class Consumer {
         channel.queueDeclare(queueName, true, false, false, null);
         channel.queueBind(queueName, exchangeName, routingKey);
         // 6 设置Channel
-        channel.basicConsume(queueName, true, new MyConsumer(channel));
+        channel.basicConsume(queueName, false, new MyConsumer(channel));
         // 5 记得关闭相关的连接
         // channel.close();
         // connection.close();
