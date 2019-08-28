@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Configuration
@@ -131,18 +133,17 @@ public class RabbitMQConfig {
                 System.err.println("----------消费者: " + msg);
             }
         });*/
-
+        /*
         // 1 适配器方式. 默认是有自己的方法名字的：handleMessage
         // 可以自己指定一个方法的名字: consumeMessage
         // 也可以添加一个转换器: 从字节数组转换为String
         MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
         adapter.setDefaultListenerMethod("consumeMessage");
         adapter.setMessageConverter(new TextMessageConverter());
-        container.setMessageListener(adapter);
+        container.setMessageListener(adapter);*/
 
-        /**
-         * 2 适配器方式: 我们的队列名称 和 方法名称 也可以进行一一的匹配
-         *
+
+         // 2 适配器方式: 我们的队列名称 和 方法名称 也可以进行一一的匹配
          MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
          adapter.setMessageConverter(new TextMessageConverter());
          Map<String, String> queueOrTagToMethodName = new HashMap<>();
@@ -150,7 +151,6 @@ public class RabbitMQConfig {
          queueOrTagToMethodName.put("queue002", "method2");
          adapter.setQueueOrTagToMethodName(queueOrTagToMethodName);
          container.setMessageListener(adapter);
-         */
 
         // 1.1 支持json格式的转换器
         /**
