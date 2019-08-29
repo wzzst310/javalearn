@@ -13,6 +13,7 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.amqp.support.ConsumerTagStrategy;
 import org.springframework.amqp.support.converter.ContentTypeDelegatingMessageConverter;
+import org.springframework.amqp.support.converter.DefaultJackson2JavaTypeMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -142,7 +143,7 @@ public class RabbitMQConfig {
         adapter.setMessageConverter(new TextMessageConverter());
         container.setMessageListener(adapter);*/
 
-
+        /*
          // 2 适配器方式: 我们的队列名称 和 方法名称 也可以进行一一的匹配
          MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
          adapter.setMessageConverter(new TextMessageConverter());
@@ -150,33 +151,29 @@ public class RabbitMQConfig {
          queueOrTagToMethodName.put("queue001", "method1");
          queueOrTagToMethodName.put("queue002", "method2");
          adapter.setQueueOrTagToMethodName(queueOrTagToMethodName);
-         container.setMessageListener(adapter);
+         container.setMessageListener(adapter);*/
 
+        /*
         // 1.1 支持json格式的转换器
-        /**
          MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
          adapter.setDefaultListenerMethod("consumeMessage");
 
          Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
          adapter.setMessageConverter(jackson2JsonMessageConverter);
 
-         container.setMessageListener(adapter);
-         */
+         container.setMessageListener(adapter);*/
 
 
         // 1.2 DefaultJackson2JavaTypeMapper & Jackson2JsonMessageConverter 支持java对象转换
-        /**
-         MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
-         adapter.setDefaultListenerMethod("consumeMessage");
+        MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
+        adapter.setDefaultListenerMethod("consumeMessage");
+        //  这样可以传递java对象了
+        Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
+        DefaultJackson2JavaTypeMapper javaTypeMapper = new DefaultJackson2JavaTypeMapper();
+        jackson2JsonMessageConverter.setJavaTypeMapper(javaTypeMapper);
 
-         Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
-
-         DefaultJackson2JavaTypeMapper javaTypeMapper = new DefaultJackson2JavaTypeMapper();
-         jackson2JsonMessageConverter.setJavaTypeMapper(javaTypeMapper);
-
-         adapter.setMessageConverter(jackson2JsonMessageConverter);
-         container.setMessageListener(adapter);
-         */
+        adapter.setMessageConverter(jackson2JsonMessageConverter);
+        container.setMessageListener(adapter);
 
 
         //1.3 DefaultJackson2JavaTypeMapper & Jackson2JsonMessageConverter 支持java对象多映射转换

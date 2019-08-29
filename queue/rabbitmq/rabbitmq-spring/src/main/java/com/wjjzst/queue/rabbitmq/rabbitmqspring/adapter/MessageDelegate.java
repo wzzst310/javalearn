@@ -27,11 +27,10 @@ public class MessageDelegate {
         System.err.println("method2 收到消息内容:" + new String(messageBody));
     }
 
-
+    // json格式对应的是个Map对象
     public void consumeMessage(Map messageBody) {
         System.err.println("map方法, 消息内容:" + messageBody);
     }
-
 
     public void consumeMessage(Order order) {
         System.err.println("order对象, 消息内容, id: " + order.getId() +
