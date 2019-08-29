@@ -1,4 +1,4 @@
-package com.wjjzst.learn._11readWriteLock;
+package com.wjjzst.juc.learn._11readWriteLock;
 
 import java.util.HashMap;
 import java.util.Map;
