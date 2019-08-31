@@ -11,6 +11,7 @@
     <artifactId>AlgorithmsAndDataStructures</artifactId>
     <modules>
         <module>first_stage</module>
+        <module>weeklyAlgorithms</module>
     </modules>
     <packaging>pom</packaging>
 
