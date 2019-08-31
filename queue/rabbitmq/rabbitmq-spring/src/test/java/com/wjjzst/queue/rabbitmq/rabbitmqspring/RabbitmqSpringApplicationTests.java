@@ -168,14 +168,13 @@ public class RabbitmqSpringApplicationTests {
 
     @Test
     public void testSendExtConverterMessage() throws Exception {
-//			byte[] body = Files.readAllBytes(Paths.get("d:/002_books", "picture.png"));
-//			MessageProperties messageProperties = new MessageProperties();
-//			messageProperties.setContentType("image/png");
-//			messageProperties.getHeaders().put("extName", "png");
-//			Message message = new Message(body, messageProperties);
-//			rabbitTemplate.send("", "image_queue", message);
-
-        byte[] body = Files.readAllBytes(Paths.get("d:/002_books", "mysql.pdf"));
+        /*byte[] body = Files.readAllBytes(Paths.get("/Users/wjj/IdeaProjects/javalearn/queue/rabbitmq/rabbitmq-spring/src/main/resources", "goldAdvert.png"));
+        MessageProperties messageProperties = new MessageProperties();
+        messageProperties.setContentType("image/png");
+        messageProperties.getHeaders().put("extName", "png");
+        Message message = new Message(body, messageProperties);
+        rabbitTemplate.send("", "image_queue", message);*/
+        byte[] body = Files.readAllBytes(Paths.get("/Users/wjj/IdeaProjects/javalearn/queue/rabbitmq/rabbitmq-spring/src/main/resources", "02-开发环境.pdf"));
         MessageProperties messageProperties = new MessageProperties();
         messageProperties.setContentType("application/pdf");
         Message message = new Message(body, messageProperties);

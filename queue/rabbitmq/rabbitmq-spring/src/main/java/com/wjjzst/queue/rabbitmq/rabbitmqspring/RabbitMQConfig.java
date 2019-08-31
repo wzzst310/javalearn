@@ -2,6 +2,8 @@ package com.wjjzst.queue.rabbitmq.rabbitmqspring;
 
 import com.rabbitmq.client.Channel;
 import com.wjjzst.queue.rabbitmq.rabbitmqspring.adapter.MessageDelegate;
+import com.wjjzst.queue.rabbitmq.rabbitmqspring.convert.ImageMessageConverter;
+import com.wjjzst.queue.rabbitmq.rabbitmqspring.convert.PDFMessageConverter;
 import com.wjjzst.queue.rabbitmq.rabbitmqspring.convert.TextMessageConverter;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -178,7 +180,7 @@ public class RabbitMQConfig {
         */
 
         //1.3 DefaultJackson2JavaTypeMapper & Jackson2JsonMessageConverter 支持java对象多映射转换
-
+        /*
         MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
         adapter.setDefaultListenerMethod("consumeMessage");
         Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
@@ -193,10 +195,10 @@ public class RabbitMQConfig {
         jackson2JsonMessageConverter.setJavaTypeMapper(javaTypeMapper);
         adapter.setMessageConverter(jackson2JsonMessageConverter);
         container.setMessageListener(adapter);
+        */
 
         //1.4 ext convert
-
-        /*MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
+        MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
         adapter.setDefaultListenerMethod("consumeMessage");
 
         //全局的转换器:
@@ -221,7 +223,7 @@ public class RabbitMQConfig {
 
 
         adapter.setMessageConverter(convert);
-        container.setMessageListener(adapter);*/
+        container.setMessageListener(adapter);
 
         return container;
 
