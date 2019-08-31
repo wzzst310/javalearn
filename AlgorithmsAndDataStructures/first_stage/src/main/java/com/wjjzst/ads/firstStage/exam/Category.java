@@ -1,9 +1,13 @@
 package com.wjjzst.ads.firstStage.exam;
 
-import lombok.Data;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
+
+import lombok.Data;
 
 /**
  * @Author: Wjj

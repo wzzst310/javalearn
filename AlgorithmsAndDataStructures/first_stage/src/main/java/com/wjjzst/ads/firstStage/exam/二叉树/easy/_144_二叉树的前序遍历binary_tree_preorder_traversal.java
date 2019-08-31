@@ -2,7 +2,9 @@ package com.wjjzst.ads.firstStage.exam.二叉树.easy;
 
 import com.wjjzst.ads.firstStage.exam.二叉树.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/

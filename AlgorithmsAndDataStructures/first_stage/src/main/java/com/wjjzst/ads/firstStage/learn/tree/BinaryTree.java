@@ -1,10 +1,11 @@
 package com.wjjzst.ads.firstStage.learn.tree;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
 import com.wjjzst.ads.firstStage.learn.stack.Stack;
-
-import java.util.*;
 
 /**
  * @Author: Wjj

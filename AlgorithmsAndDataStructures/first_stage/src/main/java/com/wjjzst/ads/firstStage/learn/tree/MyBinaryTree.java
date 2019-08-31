@@ -2,12 +2,12 @@ package com.wjjzst.ads.firstStage.learn.tree;
 
 
 
-import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+
+import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
 
 /**
  * @Author: Wjj

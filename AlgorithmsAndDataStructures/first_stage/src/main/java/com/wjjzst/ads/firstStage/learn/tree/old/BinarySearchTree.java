@@ -1,12 +1,12 @@
 package com.wjjzst.ads.firstStage.learn.tree.old;
 
 
-import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
-
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
+import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
 
 public class BinarySearchTree<E> implements BinaryTreeInfo {
     private int size;

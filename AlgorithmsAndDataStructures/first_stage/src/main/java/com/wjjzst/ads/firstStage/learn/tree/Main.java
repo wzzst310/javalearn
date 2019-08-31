@@ -1,12 +1,12 @@
 package com.wjjzst.ads.firstStage.learn.tree;
 
 
-import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTrees;
-import com.wjjzst.ads.firstStage.learn.map.Asserts;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTrees;
+import com.wjjzst.ads.firstStage.learn.map.Asserts;
 
 public class Main {
 
