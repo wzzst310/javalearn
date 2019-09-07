@@ -1,0 +1,497 @@
+{
+  "baselineNo": "3",
+  "appConfigDtos": [
+    {
+      "homePageJsonItems": [
+        {
+          "typeAndTitle": {
+            "type": "0",
+            "title": null
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2yichujitong.png",
+                "tagUrl": "",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "0",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/open_bar.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/activity/pages/openingseason/index.html",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/teacherDayHK.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/zfkLS/#greeting",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "0",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ],
+            "header": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2yichujitong.png",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "0",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ]
+          }
+        },
+        {
+          "typeAndTitle": {
+            "type": "21",
+            "title": "-健康服務"
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwujianbuxing03.png",
+                "tagUrl": "30",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "您的健康运动专家，行无止境，乐享生活，从你我做起！",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwuyuyueguahao03.png",
+                "tagUrl": "https://sit1.tp95589.com/healthCenterWeb?firstVC=1&targetUrl=yygh",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "预约挂号",
+                "detail": "login=1&webViewLogin=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwuzaixianwenzheng03.png",
+                "tagUrl": "https://sit1.tp95589.com/healthCenterWeb?targetUrl=zxzx&firstVC=1",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "在线问诊",
+                "detail": "login=1&webViewLogin=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwujiankangpince03.png",
+                "tagUrl": "https://sit1.tp95589.com/healthCenterWeb?targetUrl=jkcp&firstVC=1",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "健康测评",
+                "detail": "login=1&webViewLogin=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ],
+            "header": []
+          }
+        },
+        {
+          "typeAndTitle": {
+            "type": "21",
+            "title": "-太平優教"
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/taipingyoujiaoyingyubaike.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/share/page/middlepage/index.html?type=bee-smart&whitePage=kht",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "login=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/taipingyoujiaoyingyueyingyu.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/share/page/middlepage/index.html?type=klt&whitePage=kht",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "login=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ],
+            "header": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/taipingyoujiaochenggongyinsu.png",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "login=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ]
+          }
+        },
+        {
+          "typeAndTitle": {
+            "type": "23",
+            "title": null
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2yaoqingyouli.png",
+                "tagUrl": "29",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "邀請有禮",
+                "detail": "邀好友，享厚禮，成功邀請好友註冊太平通app即可獲金幣哦！",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "#999999",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2zhouzhoule.png",
+                "tagUrl": "34",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "周周樂",
+                "detail": "萬元豪禮周周樂",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "#999999",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2qiandaoyouli.png",
+                "tagUrl": "26",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "簽到有禮",
+                "detail": "連續每日簽到領周周樂獎券",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "#999999",
+                "subTitle": ""
+              }
+            ],
+            "header": []
+          }
+        }
+      ],
+      "version": "58",
+      "lang": "_zh-hk"
+    },
+    {
+      "homePageJsonItems": [
+        {
+          "typeAndTitle": {
+            "type": "0",
+            "title": null
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2yichujitong.png",
+                "tagUrl": "",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "0",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/open_bar.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/activity/pages/openingseason/index.html",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/teacherDayCN.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/zfkLS/#greeting",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "0",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ],
+            "header": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2yichujitong.png",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "0",
+                "title": "",
+                "detail": "",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ]
+          }
+        },
+        {
+          "typeAndTitle": {
+            "type": "21",
+            "title": "-健康服务"
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwujianbuxing03.png",
+                "tagUrl": "30",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "您的健康运动专家，行无止境，乐享生活，从你我做起！",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwuyuyueguahao03.png",
+                "tagUrl": "https://sit1.tp95589.com/healthCenterWeb?firstVC=1&targetUrl=yygh",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "预约挂号",
+                "detail": "login=1&webViewLogin=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwuzaixianwenzheng03.png",
+                "tagUrl": "https://sit1.tp95589.com/healthCenterWeb?targetUrl=zxzx&firstVC=1",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "在线问诊",
+                "detail": "login=1&webViewLogin=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/jiankangfuwujiankangpince03.png",
+                "tagUrl": "https://sit1.tp95589.com/healthCenterWeb?targetUrl=jkcp&firstVC=1",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "健康测评",
+                "detail": "login=1&webViewLogin=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ],
+            "header": []
+          }
+        },
+        {
+          "typeAndTitle": {
+            "type": "21",
+            "title": "-太平优教"
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/taipingyoujiaoyingyubaike.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/share/page/middlepage/index.html?type=bee-smart&whitePage=kht",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "login=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/taipingyoujiaoyingyueyingyu.png",
+                "tagUrl": "https://ecustomer.tp95589.com/static/share/page/middlepage/index.html?type=klt&whitePage=kht",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "login=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ],
+            "header": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/taipingyoujiaochenggongyinsu.png",
+                "pageType": "HTML",
+                "authorization": "0",
+                "login": "1",
+                "title": "",
+                "detail": "login=1",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "",
+                "subTitle": ""
+              }
+            ]
+          }
+        },
+        {
+          "typeAndTitle": {
+            "type": "23",
+            "title": null
+          },
+          "jsonItem": {
+            "data": [
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2yaoqingyouli.png",
+                "tagUrl": "29",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "邀请有礼",
+                "detail": "邀好友，享厚礼，成功邀请好友注册太平通app即可获金币哦！",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "#999999",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2zhouzhoule.png",
+                "tagUrl": "34",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "周周乐",
+                "detail": "万元壕礼周周乐",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "#999999",
+                "subTitle": ""
+              },
+              {
+                "imgUrl": "https://ecustomer.tp95589.com/static/rn/src/img/bannerV2qiandaoyouli.png",
+                "tagUrl": "26",
+                "pageType": "RN",
+                "authorization": "0",
+                "login": "1",
+                "title": "签到有礼",
+                "detail": "连续每日签到领周周乐奖券",
+                "badge": "",
+                "icon": "",
+                "titleColor": "#333333",
+                "detailColor": "#999999",
+                "subTitle": ""
+              }
+            ],
+            "header": []
+          }
+        }
+      ],
+      "version": "58",
+      "lang": "_zh-cn"
+    }
+  ]
+}
