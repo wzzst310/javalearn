@@ -1,5 +1,6 @@
 package com.wjjzst.queue.rabbitmq.rabbitmqspringboot;
 
+import com.wjjzst.queue.rabbitmq.rabbitmqspringboot.entity.Order;
 import com.wjjzst.queue.rabbitmq.rabbitmqspringboot.producer.RabbitSend;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +33,18 @@ public class ApplicationTests {
         prperties.put("number", "12345");
         prperties.put("send_time", simpleDateFormat.format(new Date()));
         rabbitSend.send("Hello RabbitMQ For Springboot", prperties);
+        // 睡2秒ack即为true
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testSend2() {
+
+        rabbitSend.sendOrder(new Order("001","第一个订单"));
         // 睡2秒ack即为true
         try {
             TimeUnit.SECONDS.sleep(2);
