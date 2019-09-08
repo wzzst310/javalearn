@@ -1,9 +1,9 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringboot;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan({"com.wjjzst.queue.rabbitmq.rabbitmqspringboot.consumer"})
+@ComponentScan({"com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.consumer"})
 public class MainConfig {
 }

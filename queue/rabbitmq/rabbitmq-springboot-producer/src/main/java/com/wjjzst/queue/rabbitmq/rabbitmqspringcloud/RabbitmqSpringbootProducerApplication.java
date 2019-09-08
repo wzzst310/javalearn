@@ -1,4 +1,4 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringboot;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class RabbitmqSpringbootConsumerApplication {
+public class RabbitmqSpringbootProducerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RabbitmqSpringbootConsumerApplication.class, args);
+        SpringApplication.run(RabbitmqSpringbootProducerApplication.class, args);
     }
 }

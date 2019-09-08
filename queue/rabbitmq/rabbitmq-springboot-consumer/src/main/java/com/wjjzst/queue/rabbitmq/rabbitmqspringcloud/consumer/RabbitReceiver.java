@@ -1,7 +1,7 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringboot.consumer;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.consumer;
 
 import com.rabbitmq.client.Channel;
-import com.wjjzst.queue.rabbitmq.rabbitmqspringboot.entity.Order;
+import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.entity.Order;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.Message;
