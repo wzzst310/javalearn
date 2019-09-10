@@ -13,6 +13,7 @@ spring:
           binder: rabbit_cluster
       binders:
         rabbit_cluster:
+          type: rabbit
           environment:
             spring:
               rabbitmq:
