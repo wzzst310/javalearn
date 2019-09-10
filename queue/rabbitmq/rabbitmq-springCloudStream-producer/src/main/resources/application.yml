@@ -1,0 +1,70 @@
+spring:
+  port: 8001
+  application:
+    name: producer
+  servlet:
+    context-path: /producer
+  cloud:
+    stream:
+      bindings:
+        output_channel:
+          destination: exchange-3
+          group: queue-3
+          binder: rabbit_cluster
+      binders:
+        rabbit_cluster:
+          environment:
+            spring:
+              rabbitmq:
+                host: 129.204.35.106
+                port: 5672
+                username: wjj
+                password: wzzst310
+                virtual-host: /
+
+#local_rabbit:
+#  type: rabbit
+#  environment:
+#    spring:
+#      rabbitmq:
+#        host: 129.204.35.106
+#        port: 5672
+#        username: wjj
+#        password: wzzst310
+#        virtual-host: /
+
+#  cloud:
+#    stream:
+#      bindings:
+#        output:
+#          destination: exchange-3
+#          group: queue-3
+#          binder: rabbit_cluster
+#          type: rabbit
+#      binders:
+#
+#        local_rabbit:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: 129.204.35.106
+#                port: 5672
+#                username: wjj
+#                password: wzzst310
+#                virtual-host: /
+
+
+#  spring.cloud.stream.bindings.output_channel.destination=exchange-3
+#  spring.cloud.stream.bindings.output_channel.group=queue-3
+#  spring.cloud.stream.bindings.output_channel.binder=rabbit_cluster
+#
+#  spring.cloud.stream.binders.rabbit_cluster.type=rabbit
+#  spring.cloud.stream.binders.rabbit_cluster.environment.spring.rabbitmq.addresses=192.168.11.76:5672
+#  spring.cloud.stream.binders.rabbit_cluster.environment.spring.rabbitmq.username=guest
+#  spring.cloud.stream.binders.rabbit_cluster.environment.spring.rabbitmq.password=guest
+#  spring.cloud.stream.binders.rabbit_cluster.environment.spring.rabbitmq.virtual-host=/
+
+
+
+

@@ -1,4 +1,4 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringboot;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

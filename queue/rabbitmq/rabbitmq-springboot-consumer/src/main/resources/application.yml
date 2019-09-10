@@ -9,3 +9,18 @@ spring:
     publisher-returns: true
     template:
       mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual    # 签收方式是手动
+        concurrency: 5              # 初始化监听数量
+        max-concurrency: 10         # 最大监听数量
+      order:
+        queue:
+          name: queue-2
+          durable: true
+        exchange:
+          name: exchange-2
+          durable: true
+          type: topic
+          ignoreDeclarationExceptions: true    # 默认情况下，当发生任何异常时，RabbitAdmin将立即停止处理所有声明;这可能会导致下游问题，例如监听器容器无法初始化，因为未声明另一个队列(在错误之后定义)。 这是一个适用于所有元素，队列，交换和绑定的全局设置，具有仅适用于这些元素的类似属性。
+        key: springboot.*

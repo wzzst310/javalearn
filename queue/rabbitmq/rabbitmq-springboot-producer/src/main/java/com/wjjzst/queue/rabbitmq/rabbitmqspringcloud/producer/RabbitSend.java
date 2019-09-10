@@ -1,6 +1,7 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringboot.producer;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.producer;
 
 
+import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.entity.Order;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,22 @@ public class RabbitSend {
         CorrelationData correlationData = new CorrelationData();
         correlationData.setId(UUID.randomUUID().toString());   //保证 ID+ 时间戳 全局唯一   消息
         // rabbitTemplate.convertAndSend("exchange-1", "springboot.hello", msg, correlationData);  // confirmCallback
-        rabbitTemplate.convertAndSend("exchange-1", "spring.hello", msg, correlationData);  // returnCallback
+        // rabbitTemplate.convertAndSend("exchange-1", "spring.hello", msg, correlationData);  // returnCallback
+        rabbitTemplate.convertAndSend("exchange-1", "springboot.hello", msg, correlationData);  // returnCallback
+    }
+
+
+    // 要实现Serializable 接口才能传输对象
+    public void sendOrder(Order order) {
+        // MessageHeaders mhs = new MessageHeaders(properties);
+        // 当不需要加任何属性的时候 直接只send对象的时候
+        // Message msg = MessageBuilder.createMessage(message, mhs);
+        rabbitTemplate.setConfirmCallback(confirmCallback);
+        rabbitTemplate.setReturnCallback(returnCallback);
+        CorrelationData correlationData = new CorrelationData();
+        correlationData.setId(UUID.randomUUID().toString());   //保证 ID+ 时间戳 全局唯一   消息
+        // rabbitTemplate.convertAndSend("exchange-1", "springboot.hello", msg, correlationData);  // confirmCallback
+        // rabbitTemplate.convertAndSend("exchange-1", "spring.hello", msg, correlationData);  // returnCallback
+        rabbitTemplate.convertAndSend("exchange-2", "springboot.def", order, correlationData);  // returnCallback
     }
 }

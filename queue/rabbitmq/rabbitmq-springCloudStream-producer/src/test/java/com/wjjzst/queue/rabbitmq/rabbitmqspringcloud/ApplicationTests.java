@@ -1,6 +1,6 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringboot;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud;
 
-import com.wjjzst.queue.rabbitmq.rabbitmqspringboot.producer.RabbitSend;
+import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.stream.RabbitmqSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class ApplicationTests {
     }
 
     @Autowired
-    private RabbitSend rabbitSend;
+    private RabbitmqSender rabbitSend;
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
@@ -31,7 +31,11 @@ public class ApplicationTests {
         Map<String, Object> prperties = new HashMap<>();
         prperties.put("number", "12345");
         prperties.put("send_time", simpleDateFormat.format(new Date()));
-        rabbitSend.send("Hello RabbitMQ For Springboot", prperties);
+        try {
+            rabbitSend.sendMessage("Hello RabbitMQ For Springboot", prperties);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // 睡2秒ack即为true
         try {
             TimeUnit.SECONDS.sleep(2);
