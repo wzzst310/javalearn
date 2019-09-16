@@ -32,7 +32,7 @@ public class ApplicationTests {
         prperties.put("number", "12345");
         prperties.put("send_time", simpleDateFormat.format(new Date()));
         try {
-            rabbitSend.sendMessage("Hello RabbitMQ For Springboot", prperties);
+            rabbitSend.sendMessage("Hello RabbitMQ For SpringCloud", prperties);
         } catch (Exception e) {
             e.printStackTrace();
         }
