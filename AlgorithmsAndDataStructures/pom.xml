@@ -12,6 +12,7 @@
     <modules>
         <module>first_stage</module>
         <module>weeklyAlgorithms</module>
+        <module>second_stage</module>
     </modules>
     <packaging>pom</packaging>
 

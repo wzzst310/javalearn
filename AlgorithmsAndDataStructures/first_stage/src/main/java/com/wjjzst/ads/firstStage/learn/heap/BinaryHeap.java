@@ -3,7 +3,6 @@ package com.wjjzst.ads.firstStage.learn.heap;
 import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
 
 import java.util.Comparator;
-import java.util.Objects;
 
 /**
  * @Author: Wjj
@@ -32,7 +31,7 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
         } else {
             size = elements.length;
             int capacity = Math.max(DEFAULT_CAPACITY, elements.length);
-            this.elements = (E[]) new Objects[capacity];
+            this.elements = (E[]) new Object[capacity];
             for (int i = 0; i < elements.length; i++) {
                 this.elements[i] = elements[i];
             }
@@ -97,7 +96,7 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
     /**
      * 批量建堆
      */
-    private void heapify() {
+    public void heapify() {
         // 自上而下的上滤  每次向最后插入元素上滤
         /*for (int i = 1; i < size; i++) {
             siftUp(i);
