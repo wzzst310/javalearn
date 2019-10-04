@@ -9,6 +9,7 @@ public class HeapSort extends AbstractSort {
 
     @Override
     protected void sort() {
+        // mySort();
         teacherSort();
     }
 

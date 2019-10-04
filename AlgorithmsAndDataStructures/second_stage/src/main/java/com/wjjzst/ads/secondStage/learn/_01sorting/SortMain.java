@@ -1,5 +1,7 @@
 package com.wjjzst.ads.secondStage.learn._01sorting;
 
+import com.alibaba.fastjson.JSON;
+import com.wjjzst.ads.secondStage.learn._00common.Asserts;
 import com.wjjzst.ads.secondStage.learn._00common.Integers;
 
 import java.util.Arrays;
@@ -20,7 +22,10 @@ public class SortMain {
 
     static void testSorts(Integer[] array, AbstractSort... sorts) {
         for (AbstractSort sort : sorts) {
-            sort.sort(Integers.copy(array));
+            Integer[] newArray = Integers.copy(array);
+            sort.sort(newArray);
+            System.out.println(JSON.toJSONString(newArray));
+            Asserts.test(Integers.isAscOrder(newArray));
         }
 
         Arrays.sort(sorts);

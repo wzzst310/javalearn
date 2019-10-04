@@ -1,8 +1,13 @@
 package com.wjjzst.ads.secondStage.learn._01sorting;
 
 public class BubbleSort2 extends AbstractSort {
+
     @Override
     protected void sort() {
+        mySort();
+    }
+
+    private void mySort() {
         for (int i = array.length - 1; i > 0; i--) {
             // 如果队列有序了 不用排了
             boolean dontSwap = true;
@@ -17,4 +22,19 @@ public class BubbleSort2 extends AbstractSort {
             }
         }
     }
+
+    protected void teacherSort() {
+        for (int end = array.length - 1; end > 0; end--) {
+            boolean sorted = true;
+            for (int begin = 1; begin <= end; begin++) {
+                // if (array[begin] < array[begin - 1]) {
+                if (cmp(begin, begin - 1) < 0) {
+                    swap(begin, begin - 1);
+                    sorted = false;
+                }
+            }
+            if (sorted) break;
+        }
+    }
+
 }
