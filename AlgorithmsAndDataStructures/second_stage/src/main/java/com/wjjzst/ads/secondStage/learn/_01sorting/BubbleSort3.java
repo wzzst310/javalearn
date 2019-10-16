@@ -8,7 +8,7 @@ public class BubbleSort3 extends AbstractSort {
     }
 
     private void mySort() {
-        for (int i = array.length - 1; i > 0; i--) {
+        for (int i = array.length - 1; i > 0; i--)   {
             int lastSwapIndex = 0;
             for (int j = 0; j < i; j++) {
                 if (cmp(j, j + 1) > 0) {
