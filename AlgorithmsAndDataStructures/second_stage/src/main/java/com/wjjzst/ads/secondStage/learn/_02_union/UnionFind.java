@@ -1,7 +1,7 @@
 package com.wjjzst.ads.secondStage.learn._02_union;
 
-public class UnionFind {
-    private int[] parents;
+public abstract class UnionFind {
+    protected int[] parents;  // 数组的索引存的是真实的值 而 数组的值反而是其他
 
     public UnionFind(int capacity) {
         if (capacity < 0) {
@@ -21,14 +21,7 @@ public class UnionFind {
      * @param v2
      * @return
      */
-    public void union(int v1, int v2) {
-        int p1 = find(v1);
-        int p2 = find(v2);
-        if (p1 == p2) return;
-        for (int i = 0; i < parents.length; i++) {
-            if (p1 == find(parents[i])) parents[i] = p2;
-        }
-    }
+    public abstract void union(int v1, int v2);
 
     /**
      * 查找v所属集合(根节点)
@@ -36,10 +29,7 @@ public class UnionFind {
      * @param v
      * @return
      */
-    public int find(int v) {
-        rangeCheck(v);
-        return parents[v];
-    }
+    public abstract int find(int v);
 
     /**
      * 检查v1、v2是否属于同一个集合
@@ -52,7 +42,7 @@ public class UnionFind {
         return find(v1) == find(v2);
     }
 
-    private void rangeCheck(int v) {
+    protected void rangeCheck(int v) {
         if (v < 0 || v >= parents.length) {
             throw new IllegalArgumentException("v is out of bounds");
         }
