@@ -21,6 +21,7 @@
         <module>web</module>
         <module>netty</module>
         <module>queue</module>
+        <module>mongodb</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -19,6 +19,30 @@ public class SelectionSort extends AbstractSort {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     protected void teacherSort() {
         for (int end = array.length - 1; end > 0; end--) {
             int maxIndex = 0;
