@@ -4,7 +4,7 @@ import com.wjjzst.ads.firstStage.learn.heap.BinaryHeap;
 
 import java.util.Comparator;
 
-public class HeapSort extends AbstractSort {
+public class HeapSort extends A_AbstractSort {
     private int heapSize;
 
     @Override

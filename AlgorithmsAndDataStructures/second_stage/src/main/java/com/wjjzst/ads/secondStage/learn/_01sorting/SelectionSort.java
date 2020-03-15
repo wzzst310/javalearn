@@ -1,6 +1,6 @@
 package com.wjjzst.ads.secondStage.learn._01sorting;
 
-public class SelectionSort extends AbstractSort {
+public class SelectionSort extends A_AbstractSort {
     @Override
     protected void sort() {
         // mySort();
@@ -18,30 +18,6 @@ public class SelectionSort extends AbstractSort {
             swap(maxIndex, i);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     protected void teacherSort() {
         for (int end = array.length - 1; end > 0; end--) {

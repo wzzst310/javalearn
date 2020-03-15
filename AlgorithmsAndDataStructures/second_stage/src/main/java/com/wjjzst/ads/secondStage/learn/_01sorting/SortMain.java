@@ -4,24 +4,37 @@ import com.alibaba.fastjson.JSON;
 import com.wjjzst.ads.secondStage.learn._00common.Asserts;
 import com.wjjzst.ads.secondStage.learn._00common.Integers;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
+import java.util.List;
 
 public class SortMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Integer[] array = Integers.random(10000, 1, 20000);
-
+        // Integer[] array = getFileArray();
         testSorts(array,
-                new BubbleSort1(),
-                new BubbleSort2(),
-                new BubbleSort3(),
-                new SelectionSort(),
-                new HeapSort()
+                //new B_BubbleSort1(),
+                //new B_BubbleSort2(),
+                new B_BubbleSort3()
+                //new SelectionSort(),
+                //new HeapSort()
         );
     }
 
-    static void testSorts(Integer[] array, AbstractSort... sorts) {
-        for (AbstractSort sort : sorts) {
+    private static Integer[] getFileArray() throws IOException {
+        System.out.println(SortMain.class.getClassLoader().getResource(""));
+        InputStream inputStream = SortMain.class.getClassLoader().getResource("array.json").openStream();
+        byte[] bytes = new byte[inputStream.available()];
+        inputStream.read(bytes);
+        String arrayStr = new String(bytes);
+        List<Integer> integers = JSON.parseArray(arrayStr, Integer.class);
+        return integers.toArray(new Integer[integers.size()]);
+    }
+
+    static void testSorts(Integer[] array, A_AbstractSort... sorts) {
+        for (A_AbstractSort sort : sorts) {
             Integer[] newArray = Integers.copy(array);
             sort.sort(newArray);
             System.out.println(JSON.toJSONString(newArray));
@@ -30,7 +43,7 @@ public class SortMain {
 
         Arrays.sort(sorts);
 
-        for (AbstractSort sort : sorts) {
+        for (A_AbstractSort sort : sorts) {
             System.out.println(sort);
         }
     }

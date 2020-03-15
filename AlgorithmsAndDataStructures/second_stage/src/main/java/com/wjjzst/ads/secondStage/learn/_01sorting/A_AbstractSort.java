@@ -2,7 +2,7 @@ package com.wjjzst.ads.secondStage.learn._01sorting;
 
 import java.text.DecimalFormat;
 
-public abstract class AbstractSort implements Comparable<AbstractSort> {
+public abstract class A_AbstractSort implements Comparable<A_AbstractSort> {
     protected Integer[] array;
     private int cmpCount;
     private int swapCount;
@@ -20,7 +20,7 @@ public abstract class AbstractSort implements Comparable<AbstractSort> {
     }
 
     @Override
-    public int compareTo(AbstractSort o) {
+    public int compareTo(A_AbstractSort o) {
         int result = (int)(time - o.time);
         if (result != 0) return result;
 
