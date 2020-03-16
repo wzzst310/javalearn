@@ -2,14 +2,14 @@ package com.wjjzst.ads.secondStage.learn._01sorting;
 
 import java.text.DecimalFormat;
 
-public abstract class A_AbstractSort implements Comparable<A_AbstractSort> {
-    protected Integer[] array;
+public abstract class A_AbstractSort<E extends Comparable<E>> implements Comparable<A_AbstractSort> {
+    protected E[] array;
     private int cmpCount;
     private int swapCount;
     private long time;
     private DecimalFormat fmt = new DecimalFormat("#.00");
 
-    public void sort(Integer[] array) {
+    public void sort(E[] array) {
         if (array == null || array.length < 2) return;
 
         this.array = array;
@@ -21,7 +21,7 @@ public abstract class A_AbstractSort implements Comparable<A_AbstractSort> {
 
     @Override
     public int compareTo(A_AbstractSort o) {
-        int result = (int)(time - o.time);
+        int result = (int) (time - o.time);
         if (result != 0) return result;
 
         result = cmpCount - o.cmpCount;
@@ -39,17 +39,17 @@ public abstract class A_AbstractSort implements Comparable<A_AbstractSort> {
      */
     protected int cmp(int i1, int i2) {
         cmpCount++;
-        return array[i1] - array[i2];
+        return array[i1].compareTo(array[i2]);
     }
 
-    protected int cmpElements(Integer v1, Integer v2) {
+    protected int cmp(E v1, E v2) {
         cmpCount++;
-        return v1 - v2;
+        return v1.compareTo(v2);
     }
 
     protected void swap(int i1, int i2) {
         swapCount++;
-        int tmp = array[i1];
+        E tmp = array[i1];
         array[i1] = array[i2];
         array[i2] = tmp;
     }
@@ -59,13 +59,32 @@ public abstract class A_AbstractSort implements Comparable<A_AbstractSort> {
         String timeStr = "耗时：" + (time / 1000.0) + "s(" + time + "ms)";
         String compareCountStr = "比较：" + numberString(cmpCount);
         String swapCountStr = "交换：" + numberString(swapCount);
+        String stableStr = "稳定性: " + isStable();
         return "【" + getClass().getSimpleName() + "】\n"
+                + stableStr + " \t"
                 + timeStr + " \t"
                 + compareCountStr + "\t "
                 + swapCountStr + "\n"
                 + "------------------------------------------------------------------";
 
     }
+
+    private boolean isStable() {
+        A_Entity[] entities = new A_Entity[20];
+        for (int i = 0; i < entities.length; i++) {
+            entities[i] = new A_Entity(i * 10, 10);
+        }
+        sort((E[]) entities);
+        for (int i = 1; i < entities.length; i++) {
+            int score = entities[i].getScore();
+            int preScore = entities[i - 1].getScore();
+            if (score != preScore + 10) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private String numberString(int number) {
         if (number < 10000) return "" + number;
 
