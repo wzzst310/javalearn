@@ -1,6 +1,6 @@
 package com.wjjzst.ads.secondStage.learn._01sorting;
 
-public class SelectionSort<E extends Comparable<E>> extends A_AbstractSort<E> {
+public class C_SelectionSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     @Override
     protected void sort() {
         // mySort();
