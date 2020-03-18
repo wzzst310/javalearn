@@ -1,5 +1,10 @@
 package com.wjjzst.ads.secondStage.learn._01sorting;
 
+/**
+ * @Author: Wjj
+ * @Date: 2020/3/18 12:55 上午
+ * @desc: 选择排序
+ */
 public class C_SelectionSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     @Override
     protected void sort() {

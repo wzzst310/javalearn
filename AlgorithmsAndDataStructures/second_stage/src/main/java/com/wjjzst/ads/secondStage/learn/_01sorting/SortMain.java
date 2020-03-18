@@ -12,20 +12,17 @@ import java.util.List;
 public class SortMain {
 
     public static void main(String[] args) throws IOException {
-        // Integer[] array = Integers.random(10000, 1, 20000);
-        Integer[] array = getFileArray();
+        Integer[] array = Integers.random(10000, 1, 20000);
+        // Integer[] array = getFileArray();
         testSorts(array,
-                //new B_BubbleSort1(),
-                //new B_BubbleSort2(),
-                new B_BubbleSort3(),
-                new C_SelectionSort(),
-                new D_InsertSort(),
-                new HeapSort()
+//                new B_BubbleSort(),
+//                new C_SelectionSort(),
+//                new D_HeapSort(),
+                new E_InsertSort()
         );
     }
 
     private static Integer[] getFileArray() throws IOException {
-        System.out.println(SortMain.class.getClassLoader().getResource(""));
         InputStream inputStream = SortMain.class.getClassLoader().getResource("array.json").openStream();
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes);
