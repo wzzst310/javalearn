@@ -1,4 +1,4 @@
-package com.wjjzst.jvm.classLoader;
+package com.wjjzst.jvm.clazz;
 
 import java.io.FileInputStream;
 
@@ -9,11 +9,15 @@ import java.io.FileInputStream;
  */
 public class MyClassLoader extends ClassLoader {
     private String classPath;
+    private String classLoaderName;
+    private String referenceName;
 
-    public MyClassLoader(ClassLoader parent, String classPath) {
-        super(parent);
+    public MyClassLoader(String classPath, String classLoaderName, String referenceName) {
         this.classPath = classPath;
+        this.classLoaderName = classLoaderName;
+        this.referenceName = referenceName;
     }
+
     private byte[] loadByte(String name) throws Exception {
         name = name.replaceAll("\\.", "/");
         FileInputStream fis = new FileInputStream(classPath + "/" + name
@@ -30,7 +34,8 @@ public class MyClassLoader extends ClassLoader {
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         try {
             byte[] data = loadByte(name);
-            return defineClass(name, data, 0, data.length);
+            // return defineClass(data, 0, data.length);
+            return defineClass(referenceName + name, data, 0, data.length);
         } catch (Exception e) {
             e.printStackTrace();
             throw new ClassNotFoundException();
