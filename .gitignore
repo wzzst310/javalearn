@@ -23,3 +23,91 @@
 hs_err_pid*
 .idea
 *.iml
+*.DS_Store
+
+
+# maven output files
+target
+/target/
+*/target/
+
+# virtual machine crash logs
+hs_err_pid*
+bin
+/bin/
+/build/
+*/bin/
+*/gen/
+*/out/
+
+# Java class files
+*.class
+
+# Files for the Dalvik VM
+*.dex
+
+#Built application files
+*.apk
+*.ap_
+proguard/
+.mvn
+*.classpath
+*.factorypath
+**.classpath
+**.factorypath
+**/.classpath
+**/.factorypath
+/**/.classpath
+/**/.factorypath
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+# *.jar
+*.war
+*.ear
+
+# Eclipse Project files
+.classpath
+*/.classpath
+.project
+*/.project
+.factorypath
+*/.factorypath
+.settings/
+/.settings/
+*/.settings/
+*/.apt_generated/
+*/.apt_generated_tests/
+
+# IntelliJ IDEA Project files
+.idea
+*.iml
+*/*.iml
+*.ipr
+*.iws
+out
+*/.DS_Store
+.DS_Store
+Thumbs.db
+/.idea/
+*/.idea/
+.idea/
+
+#gradle wrapper
+gradle/
+/.gradle/
+# Gradle files
+.gradle/
+build/
+*/build/
+gradlew
+gradlew.bat
+
+# Log Files
+*.log
+
+*.classpath
+*.factorypath
+.scannerwork
