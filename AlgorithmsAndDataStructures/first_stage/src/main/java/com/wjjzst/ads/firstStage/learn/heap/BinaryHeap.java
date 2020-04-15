@@ -120,6 +120,8 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
             int childIndex = (index << 1) + 1;
             E child = elements[childIndex];
             int rightIndex = childIndex + 1;
+            // 不能在此处直接取右子节点 可能为空 索引越界
+            // 如果有右子节点 并且右子节点比左子节点大 那么选择 大的右子节点去和父节点比较
             // 选出左右子节点最大的那个
             if (rightIndex < size && compare(elements[rightIndex], child) > 0) {
                 child = elements[childIndex = rightIndex];
