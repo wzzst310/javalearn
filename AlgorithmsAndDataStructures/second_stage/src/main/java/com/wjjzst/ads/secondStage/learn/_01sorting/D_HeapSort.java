@@ -28,7 +28,7 @@ public class D_HeapSort<E extends Comparable<E>> extends A_AbstractSort<E> {
         for (int i = (heapSize >> 1) - 1; i >= 0; i--) {
             siftDown(i);
         }
-
+        // 每次取出堆的最大值 即array[0] 放到数组后面 然后剩下的重建堆 拿到数组
         while (heapSize > 1) {
             // 交换堆顶元素和尾部元素
             swap(0, --heapSize);
