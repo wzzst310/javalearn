@@ -8,7 +8,7 @@ package com.wjjzst.ads.secondStage.learn._01sorting;
 public class E_InsertSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     @Override
     protected void sort() {
-        mySort3();
+        teacherSort();
     }
 
     private void sort1() {
@@ -37,29 +37,73 @@ public class E_InsertSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     }
 
     //优化二 由于前面的数据都是有序的，所以可以采用二分搜索法找到  选中的element需要插入 的位置
-    private void mySort3() {
+    private void sort3() {
         for (int begin = 1; begin < array.length; begin++) {
             E element = array[begin];
             int left = 0;
             int right = begin;
             int mid = 0;
             while (left < right) {
-                mid = (left + right) / 2;
-                if (array[mid].compareTo(element) < 0) {
+                mid = (left + right) >> 1;
+                if (cmp(mid, begin) < 0) {
                     left = mid + 1;
-                } else if (array[mid].compareTo(element) > 0) {
-                    right = mid;
                 } else {
-                    mid = right = left;
+                    right = mid;
                 }
             }
-            for (int i = begin; i > mid + 1; i--) {
+            for (int i = begin; i > left; i--) {
                 array[i] = array[i - 1];
             }
             array[mid] = element;
         }
     }
 
+    private void teacherSort() {
+        for (int i = 1; i < array.length; i++) {
+            insert(i, search(i));
+        }
+    }
+
+    private void insert(int source, int dest) {
+        E element = array[source];
+        for (int i = source; i > dest; i--) {
+            array[i] = array[i - 1];
+        }
+        array[dest] = element;
+    }
+
+    private int search(int index) {
+        int begin = 0;
+        int end = index;
+        while (begin < end) {
+            int mid = (begin + end) >> 1;
+            if (cmp(index, mid) < 0) {
+                end = mid;
+            } else {
+                begin = mid + 1;
+            }
+        }
+        return begin;
+    }
+
+    public static int search_1(int[] array, int v) {
+        if (array == null || array.length == 0) {
+            return -1;
+        }
+        int begin = 0;
+        int end = array.length;
+        while (begin < end) {
+            int mid = (begin + end) >> 1;
+            if (v < array[mid]) {
+                end = mid;
+            } else if (v > array[mid]) {
+                begin = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
     /*
     private void mySort() {
         for (int begin = 1; begin < array.length; begin++) {

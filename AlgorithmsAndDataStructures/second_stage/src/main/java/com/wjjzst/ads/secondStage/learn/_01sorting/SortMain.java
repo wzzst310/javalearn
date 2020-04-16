@@ -15,9 +15,9 @@ public class SortMain {
         Integer[] array = Integers.random(10000, 1, 20000);
         // Integer[] array = getFileArray();
         testSorts(array,
-//                new B_BubbleSort(),
-//                new C_SelectionSort(),
-//                new D_HeapSort(),
+                new B_BubbleSort(),
+                new C_SelectionSort(),
+                new D_HeapSort(),
                 new E_InsertSort()
         );
     }

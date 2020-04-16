@@ -86,6 +86,7 @@ public class B_BubbleSort<E extends Comparable<E>> extends A_AbstractSort<E> {
                 // if (array[begin] < array[begin - 1]) {
                 if (cmp(begin, begin - 1) < 0) {
                     swap(begin, begin - 1);
+                    sorted = false;
                     sortedIndex = begin;
                 }
             }
