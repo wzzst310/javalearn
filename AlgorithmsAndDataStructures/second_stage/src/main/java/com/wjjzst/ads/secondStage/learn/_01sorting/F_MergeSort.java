@@ -3,7 +3,7 @@ package com.wjjzst.ads.secondStage.learn._01sorting;
 /**
  * @Author: Wjj
  * @Date: 2020/4/19 2:44 上午
- * @desc:
+ * @desc: 合并排序
  */
 public class F_MergeSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     private E[] leftArray;

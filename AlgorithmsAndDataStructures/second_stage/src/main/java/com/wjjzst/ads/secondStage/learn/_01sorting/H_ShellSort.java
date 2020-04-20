@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @Author: Wjj
  * @Date: 2020/4/21 12:04 上午
- * @desc: 可看做是对插入排序的优化 主要就是每次排序之后 逆序对变少了
+ * @desc: 希尔排序 可看做是对插入排序的优化 主要就是每次排序之后 逆序对变少了
  */
 public class H_ShellSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     private List<Integer> stepSequence;
