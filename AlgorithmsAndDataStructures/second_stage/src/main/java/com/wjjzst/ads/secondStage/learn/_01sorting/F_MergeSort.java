@@ -34,6 +34,7 @@ public class F_MergeSort<E extends Comparable<E>> extends A_AbstractSort<E> {
         while (li < le) {
             if (ri < re && (cmp(array[ri], leftArray[li])) < 0) {
                 array[ai++] = array[ri++];
+                // swap(ai++, ri++);
             } else {
                 array[ai++] = leftArray[li++];
             }

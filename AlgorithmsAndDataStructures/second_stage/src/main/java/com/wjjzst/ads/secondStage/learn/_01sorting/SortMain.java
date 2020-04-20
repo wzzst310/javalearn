@@ -12,14 +12,16 @@ import java.util.List;
 public class SortMain {
 
     public static void main(String[] args) throws IOException {
-        // Integer[] array = Integers.random(10000, 1, 20000);
+        // Integer[] array = Integers.random(1000000, 1, 2000000);
         Integer[] array = getFileArray();
         testSorts(array,
-                new B_BubbleSort(),
-                new C_SelectionSort(),
+                // new B_BubbleSort(),
+                // new C_SelectionSort(),
                 new D_HeapSort(),
-                new E_InsertSort(),
-                new F_MergeSort()
+                // new E_InsertSort(),
+                new F_MergeSort(),
+                new G_QuickSort(),
+                new H_ShellSort()
         );
     }
 
