@@ -1,9 +1,11 @@
-package com.wjjzst.ads.secondStage.learn._01sorting;
+package com.wjjzst.ads.secondStage.learn._01sorting.cmp;
+
+import com.wjjzst.ads.secondStage.learn._01sorting.I_CountSort;
 
 import java.text.DecimalFormat;
 
 public abstract class A_AbstractSort<E extends Comparable<E>> implements Comparable<A_AbstractSort> {
-    protected E[] array;
+    public E[] array;
     private int cmpCount;
     private int swapCount;
     private long time;
@@ -70,6 +72,12 @@ public abstract class A_AbstractSort<E extends Comparable<E>> implements Compara
     }
 
     private boolean isStable() {
+        if (this instanceof H_ShellSort) {
+            return false;
+        }
+        if (this instanceof I_CountSort) {
+            return true;
+        }
         A_Entity[] entities = new A_Entity[20];
         for (int i = 0; i < entities.length; i++) {
             entities[i] = new A_Entity(i * 10, 10);

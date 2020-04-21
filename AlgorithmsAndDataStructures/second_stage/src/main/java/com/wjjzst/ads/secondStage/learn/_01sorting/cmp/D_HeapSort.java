@@ -1,4 +1,4 @@
-package com.wjjzst.ads.secondStage.learn._01sorting;
+package com.wjjzst.ads.secondStage.learn._01sorting.cmp;
 
 import com.wjjzst.ads.firstStage.learn.heap.BinaryHeap;
 

@@ -1,4 +1,4 @@
-package com.wjjzst.ads.secondStage.learn._01sorting;
+package com.wjjzst.ads.secondStage.learn._01sorting.cmp;
 
 import java.util.LinkedList;
 import java.util.List;

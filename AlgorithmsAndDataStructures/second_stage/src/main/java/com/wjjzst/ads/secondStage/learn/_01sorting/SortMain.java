@@ -3,6 +3,7 @@ package com.wjjzst.ads.secondStage.learn._01sorting;
 import com.alibaba.fastjson.JSON;
 import com.wjjzst.ads.secondStage.learn._00common.Asserts;
 import com.wjjzst.ads.secondStage.learn._00common.Integers;
+import com.wjjzst.ads.secondStage.learn._01sorting.cmp.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,16 +13,17 @@ import java.util.List;
 public class SortMain {
 
     public static void main(String[] args) throws IOException {
-        // Integer[] array = Integers.random(1000000, 1, 2000000);
-        Integer[] array = getFileArray();
+        Integer[] array = Integers.random(1000, 1, 2000);
+        // Integer[] array = getFileArray();
         testSorts(array,
                 // new B_BubbleSort(),
                 // new C_SelectionSort(),
-                new D_HeapSort(),
+                // new D_HeapSort(),
                 // new E_InsertSort(),
-                new F_MergeSort(),
-                new G_QuickSort(),
-                new H_ShellSort()
+                // new F_MergeSort(),
+                // new G_QuickSort(),
+                // new H_ShellSort(),
+                new I_CountSort()
         );
     }
 
