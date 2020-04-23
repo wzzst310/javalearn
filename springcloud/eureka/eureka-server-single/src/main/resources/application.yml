@@ -2,4 +2,4 @@ spring:
   application:
     name: eureka-server-single
   profiles:
-    active: eureka-single
+    active: eureka-server-single
