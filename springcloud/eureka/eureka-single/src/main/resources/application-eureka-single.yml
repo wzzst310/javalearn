@@ -1,0 +1,18 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false  # 非集群模式不需要向其他eureka注册 # 自己就是注册中心，不用注册自己
+    fetch-registry: false # 要不要去注册中心获取其他服务的地址
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  security:
+    basic:
+      enabled: true
+    user:
+      name: wjj
+      password: wzzst310
