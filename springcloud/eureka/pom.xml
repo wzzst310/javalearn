@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>eureka-single</module>
+        <module>eureka-server-single</module>
         <module>eureka-client</module>
     </modules>
 
