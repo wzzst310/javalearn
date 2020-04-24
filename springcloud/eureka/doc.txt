@@ -1,0 +1,58 @@
+1. CAP理论
+Consistency: 一致性（强一致性）
+Availability:可用性
+Partition Tolerance:分区容错性  (多个服务之间通过网络保持一致)
+
+单体架构本身就是CA  一致性和可用性共存  例如单台mysql
+CA without P
+
+CP without A   zookeeper        钱财安全
+保证数据的一致性  就同步时间  在这个时间内服务就不可用
+AP without C  Eureka               用户体验
+AP保证可用 但是还没有通过网络达成一致性
+
+CAP不能同时满足 由于网络的存在导致
+2. Eureka
+eureka是看期限内的租约信息 服务提供者
+consul相当于Ribbon+eureka  采用Raft算法 只能能代理成功的 一定能找到实时服务提供者
+Raft Leader Follower Candidate 三个状态可以互相转换
+    a. Eureka Server
+    采用P2P的复制模式 但它不保证复制操作一定成功
+    Client端在Server端的注册信息有一个带期限的租约
+    b. Eureka Client
+    隔一段时间向Server发送注册信息
+    c. Eureka Rest API
+        i. 查询所有实例
+        GET /eureka/apps
+        http://localhost:8761/eureka/apps
+
+        ii. 根据appId查询
+        GET /eureka/apps/{appId}
+        http://localhost:8761/eureka/apps/EUREKA-CLIENT
+
+        iii. 根据appId和instanceId查询
+        GET /eureka/apps/{appId}/{instanceId}
+        http://localhost:8761/eureka/apps/EUREKA-CLIENT/192.168.1.11:eureka-client:8081
+
+        iv. 根据instanceId查询
+        GET /eureka/instances/{instanceId}
+        http://localhost:8761/eureka/instances/192.168.1.11:eureka-client:8081
+
+        v. 注册新的应用实例
+        POST /eureka/apps/{appId}
+        vi. 注销应用实例   没什么卵用  过一会儿又注册上来了
+        DELETE /eureka/apps/{appId}/{instanceId}
+        curl -i -X DELETE http://localhost:8761/eureka/apps/EUREKA-CLIENT/192.168.1.11:eureka-client:8081
+        vii. 暂停/下线应用实例
+        PUT /eureka/apps/{appId}/{instanceId}/status?value=OUT_OF_SERVICE
+        curl -i -X PUT http://localhost:8761/eureka/apps/EUREKA-CLIENT/192.168.1.11:eureka-client:8081/status\?value\=OUT_OF_SERVICE
+        viii. 恢复应用实例
+        DELETE /eureka/apps/{appId}/{instanceId}/status?value=UP
+        curl -i -X DELETE http://localhost:8761/eureka/apps/EUREKA-CLIENT/192.168.1.11:eureka-client:8081/status
+        ix. 应用实例发送心跳
+        PUT /eureka/apps/{appId}/{instanceId}
+        curl -i -X PUT http://localhost:8761/eureka/apps/EUREKA-CLIENT/192.168.1.11:eureka-client:8081
+
+        x. 修改应用实例元数据
+        PUT /eureka/apps/{appId}/{instanceId}/metadata?key=value
+        curl -i -X PUT http://localhost:8761/eureka/apps/EUREKA-CLIENT/192.168.1.11:eureka-client:8081/metadata\?profile\=sanary
