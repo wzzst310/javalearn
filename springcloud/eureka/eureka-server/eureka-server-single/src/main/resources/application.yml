@@ -3,3 +3,6 @@ spring:
     name: eureka-server-single
   profiles:
     active: eureka-server-single
+
+server:
+  port: 8761

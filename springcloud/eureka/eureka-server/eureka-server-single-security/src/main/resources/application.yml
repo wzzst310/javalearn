@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: eureka-server-single-security
+  profiles:
+    active: eureka-server-single-security
+
+server:
+  port: 8761
