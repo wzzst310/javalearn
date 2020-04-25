@@ -23,8 +23,6 @@
         <module>queue</module>
         <module>mongodb</module>
         <module>springcloud</module>
-        <module>springcloud/eureka-server/server-single</module>
-        <module>eureka-server-single</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

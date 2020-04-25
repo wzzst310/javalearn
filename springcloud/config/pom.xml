@@ -10,17 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>eureka-server-single-security</module>
-        <module>eureka-server-single</module>
-        <module>eureka-server-peer</module>
+        <module>config-local</module>
     </modules>
 
-    <artifactId>eureka</artifactId>
-
+    <artifactId>config</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
     </dependencies>
 
