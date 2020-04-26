@@ -13,6 +13,7 @@
         <module>eureka-server-single-security</module>
         <module>eureka-server-single</module>
         <module>eureka-server-peer</module>
+        <module>eureka-server-multizone</module>
     </modules>
 
     <artifactId>eureka</artifactId>

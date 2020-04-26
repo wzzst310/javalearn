@@ -13,6 +13,7 @@
         <module>eureka</module>
         <module>config</module>
         <module>client</module>
+        <module>zuul</module>
     </modules>
     <artifactId>springcloud</artifactId>
 
