@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: client-eureka-single-security-https
+eureka:
+  client:
+    secure-port-enabled: true
+    ssl:
+      key-store: client.p12
+      key-store-password: wzzst310
+    service-url:
+      defaultZone: https://localhost:8761/eureka/

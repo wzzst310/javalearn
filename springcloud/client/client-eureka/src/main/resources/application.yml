@@ -1,7 +1,0 @@
-server:
-  port: 8081
-spring:
-  application:
-    name: client-eureka
-  profiles:
-    active: single-security

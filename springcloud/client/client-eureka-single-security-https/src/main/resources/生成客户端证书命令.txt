@@ -1,0 +1,7 @@
+macos/centos自带 keytool
+目录下运行下面命令
+keytool -genkeypair -alias client -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore client.p12 -validity 3650
+导出
+keytool -export -alias client -file client.crt --keystore client.p12
+server.crt文件导入client.p12使client端信任server证书
+keytool -import -alias server -file server.crt --keystore client.p12

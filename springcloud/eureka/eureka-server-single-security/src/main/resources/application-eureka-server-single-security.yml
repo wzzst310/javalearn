@@ -1,5 +1,9 @@
 # eureka 加密码
+server:
+  port: 8761
 spring:
+  application:
+    name: eureka-server-single-security
   security:
     basic:
       enabled: true

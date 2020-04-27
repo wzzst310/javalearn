@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: client-eureka-single
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+# client优化
+#    registry-fetch-interval-seconds: 5  # 加快向eureka server注册
+#  instance:
+#    lease-renewal-interval-in-seconds: 10 # 心跳机制频率更频繁

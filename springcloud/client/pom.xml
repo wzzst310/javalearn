@@ -10,9 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>client-eureka</module>
+        <module>client-eureka-single</module>
         <module>client-eureka-peer</module>
         <module>client-eureka-multizone</module>
+        <module>client-eureka-single-security</module>
+        <module>client-eureka-single-security-https</module>
     </modules>
 
     <artifactId>client</artifactId>

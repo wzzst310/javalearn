@@ -1,0 +1,28 @@
+# eureka 加密码
+server:
+  port: 8761
+  ssl:
+    enabled: true
+    key-store: classpath:server.p12
+    key-store-password: wzzst310
+    key-store-type: PKCS12
+    key-alias: server
+spring:
+  application:
+    name: eureka-server-single-security-https
+eureka:
+  instance:
+    hostname: localhost
+    secure-port-enabled: true
+    secure-port: ${server.port}
+    non-secure-port-enabled: false
+    home-page-url: https://${eureka.instance.hostname}:${server.port}/
+    status-page-url: https://${eureka.instance.hostname}:${server.port}/
+  client:
+    register-with-eureka: false  # 非集群模式不需要向其他eureka注册 # 自己就是注册中心，不用注册自己
+    fetch-registry: false # 要不要去注册中心获取其他服务的地址
+    service-url:
+      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false

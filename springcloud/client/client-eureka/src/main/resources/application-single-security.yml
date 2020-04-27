@@ -1,8 +1,0 @@
-eureka:
-  client:
-    security:
-      basic:
-        user: wjj
-        password: wzzst310
-    service-url:
-      defaultZone: http://${eureka.client.security.basic.user}:w${eureka.client.security.basic.password}@localhost:8761/eureka/
