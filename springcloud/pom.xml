@@ -14,6 +14,8 @@
         <module>config</module>
         <module>client</module>
         <module>zuul</module>
+        <module>feign</module>
+        <module>feign/feign-hello</module>
     </modules>
     <artifactId>springcloud</artifactId>
 
