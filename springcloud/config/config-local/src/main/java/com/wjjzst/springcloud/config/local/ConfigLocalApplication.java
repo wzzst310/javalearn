@@ -1,4 +1,4 @@
-package com.wjj.springcloud.config.local;
+package com.wjjzst.springcloud.config.local;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
