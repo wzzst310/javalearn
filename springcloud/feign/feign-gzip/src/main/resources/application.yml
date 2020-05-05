@@ -1,0 +1,68 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: hello-feign
+
+logging:
+  level:
+    com.wjjzst.springclou.feign.hello.service.HelloFeignService: debug
+
+feign:
+  compression:  # 压缩
+    request:
+      enabled: true  #开启压缩
+      mime-types: text/xml,application/xml,application/json   #配置压缩支持的MIME TYPE
+    response:
+      enabled: true #配置响应GZIP压缩
+    # 作用于所有Feign的配置方式
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+        logger-lever: basic
+    default-to-properties: false  # 改变Feign配置生效的优先级 让代码配置的优先yml配置IDE
+
+
+# FeignClient 配置的东西可以由配置中心配置
+#  client:
+#    config:
+#      github-client: #需要配置的FeignName
+#        connect-timeout: 5000
+#        read-timeout: 5000
+#        logger-level: full
+#        errorDecoder: com.example.SimpleErrorDecoder # Feign的错误解码器
+#        retryer: com.example.SimpleRetry # 配置重试
+#        request-interceptors: # 配置拦截器
+#          com.example.FooRequestInterceptor
+#          com.example.BarRequestInterceptor
+#        decode404: false
+#        encoder: com.example.SimpleEncoder  # Feign的编码器
+#        decoder: com.example.SimpleDecoder # Feign的解码器
+#        contract: com.example.SimpleContract # Feign的Contract配置
+
+
+# ribbon配置信息
+#  ribbon:
+#    read-timeout: 120000   # 请求处理超时时间
+#    connect-timeout: 30000  # 请求连接超时时间
+
+# 如果开启Hystrix
+#  hystrix:
+#   enabled: true
+# hystrix熔断机制
+#  hystrix:
+#    share-security-context: true
+#    command:
+#      default:
+#        circuit-breaker:
+#          sleep-window-in-millise-seconds: 100000
+#          force-closed: true
+#        execution:
+#          isolation:
+#            thread:
+#              timeout-in-millise-seconds: 600000
+
+
+

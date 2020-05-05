@@ -1,7 +1,8 @@
-package com.wjjzst.springcloud.feign.hello.controller;
+package com.wjjzst.springcloud.feign.httpclient.controller;
 
-import com.wjjzst.springcloud.feign.hello.service.HelloFeignService;
+import com.wjjzst.springcloud.feign.httpclient.service.FeignHttpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @desc:
  */
 @RestController
-public class HelloFeignController {
+public class FeignHttpClientController {
     @Autowired
-    private HelloFeignService helloFeignService;
+    private FeignHttpClientService feignHttpClientService;
 
     // 服务消费者对位提供服务
     @GetMapping(value = "/search/github")
     public String searchGithubRepoByStr(@RequestParam("str") String queryStr) {
-        return helloFeignService.searchRepo(queryStr);
+        return feignHttpClientService.searchRepo(queryStr);
     }
 }

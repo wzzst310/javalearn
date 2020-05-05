@@ -1,4 +1,4 @@
-package com.wjjzst.springcloud.feign.hello.config;
+package com.wjjzst.springcloud.feign.gzip.config;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @desc:
  */
 @Configuration
-public class HelloFeignServiceConfig {
+public class GzipFeignServiceConfig {
     @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
