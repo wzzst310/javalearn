@@ -1,10 +1,12 @@
 package com.wjjzst.springcloud.consumer.feign.file.service;
 
 import com.wjjzst.springcloud.consumer.feign.file.config.FeignMultipartSupportConfig;
+import feign.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,4 +28,7 @@ public interface FeignUploadFileServer {
             produces = { MediaType.APPLICATION_JSON_UTF8_VALUE},
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     String fileUploadServer(@RequestPart(value = "file") MultipartFile file);
+
+    @RequestMapping(value = "/createImageCode")
+    Response createImageCode(@RequestParam("imageKey") String imageKey);
 }
