@@ -1,0 +1,11 @@
+server:
+  port: 10885
+spring:
+  application:
+    name: provider-ribbon-loadbalance-b
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

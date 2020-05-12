@@ -9,20 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <modules>
-        <module>consumer-feign-multiparam</module>
-        <module>consumer-feign-file</module>
-        <module>consumer-ribbon-hello</module>
-        <module>consumer-ribbon-loadbalance</module>
-    </modules>
 
-    <artifactId>consumer</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>ribbon</artifactId>
 
 
 </project>
