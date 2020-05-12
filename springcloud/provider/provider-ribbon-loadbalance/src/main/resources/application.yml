@@ -1,5 +1,5 @@
 spring:
   profiles:
-    active: server6
+    active: server1
     # active: server2
     # active: server3
