@@ -24,7 +24,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 //@RibbonClient(name = "provider-ribbon-hello", configuration = TestConfiguration.class)  // 如果要调用provider-ribbon-hello的服务  就需要TestConfiguration动态代理规则来实现
 
-// 此配置可以交由配置文件  且配置文件优先级顺序更高
+// 此配置可以交由配置文件  且配置文件优先级顺序更
 //@RibbonClients(value = {
 //        @RibbonClient(name = "provider-ribbon-loadbalance", configuration = TestConfiguration.class),
 //        @RibbonClient(name = "provider-ribbon-loadbalance-b", configuration = TestConfiguration1.class)

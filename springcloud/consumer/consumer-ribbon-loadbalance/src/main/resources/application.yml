@@ -12,7 +12,32 @@ eureka:
 
 provider-ribbon-loadbalance:
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # NFLoadBalancerClassName: # 指定ILoadBalancer的实现类
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule   # 指定IRule的实现类
+    # NFLoadBalancerPingClassName: # 指定IPing的实现类
+    # NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList # 指定ServerList的实现类
+    # NIWSServerListFilterClassName:    # 指定ServerListFilter的实现类
 provider-ribbon-loadbalance-b:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    ConnectTimeout: 30000
+    ReadTimeout: 30000
+    MaxAutoRetries: 1 #对第一次请求的服务的重试次数
+    MaxAutoRetriesNextServer: 1 # 要重试的下一个服务的最大数量(不包括第一个服务)
+    OkToRetryOnAllOperations: true
+
+#client:
+#  ribbon:
+#    listOfServers: http://localhost:7070,http://localhost:7071
+
+ribbon:
+  # eureka:
+  #  enabled: false
+  eager-load:
+    enabled: true
+    clients: provider-ribbon-loadbalance, provider-ribbon-loadbalance-b
+
+
+
+
+
