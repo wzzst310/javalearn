@@ -38,4 +38,9 @@ public class TestController {
         ServiceInstance instance = this.lbClient.choose("provider-ribbon-loadbalance-b");
         System.out.println(instance.getHost()+":"+instance.getPort());
     }
+    @GetMapping("/add3")
+    public void add3(Integer a, Integer b) {
+        ServiceInstance instance = this.lbClient.choose("provider-ribbon-my-loadbalance");
+        System.out.println(instance.getHost()+":"+instance.getPort());
+    }
 }
