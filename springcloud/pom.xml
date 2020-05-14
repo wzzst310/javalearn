@@ -18,6 +18,7 @@
         <module>provider</module>
         <module>consumer</module>
         <module>ribbon</module>
+        <module>hystrix</module>
     </modules>
     <artifactId>springcloud</artifactId>
 

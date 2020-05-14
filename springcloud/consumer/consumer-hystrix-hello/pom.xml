@@ -3,25 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>springcloud</artifactId>
+        <artifactId>consumer</artifactId>
         <groupId>com.wjjzst</groupId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <modules>
-        <module>consumer-feign-multiparam</module>
-        <module>consumer-feign-file</module>
-        <module>consumer-ribbon-hello</module>
-        <module>consumer-ribbon-loadbalance</module>
-        <module>consumer-hystrix-hello</module>
-    </modules>
 
-    <artifactId>consumer</artifactId>
+    <artifactId>consumer-hystrix-hello</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
     </dependencies>
 
