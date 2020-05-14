@@ -4,6 +4,7 @@ import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.IRule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @Author: Wjj
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @desc:
  */
 @Configuration
+// @Profile("dev")
 public class MyRibbonConfiguration {
     @Bean
     public IRule ribbonRule() {
