@@ -1,20 +1,22 @@
-package com.wjjzst.springcloud.consumer.hystrix.hello;
+package com.wjjzst.springcloud.consumer.feign.hystrix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @Author: Wjj
- * @Date: 2020/5/15 12:08 上午
+ * @Date: 2020/5/16 11:10 下午
  * @desc:
  */
 @SpringBootApplication
-@EnableHystrix  // 启用断路器模式
 @EnableEurekaClient
-public class ConsumerHystrixHelloApplication {
+@EnableFeignClients
+@EnableHystrix
+public class ConsumerFeignHystrixApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerHystrixHelloApplication.class, args);
+        SpringApplication.run(ConsumerFeignHystrixApplication.class, args);
     }
 }

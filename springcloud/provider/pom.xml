@@ -14,6 +14,7 @@
         <module>provider-feign-file</module>
         <module>provider-ribbon-hello</module>
         <module>provider-ribbon-loadbalance</module>
+        <module>provider-feign-hystrix</module>
     </modules>
 
     <artifactId>provider</artifactId>
