@@ -1,7 +1,9 @@
-package controller;
+package com.wjjzst.springcloud.provider.hystrix.dashboard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -17,14 +19,14 @@ public class ProviderController {
     @Autowired
     private ConsumerService consumerService;
 
-    @GetMapping("getDashboard")
-    List<String> getProviderData() {
+    @RequestMapping(value = "/getDashboard",method = RequestMethod.GET)
+    public List<String> getProviderData(){
         List<String> provider = new ArrayList<>();
         provider.add("hystrix dashboard");
         return provider;
     }
 
-    @GetMapping("getHelloService")
+    @GetMapping("/getHelloService")
     public String getHelloService() {
         return consumerService.getHelloServiceData();
     }

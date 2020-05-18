@@ -1,4 +1,4 @@
-package controller;
+package com.wjjzst.springcloud.provider.hystrix.dashboard.controller;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

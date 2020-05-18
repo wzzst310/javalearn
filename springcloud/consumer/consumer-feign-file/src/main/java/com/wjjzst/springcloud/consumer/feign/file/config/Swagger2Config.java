@@ -23,7 +23,7 @@ public class Swagger2Config {
     public Docket CreateRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.wjjzst.springcloud.consumer.feign.file.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.wjjzst.springcloud.consumer.feign.file.com.wjjzst.springcloud.provider.hystrix.dashboard.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
