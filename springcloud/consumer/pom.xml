@@ -16,6 +16,7 @@
         <module>consumer-ribbon-loadbalance</module>
         <module>consumer-hystrix-hello</module>
         <module>consumer-feign-hystrix</module>
+        <module>consumer-hystrix-dashboard</module>
     </modules>
 
     <artifactId>consumer</artifactId>

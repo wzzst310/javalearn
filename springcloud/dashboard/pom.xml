@@ -10,23 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>provider-feign-multiparam</module>
-        <module>provider-feign-file</module>
-        <module>provider-ribbon-hello</module>
-        <module>provider-ribbon-loadbalance</module>
-        <module>provider-feign-hystrix</module>
-        <module>provider-hystrix-dashboard</module>
+        <module>dashboard-hello</module>
     </modules>
-
-    <artifactId>provider</artifactId>
+    <artifactId>dashboard</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
 
