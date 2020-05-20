@@ -1,11 +1,13 @@
 package com.wjjzst.springcloud.consumer.hystrix.badrequest.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.wjjzst.springcloud.consumer.hystrix.badrequest.service.dataservice.PSFallbackBackRequestExceptionFeign;
 import com.wjjzst.springcloud.consumer.hystrix.badrequest.service.dataservice.PSFallbackBadRequestExpcetion;
 import com.wjjzst.springcloud.consumer.hystrix.badrequest.service.dataservice.PSFallbackOtherExpcetion;
 import com.wjjzst.springcloud.consumer.hystrix.badrequest.service.dataservice.ProviderServiceCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ExceptionController {
+    @Autowired
+    private PSFallbackBackRequestExceptionFeign psFallbackBackRequestExceptionFeign;
     private Logger log = LoggerFactory.getLogger(ExceptionController.class);
     @GetMapping("/getProviderServiceCommand")
     public String providerServiceCommand(){
@@ -35,6 +39,10 @@ public class ExceptionController {
     public String pSFallbackOtherExpcetion(){
         String result = new PSFallbackOtherExpcetion().execute();
         return result;
+    }
+    @GetMapping("/getPSFallbackOtherExpcetionFeign")
+    public String pSFallbackOtherExpcetionFeign(){
+        return psFallbackBackRequestExceptionFeign.getBadRequestService();
     }
 
     @GetMapping("/getFallbackMethodTest")

@@ -1,6 +1,8 @@
 package com.wjjzst.springcloud.provider.hystrix.dashboard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,5 +31,10 @@ public class ProviderController {
     @GetMapping("/getHelloService")
     public String getHelloService() {
         return consumerService.getHelloServiceData();
+    }
+
+    @GetMapping("/getBadRequest")
+    public ResponseEntity getBadRequestService() {
+        return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
     }
 }

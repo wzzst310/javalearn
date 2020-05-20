@@ -12,13 +12,14 @@ import java.nio.charset.StandardCharsets;
 /**
  * @Author: Wjj
  * @Date: 2020/5/19 10:42 下午
- * @desc:
+ * @desc: 本类是基于FeignBuilder指定才会用到的 直接hystrix command是不能切到熔断方法里面的
  */
+@Component
 public class FeignErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
         try {
-            if(response.status() >= 400 && response.status() <= 499){
+            if (response.status() >= 400 && response.status() <= 499) {
                 String error = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
                 return new HystrixBadRequestException(error);
             }
@@ -26,6 +27,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
             System.out.println(e);
         }
 
-        return feign.FeignException.errorStatus(methodKey,response);
+        return feign.FeignException.errorStatus(methodKey, response);
     }
 }
+
