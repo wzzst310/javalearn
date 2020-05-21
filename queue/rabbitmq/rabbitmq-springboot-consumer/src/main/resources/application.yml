@@ -18,6 +18,12 @@ spring:
         queue:
           name: queue-2
           durable: true
+          exclusive: false
+          autoDelete: false
+          arguments:
+            x-dead-letter-exchange: exchange-1
+            x-dead-letter-routing-key: springboot.a
+            # x-message-ttl: 5000
         exchange:
           name: exchange-2
           durable: true

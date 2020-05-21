@@ -30,11 +30,18 @@ public class RabbitReceiver {
         // 手工ack
         channel.basicAck(deliveryTag, false); //第二个参数表示不批量的ack 而是一个一个ack
     }
-
-
+    // 完全注解方式定义死信队列 设置时间还有点问题
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "${spring.rabbitmq.listener.order.queue.name}",
-                    durable = "${spring.rabbitmq.listener.order.queue.durable}"),
+                    durable = "${spring.rabbitmq.listener.order.queue.durable}",
+                    exclusive = "${spring.rabbitmq.listener.order.queue.exclusive}",
+                    autoDelete = "${spring.rabbitmq.listener.order.queue.autoDelete}",
+                    arguments = {
+                            @Argument(name = "x-dead-letter-exchange",value = "${spring.rabbitmq.listener.order.queue.arguments.x-dead-letter-exchange}"),
+                            // @Argument(name = "x-message-ttl",value = "${spring.rabbitmq.listener.order.queue.arguments.x-message-ttl}"),
+                            @Argument(name = "x-dead-letter-routing-key",value = "${spring.rabbitmq.listener.order.queue.arguments.x-dead-letter-routing-key}")
+                    }
+            ),
             exchange = @Exchange(value = "${spring.rabbitmq.listener.order.exchange.name}",
                     durable = "${spring.rabbitmq.listener.order.exchange.durable}",
                     type = "${spring.rabbitmq.listener.order.exchange.type}",
@@ -50,4 +57,5 @@ public class RabbitReceiver {
         // 手工ack
         channel.basicAck(deliveryTag, false); //第二个参数表示不批量的ack 而是一个一个ack
     }
+
 }
