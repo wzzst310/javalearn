@@ -18,6 +18,7 @@
         <module>consumer-feign-hystrix</module>
         <module>consumer-hystrix-dashboard</module>
         <module>consumer-hystrix-badrequest</module>
+        <module>consumer-hystrix-cache</module>
     </modules>
 
     <artifactId>consumer</artifactId>

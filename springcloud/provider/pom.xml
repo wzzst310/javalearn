@@ -16,6 +16,7 @@
         <module>provider-ribbon-loadbalance</module>
         <module>provider-feign-hystrix</module>
         <module>provider-hystrix-dashboard</module>
+        <module>provider-hystrix-cache</module>
     </modules>
 
     <artifactId>provider</artifactId>
