@@ -37,6 +37,8 @@ public class MoveProject {
 //        changeFileSuffixs.add(".java");
 //        String sourceStr = "com.taiping";
 //        String targetStr = "cn.wjjzst";
+//        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures/first_stage/src/main/java/com/wjjzst/ads/firstStage/exam/Category.java";
+//        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures/first_stage/src/main/java/cn/wolfcode/ads/firstStage/exam/Category.java";
         String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures";
         String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures";
         String sourcePath = "/com/wjjzst/";
@@ -188,11 +190,11 @@ public class MoveProject {
             targetFile.delete();
         }
     }
-}
 
-@Data
-@AllArgsConstructor
-class ReplaceStr {
-    private String sourceStr;
-    private String targetStr;
+    @Data
+    @AllArgsConstructor
+    static class ReplaceStr {
+        private String sourceStr;
+        private String targetStr;
+    }
 }
