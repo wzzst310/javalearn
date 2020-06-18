@@ -1,6 +1,7 @@
 package com.wjjzst.ads.secondStage.learn._01sorting.cmp;
 
 import com.wjjzst.ads.secondStage.learn._01sorting.I_CountSort;
+import com.wjjzst.ads.secondStage.learn._01sorting.J_RadixSort;
 
 import java.text.DecimalFormat;
 
@@ -76,6 +77,9 @@ public abstract class A_AbstractSort<E extends Comparable<E>> implements Compara
             return false;
         }
         if (this instanceof I_CountSort) {
+            return true;
+        }
+        if (this instanceof J_RadixSort) {
             return true;
         }
         A_Entity[] entities = new A_Entity[20];

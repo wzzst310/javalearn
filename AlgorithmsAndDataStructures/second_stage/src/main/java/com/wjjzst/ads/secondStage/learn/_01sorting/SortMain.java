@@ -11,8 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SortMain {
-
     public static void main(String[] args) throws IOException {
+        for (int i = 0; i < 1000000; i++) {
+            main1(args);
+        }
+    }
+
+    public static void main1(String[] args) throws IOException {
         Integer[] array = Integers.random(1000, 1, 2000);
         // Integer[] array = getFileArray();
         testSorts(array,
@@ -23,7 +28,8 @@ public class SortMain {
                 // new F_MergeSort(),
                 // new G_QuickSort(),
                 // new H_ShellSort(),
-                new I_CountSort()
+                // new I_CountSort(),
+                new J_RadixSort()
         );
     }
 
