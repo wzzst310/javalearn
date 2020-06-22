@@ -3,7 +3,7 @@ package com.wjjzst.ads.secondStage.learn._01sorting.cmp;
 /**
  * @Author: Wjj
  * @Date: 2020/4/20 10:16 下午
- * @desc: 快速排序
+ * @desc: 快速排序  DualPivotQuicksort   还有种入栈递归写法
  */
 public class G_QuickSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     @Override

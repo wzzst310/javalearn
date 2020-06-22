@@ -1,8 +1,12 @@
 package com.wjjzst.ads.secondStage.learn._02_union;
 
-
-public class UnionFind_UN extends UnionFind {
-    public UnionFind_UN(int capacity) {
+/**
+ * union优化思路
+ * 1: 基于size的优化, 元素少的树 嫁接到 元素多的数
+ * 2: 基于rank的优化, 矮的树 嫁接到 高的树
+ */
+public class UnionFind_QU extends UnionFind {
+    public UnionFind_QU(int capacity) {
         super(capacity);
     }
 
