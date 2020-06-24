@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Times {
-	private static final SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss.SSS");
+	private static final SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss.SS	S");
 	
 	public interface Task {
 		void execute();

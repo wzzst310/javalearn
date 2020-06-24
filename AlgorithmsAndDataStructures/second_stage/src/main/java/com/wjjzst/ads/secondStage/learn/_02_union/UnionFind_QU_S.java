@@ -24,7 +24,7 @@ public class UnionFind_QU_S extends UnionFind_QU {
         int p1 = find(v1);
         int p2 = find(v2);
         if (p1 == p2) return;
-        if (sizes[v1] < sizes[v2]) {
+        if (sizes[p1] < sizes[p2]) {
             parents[p1] = p2;
             sizes[p2] += sizes[p1];
         } else {
