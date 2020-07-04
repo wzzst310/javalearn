@@ -39,8 +39,8 @@ public class MoveProject {
 //        String targetStr = "cn.wjjzst";
 //        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures/first_stage/src/main/java/com/wjjzst/ads/firstStage/exam/Category.java";
 //        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures/first_stage/src/main/java/cn/wolfcode/ads/firstStage/exam/Category.java";
-        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures";
-        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures";
+        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures/second_stage/src/main/java/com/wjjzst/ads/secondStage/learn";
+        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures/second_stage/src/main/java/cn/wolfcode/ads/secondStage/learn";
         String sourcePath = "/com/wjjzst/";
         String targetPath = "/cn/wolfcode/";
         List<String> ignoreFileSuffixs = new ArrayList<>();
@@ -59,6 +59,7 @@ public class MoveProject {
         String targetStr2 = "javalearn";
         replaceStrs.add(new ReplaceStr(sourceStr1, targetStr1));
         replaceStrs.add(new ReplaceStr(sourceStr2, targetStr2));
+        File file = new File(sourcefilePath);
         List<File> allChildrenFiles = getAllChildrenFiles(sourcefilePath, ignoreFileNames, ignoreFileSuffixs);
         List<File> newFiles = changePath(sourcefilePath, targetFilePath, allChildrenFiles, sourcePath, targetPath);
         changeFileContent(newFiles, changeFileSuffixs, replaceStrs);
