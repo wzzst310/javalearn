@@ -25,6 +25,7 @@
         <module>mongodb</module>
         <module>springcloud</module>
         <module>util</module>
+        <module>base</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
