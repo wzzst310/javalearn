@@ -34,7 +34,7 @@ public class SocketHandler implements Runnable {
             while (true) {
                 DataInputStream dataIn = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream());
-                String readLine = dataIn.readUTF();
+                String readLine = dataIn.readUTF();   // 会阻塞
                 if (readLine == null) {
                     continue;
                 }
@@ -42,7 +42,7 @@ public class SocketHandler implements Runnable {
                     break;
                 }
                 System.out.println("Client : " + readLine);
-                dataOut.writeUTF(readLine);
+                dataOut.writeUTF(readLine);   // 会阻塞
             }
         } catch (IOException e) {
             e.printStackTrace();

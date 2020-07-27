@@ -3,6 +3,7 @@ package com.wjjzst.base.io.bio;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -20,6 +21,8 @@ public class BioServerSingle {
         OutputStream out = null; // 输出流
         try {
             serverSocket = new ServerSocket(BioServerConstants.PORT); // 指定端口 监听
+            // serverSocket = new ServerSocket();
+            // serverSocket.bind(new InetSocketAddress("127.0.0.1",8888));
             ServerHandlerExcutePool pool = new ServerHandlerExcutePool(50, 100);
             while (true) {
                 System.out.println("Start");

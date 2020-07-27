@@ -64,6 +64,18 @@ public class BioClientSingle {
                 scanner.close();
             }
         }
-
     }
+
+    public static void main2(String[] args) throws IOException {
+        Socket s = new Socket("127.0.0.1", BioServerConstants.PORT);
+        s.getOutputStream().write("HelloServer".getBytes());  // write会阻塞
+        s.getOutputStream().flush();
+        // s.getOutputStream().close();
+        System.out.println("write over, waiting for msg back...");
+        byte[] bytes = new byte[1024];
+        int len = s.getInputStream().read(bytes);    // read会阻塞
+        System.out.println(new String(bytes, 0, len));
+        s.close();
+    }
+
 }
