@@ -20,4 +20,10 @@ public interface Graph<V, E> {
 
     void removeEdge(V from, V to);
 
+    // 广度优先搜索  Breadth First Search, BFS 宽度优先搜索 横向优先搜索 类似层序遍历
+    void bfs(V begin);
+
+    // 深度优先搜索 Depth First Search, SFS  类似前序遍历
+    void dfs(V begin);
+
 }

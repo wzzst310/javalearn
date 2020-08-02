@@ -1,4 +1,4 @@
-package com.mj;
+package com.wjjzst.ads.secondStage.learn._03_graph;
 
 public class Data {
 	public static final Object[][] BFS_01 = {
