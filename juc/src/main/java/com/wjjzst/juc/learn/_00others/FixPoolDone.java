@@ -1,5 +1,6 @@
 package com.wjjzst.juc.learn._00others;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -13,39 +14,35 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FixPoolDone {
     public static void main(String[] args) {
 
-        int maxCore = Runtime.getRuntime().availableProcessors() * 2;
-        int count = 100000;
+        int maxCore = Runtime.getRuntime().availableProcessors() * 2 + 1;
+        int count = 90100;
         int batch = 1000;
         int batchSize = count / batch;
-        int last = count - batchSize * batch;
-        int lastflag = last == 0 ? 0 : 1;
-        int poolSize = Math.max(maxCore, batchSize + lastflag);
-        poolSize = 4;
-        AtomicInteger ai = new AtomicInteger(count);
+        int last = count - batch * batchSize;
+        int poolSize = Math.min(maxCore, batchSize);
         ExecutorService pool = Executors.newFixedThreadPool(poolSize);
-        AtomicInteger counter = new AtomicInteger(1);
+        CountDownLatch cdl = new CountDownLatch(poolSize);
+        AtomicInteger ai = new AtomicInteger(count);
+        AtomicInteger counter = new AtomicInteger(0);
         for (int i = 0; i < poolSize; i++) {
-            pool.execute(new Runnable() {
-                @Override
-                public void run() {
-                    while (ai.get() > 0) {
-                        System.out.println("thread: " + Thread.currentThread().getName() + " value=" + ai.get() + " haha: " + counter.get());
-                        /*try {
-                            TimeUnit.SECONDS.sleep(1);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }*/
-                        counter.getAndIncrement();
-                        ai.getAndAdd(-1);
+            pool.execute(() -> {
+                while (ai.get() > 0) {
+                    if ((ai.addAndGet(-1 * batch)) > 0) {
+                        System.out.println("一批" + batch + " 个" + " 第" + counter.incrementAndGet() + "批");
                     }
                 }
+                cdl.countDown();
+                System.out.println(cdl.getCount());
             });
         }
-        while (ai.get() <= 0) {
-            System.out.println("判断停止不停止");
+        try {
+            cdl.await();
             pool.shutdown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        // pool.shutdown();
+
+        System.out.println("剩余" + last + "个");
         System.out.println("end==============");
     }
 }
