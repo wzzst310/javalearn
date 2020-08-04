@@ -24,7 +24,7 @@ public class Main {
         System.out.println(set.size());
         set.traversal(new Set.Visitor<Integer>() {
             @Override
-            boolean visit(Integer element) {
+            public boolean visit(Integer element) {
                 System.out.println(element);
                 return 5 == element;
             }

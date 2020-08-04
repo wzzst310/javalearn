@@ -20,9 +20,16 @@ public interface Set<E> {
 
     void traversal(Visitor<E> visitor);
 
-    public static abstract class Visitor<E> {
+    /*public static abstract class Visitor<E> {
         boolean stop;
 
         abstract boolean visit(E element);
+    }*/
+    @FunctionalInterface
+    interface Visitor<E> {
+
+        boolean stop = false;
+
+        boolean visit(E element);
     }
 }
