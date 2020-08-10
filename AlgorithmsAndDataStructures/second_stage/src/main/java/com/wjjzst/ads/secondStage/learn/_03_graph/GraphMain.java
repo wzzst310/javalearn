@@ -7,8 +7,9 @@ package com.wjjzst.ads.secondStage.learn._03_graph;
  */
 public class GraphMain {
     public static void main(String[] args) {
+        test1();
         // testBfs();
-        testDfs();
+        // testDfs();
     }
 
     private static void test1() {
@@ -20,8 +21,8 @@ public class GraphMain {
         graph.addEdge("V3", "V4", 1);
         graph.addEdge("V0", "V4", 6);
 
-        // graph.removeEdge("V0", "V4");
-        graph.removeVertex("V0");
+        graph.removeEdge("V0", "V4");
+        // graph.removeVertex("V0");
 
         graph.print();
     }

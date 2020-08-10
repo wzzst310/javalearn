@@ -163,7 +163,7 @@ public class ListGraph<V, E> implements Graph<V, E> {
             if (this == obj) return true;
             if (obj == null || getClass() != obj.getClass()) return false;
 
-            Vertex<?, ?> vertex = (Vertex<?, ?>) obj;
+            Vertex<V, E> vertex = (Vertex<V, E>) obj;
 
             return Objects.equals(value, vertex.value);
         }
@@ -194,7 +194,7 @@ public class ListGraph<V, E> implements Graph<V, E> {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Edge<?, ?> edge = (Edge<?, ?>) o;
+            Edge<V, E> edge = (Edge<V, E>) o;
 
             if (!Objects.equals(from, edge.from)) return false;
             return Objects.equals(to, edge.to);
