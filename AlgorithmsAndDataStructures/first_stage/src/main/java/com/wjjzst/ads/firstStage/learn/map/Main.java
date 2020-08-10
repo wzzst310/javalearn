@@ -193,7 +193,7 @@ public class Main {
         Asserts.test(map.get(new Key(8)) == 8);
         map.traversal(new Map.Visitor<Object, Integer>() {
             @Override
-            protected boolean visit(Object key, Integer value) {
+            public boolean visit(Object key, Integer value) {
                 System.out.println(key + "_" + value);
                 return false;
             }

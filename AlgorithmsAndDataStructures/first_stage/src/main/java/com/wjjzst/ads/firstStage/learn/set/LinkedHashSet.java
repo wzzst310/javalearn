@@ -45,7 +45,7 @@ public class LinkedHashSet<E> implements Set<E> {
     public void traversal(Visitor<E> visitor) {
         map.traversal(new Map.Visitor<E, Object>() {
             @Override
-            protected boolean visit(E key, Object value) {
+            public boolean visit(E key, Object value) {
                 return visitor.visit(key);
             }
         });

@@ -1,6 +1,8 @@
 package com.wjjzst.ads.firstStage.learn.map;
 
 
+import java.util.function.Predicate;
+
 /**
  * @Author: Wjj
  * @Date: 2019/5/20 0:31
@@ -26,11 +28,18 @@ public interface Map<K, V> {
 
     void traversal(Visitor<K, V> visitor);
 
-    abstract class Visitor<K, V> {
+    /*abstract class Visitor<K, V> {
 
         boolean stop;
 
         protected abstract boolean visit(K key, V value);
+    }*/
+    @FunctionalInterface
+    interface Visitor<K, V> {
+
+        boolean stop = false;
+
+        boolean visit(K key, V value);
     }
 
 }
