@@ -7,9 +7,9 @@ package com.wjjzst.ads.secondStage.learn._03_graph;
  */
 public class GraphMain {
     public static void main(String[] args) {
-        test1();
+        // test1();
         // testBfs();
-        // testDfs();
+        testDfs();
     }
 
     private static void test1() {
@@ -28,10 +28,10 @@ public class GraphMain {
     }
 
     private static void testBfs() {
-        // Graph<Object, Double> graph = undirectedGraph(Data.BFS_01);
-        // graph.bfs("A");
-        Graph<Object, Double> graph = directedGraph(Data.BFS_02);
-        graph.bfs(0);
+        Graph<Object, Double> graph = undirectedGraph(Data.BFS_01);
+        graph.bfs("A");
+        // Graph<Object, Double> graph = directedGraph(Data.BFS_02);
+        // graph.bfs(0);
     }
     private static void testDfs() {
         // Graph<Object, Double> graph = undirectedGraph(Data.DFS_01);

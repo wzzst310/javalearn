@@ -28,18 +28,18 @@ public interface Map<K, V> {
 
     void traversal(Visitor<K, V> visitor);
 
-    /*abstract class Visitor<K, V> {
+    abstract class Visitor<K, V> {
 
         boolean stop;
 
         protected abstract boolean visit(K key, V value);
-    }*/
-    @FunctionalInterface
+    }
+    /*@FunctionalInterface
     interface Visitor<K, V> {
 
         boolean stop = false;
 
         boolean visit(K key, V value);
-    }
+    }*/
 
 }
