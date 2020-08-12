@@ -94,6 +94,32 @@ public class ListGraph<V, E> implements Graph<V, E> {
     }
 
     @Override
+    public void bfs(V begin, VertexVisitor<V> visitor) {
+        Vertex<V, E> beginVertex = vertices.get(begin);
+        if (beginVertex == null) return;
+        Set<Vertex<V, E>> visitedVertices = new HashSet<>();
+        Queue<Vertex<V, E>> queue = new LinkedList<>();
+        queue.offer(beginVertex);
+        visitedVertices.add(beginVertex);
+        while (!queue.isEmpty()) {
+            Vertex<V, E> vertex = queue.poll();
+            // System.out.println(vertex.value);
+            if (visitor.visit(vertex.value)) return;
+            // 由demo图中可知 如果是出来一个才算遍历过  那么第一次队列queue中压入 V0,V2 此时visitedVertices中只有V1
+            // 第二次V2 poll出来之时  此时visitedVertices中只有V1和V2 此时会把V0再次压人到queue中
+            // visitedVertices.add(vertex);
+            // 故一定要在offer进队列的时候就当成已经遍历过了
+            for (Edge<V, E> edge : vertex.outEdges) {
+                if (!visitedVertices.contains(edge.to)) {
+                    queue.offer(edge.to);
+                    visitedVertices.add(edge.to);
+                }
+            }
+        }
+
+    }
+
+    /*@Override
     public void bfs(V begin) {
         Vertex<V, E> beginVertex = vertices.get(begin);
         if (beginVertex == null) return;
@@ -116,16 +142,93 @@ public class ListGraph<V, E> implements Graph<V, E> {
             }
         }
 
+    }*/
+
+    @Override
+    public void dfs(V begin, VertexVisitor<V> visitor) {
+        Vertex<V, E> beginVertex = vertices.get(begin);
+        if (beginVertex == null) return;
+        Set<Vertex<V, E>> visitedVertices = new HashSet<>();
+        Stack<Vertex<V, E>> stack = new Stack<>();
+        stack.push(beginVertex);
+        visitedVertices.add(beginVertex);
+        // System.out.println(beginVertex.value);
+        if (visitor.visit(beginVertex.value)) return;
+        while (!stack.isEmpty()) {
+            Vertex<V, E> vertex = stack.pop();
+            for (Edge<V, E> edge : vertex.outEdges) {
+                if (!visitedVertices.contains(edge.to)) {
+                    stack.push(vertex);
+                    stack.push(edge.to);
+                    visitedVertices.add(edge.to);
+                    // System.out.println(edge.to.value);
+                    if (visitor.visit(edge.to.value)) return;
+                }
+            }
+        }
     }
 
     @Override
+    public List<V> topologicalSort() {
+        // 装着返回值value的list
+        List<V> list = new ArrayList<>();
+        // 入度为0的vertex容器
+        Queue<Vertex<V, E>> queue = new LinkedList<>();
+        // 入度不为0的连带着入度存入一个map中
+        Map<Vertex<V, E>, Integer> ins = new HashMap<>();
+        // 初始化  将入度为0的点都放入队列
+        vertices.forEach((V v, Vertex<V, E> vertex) -> {
+            int in = vertex.inEdges.size();
+            if (in == 0) {
+                queue.offer(vertex);
+            } else {
+                ins.put(vertex, in);
+            }
+        });
+        while (!queue.isEmpty()) {
+            Vertex<V, E> vertex = queue.poll();
+            list.add(vertex.value);
+            for (Edge<V, E> edge : vertex.outEdges) {
+                Integer toIn = ins.get(edge.to) - 1;
+                if (toIn == 0) {
+                    queue.offer(edge.to);
+                } else {
+                    ins.put(edge.to, toIn);
+                }
+            }
+        }
+        return list;
+    }
+
+    /*@Override
+    public void dfs(V begin) {
+        Vertex<V, E> beginVertex = vertices.get(begin);
+        if (beginVertex == null) return;
+        Set<Vertex<V, E>> visitedVertices = new HashSet<>();
+        Stack<Vertex<V, E>> stack = new Stack<>();
+        stack.push(beginVertex);
+        visitedVertices.add(beginVertex);
+        System.out.println(beginVertex.value);
+        while (!stack.isEmpty()) {
+            Vertex<V, E> vertex = stack.pop();
+            for (Edge<V, E> edge : vertex.outEdges) {
+                if (!visitedVertices.contains(edge.to)) {
+                    stack.push(vertex);
+                    stack.push(edge.to);
+                    visitedVertices.add(edge.to);
+                    System.out.println(edge.to.value);
+                }
+            }
+        }
+    }*/
+    /*@Override
     public void dfs(V begin) {
         Vertex<V, E> beginVertex = vertices.get(begin);
         if (beginVertex == null) return;
         dfs(beginVertex, new HashSet<>());
-    }
+    }*/
 
-    private void dfs(Vertex<V, E> vertex, Set<Vertex<V, E>> visitedVertices) {
+    /*private void dfs(Vertex<V, E> vertex, Set<Vertex<V, E>> visitedVertices) {
         System.out.println(vertex.value);
         visitedVertices.add(vertex);
         for (Edge<V, E> edge : vertex.outEdges) {
@@ -133,7 +236,7 @@ public class ListGraph<V, E> implements Graph<V, E> {
                 dfs(edge.to, visitedVertices);
             }
         }
-    }
+    }*/
 
 
     public void print() {

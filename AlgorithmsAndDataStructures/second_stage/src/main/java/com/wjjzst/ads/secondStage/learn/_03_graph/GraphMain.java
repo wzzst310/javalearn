@@ -1,5 +1,7 @@
 package com.wjjzst.ads.secondStage.learn._03_graph;
 
+import java.util.List;
+
 /**
  * @Author: Wjj
  * @Date: 2020/8/2 9:39 下午
@@ -9,7 +11,8 @@ public class GraphMain {
     public static void main(String[] args) {
         // test1();
         // testBfs();
-        testDfs();
+        // testDfs();
+        testTopologicalSort();
     }
 
     private static void test1() {
@@ -27,17 +30,37 @@ public class GraphMain {
         graph.print();
     }
 
-    private static void testBfs() {
-        Graph<Object, Double> graph = undirectedGraph(Data.BFS_01);
-        graph.bfs("A");
-        // Graph<Object, Double> graph = directedGraph(Data.BFS_02);
-        // graph.bfs(0);
+    private static void testTopologicalSort() {
+        Graph<Object, Double> graph = directedGraph(Data.TOPO);
+        List<Object> list = graph.topologicalSort();
+        System.out.println(list);
     }
+
+    private static void testBfs() {
+        /*Graph<Object, Double> graph = undirectedGraph(Data.BFS_01);
+        graph.bfs("A", v -> {
+            System.out.println(v);
+            return false;
+        });*/
+        Graph<Object, Double> graph = directedGraph(Data.BFS_02);
+        graph.bfs(0, v -> {
+            System.out.println(v);
+            // return v.equals(2);
+            return false;
+        });
+    }
+
     private static void testDfs() {
-        // Graph<Object, Double> graph = undirectedGraph(Data.DFS_01);
-        // graph.dfs(0);
+        /*Graph<Object, Double> graph = undirectedGraph(Data.DFS_01);
+        graph.dfs(0, v -> {
+            System.out.println(v);
+            return false;
+        });*/
         Graph<Object, Double> graph = directedGraph(Data.DFS_02);
-        graph.dfs("d");
+        graph.dfs("d", v -> {
+            System.out.println(v);
+            return v.equals("e");
+        });
     }
 
     /**
@@ -60,6 +83,7 @@ public class GraphMain {
 
     /**
      * 无向图
+     *
      * @param data
      * @return
      */
