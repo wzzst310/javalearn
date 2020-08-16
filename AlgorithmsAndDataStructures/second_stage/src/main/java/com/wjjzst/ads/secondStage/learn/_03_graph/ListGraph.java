@@ -200,6 +200,20 @@ public class ListGraph<V, E> implements Graph<V, E> {
         return list;
     }
 
+    @Override
+    public Set<EdgeInfo<V, E>> mst() {
+        return prim();
+    }
+
+    public Set<EdgeInfo<V, E>> prim() {
+        Set<EdgeInfo<V, E>> edgeInfos = new HashSet<>();
+
+        return null;
+    }
+
+    public Set<EdgeInfo<V, E>> kruskal() {
+        return null;
+    }
     /*@Override
     public void dfs(V begin) {
         Vertex<V, E> beginVertex = vertices.get(begin);
@@ -280,6 +294,7 @@ public class ListGraph<V, E> implements Graph<V, E> {
         public String toString() {
             return value == null ? "null" : value.toString();
         }
+
     }
 
     private static class Edge<V, E> {

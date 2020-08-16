@@ -1,6 +1,7 @@
 package com.wjjzst.ads.secondStage.learn._03_graph;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: Wjj
@@ -31,8 +32,22 @@ public interface Graph<V, E> {
     // 拓扑排序 有向无环图 一直找入度为0的
     List<V> topologicalSort();
 
+    Set<EdgeInfo<V, E>> mst();
+
     interface VertexVisitor<V> {
         boolean visit(V v);
+    }
+
+    class EdgeInfo<V, E> {
+        V from;
+        V to;
+        E weight;
+
+        public EdgeInfo(V from, V to, E weight) {
+            this.from = from;
+            this.to = to;
+            this.weight = weight;
+        }
     }
 
 }
