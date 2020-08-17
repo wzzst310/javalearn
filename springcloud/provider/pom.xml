@@ -17,6 +17,7 @@
         <module>provider-feign-hystrix</module>
         <module>provider-hystrix-dashboard</module>
         <module>provider-hystrix-cache</module>
+        <module>provider-feign-dynamictarget</module>
     </modules>
 
     <artifactId>provider</artifactId>

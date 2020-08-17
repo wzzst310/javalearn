@@ -19,6 +19,7 @@
         <module>consumer-hystrix-dashboard</module>
         <module>consumer-hystrix-badrequest</module>
         <module>consumer-hystrix-cache</module>
+        <module>consumer-feign-dynamictarget</module>
     </modules>
 
     <artifactId>consumer</artifactId>

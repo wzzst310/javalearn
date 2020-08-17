@@ -1,4 +1,4 @@
-package com.wjjzst.springcloud.consumer.feign.file.config;
+package com.wjjzst.springcloud.consumer.feign.dynamictarget.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,13 +23,13 @@ public class Swagger2Config {
     public Docket CreateRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.wjjzst.springcloud.consumer.feign.file.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.wjjzst.springcloud.consumer.feign.dynamictarget.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Feign多参数传递问题").description("Feign多参数传递问题")
+        return new ApiInfoBuilder().title("FeignClient动态选择问题").description("FeignClient动态选择问题")
                 .contact(new Contact("wjj", "http://www.wjjzst.com", "wzzst310@163.com")).version("1.0").build();
     }
 
