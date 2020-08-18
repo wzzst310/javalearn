@@ -14,7 +14,7 @@ public class D_HeapSort<E extends Comparable<E>> extends A_AbstractSort<E> {
     }
 
     private void mySort() {
-        BinaryHeap<E> heap = new BinaryHeap<E>(array, new Comparator<Integer>() {
+        BinaryHeap<Integer> heap = new BinaryHeap<>((Integer[]) array, new Comparator<Integer>() {
             @Override
             public int compare(Integer i1, Integer i2) {
                 return i2 - i1;

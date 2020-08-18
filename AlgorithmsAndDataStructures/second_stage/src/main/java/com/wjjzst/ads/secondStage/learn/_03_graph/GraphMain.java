@@ -1,6 +1,8 @@
 package com.wjjzst.ads.secondStage.learn._03_graph;
 
 import java.util.List;
+import java.util.Set;
+import com.wjjzst.ads.secondStage.learn._03_graph.Graph.EdgeInfo;
 
 /**
  * @Author: Wjj
@@ -8,26 +10,48 @@ import java.util.List;
  * @desc:
  */
 public class GraphMain {
+    private static Graph.WeightManager<Double> weightManager = new Graph.WeightManager<Double>() {
+        @Override
+        public int compare(Double w1, Double w2) {
+            // return w1.compareTo(w2); //大顶堆
+            return w2.compareTo(w1); // 小顶堆
+        }
+
+        @Override
+        public Double add(Double w1, Double w2) {
+            return w1 + w2;
+        }
+    };
+
     public static void main(String[] args) {
         // test1();
         // testBfs();
         // testDfs();
-        testTopologicalSort();
+        // testTopologicalSort();
+        testMst();
     }
 
     private static void test1() {
-        ListGraph<String, Integer> graph = new ListGraph<>();
-        graph.addEdge("V1", "V0", 9);
-        graph.addEdge("V1", "V2", 3);
-        graph.addEdge("V2", "V0", 2);
-        graph.addEdge("V2", "V3", 5);
-        graph.addEdge("V3", "V4", 1);
-        graph.addEdge("V0", "V4", 6);
-
-        graph.removeEdge("V0", "V4");
+//        ListGraph<String, Integer> graph = new ListGraph<>();
+//        graph.addEdge("V1", "V0", 9);
+//        graph.addEdge("V1", "V2", 3);
+//        graph.addEdge("V2", "V0", 2);
+//        graph.addEdge("V2", "V3", 5);
+//        graph.addEdge("V3", "V4", 1);
+//        graph.addEdge("V0", "V4", 6);
+//
+//        graph.removeEdge("V0", "V4");
         // graph.removeVertex("V0");
 
-        graph.print();
+//        graph.print();
+    }
+
+    private static void testMst() {
+        Graph<Object, Double> graph = undirectedGraph(Data.MST_02);
+        Set<EdgeInfo<Object, Double>> edgeInfos = graph.mst();
+        for (EdgeInfo<Object, Double> edgeInfo : edgeInfos) {
+            System.out.println(edgeInfo);
+        }
     }
 
     private static void testTopologicalSort() {
@@ -67,7 +91,7 @@ public class GraphMain {
      * 有向图
      */
     private static Graph<Object, Double> directedGraph(Object[][] data) {
-        Graph<Object, Double> graph = new ListGraph<>();
+        Graph<Object, Double> graph = new ListGraph<>(weightManager);
         for (Object[] edge : data) {
             if (edge.length == 1) {
                 graph.addVertex(edge[0]);
@@ -88,7 +112,7 @@ public class GraphMain {
      * @return
      */
     private static Graph<Object, Double> undirectedGraph(Object[][] data) {
-        Graph<Object, Double> graph = new ListGraph<>();
+        Graph<Object, Double> graph = new ListGraph<>(weightManager);
         for (Object[] edge : data) {
             if (edge.length == 1) {
                 graph.addVertex(edge[0]);

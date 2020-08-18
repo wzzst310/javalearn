@@ -5,7 +5,7 @@ import com.wjjzst.ads.secondStage.learn._01sorting.J_RadixSort;
 
 import java.text.DecimalFormat;
 
-public abstract class A_AbstractSort<E extends Comparable<E>> implements Comparable<A_AbstractSort> {
+public abstract class A_AbstractSort<E extends Comparable<E>> implements Comparable<A_AbstractSort<E>> {
     public E[] array;
     private int cmpCount;
     private int swapCount;

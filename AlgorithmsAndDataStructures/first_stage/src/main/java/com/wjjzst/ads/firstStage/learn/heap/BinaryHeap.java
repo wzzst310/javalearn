@@ -2,7 +2,9 @@ package com.wjjzst.ads.firstStage.learn.heap;
 
 import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTreeInfo;
 
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.Set;
 
 /**
  * @Author: Wjj
@@ -16,15 +18,15 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
 
 
     public BinaryHeap() {
-        this(null, null);
+        this((E[]) null, null);
     }
 
-    public BinaryHeap(Comparator comparator) {
+    public BinaryHeap(Comparator<E> comparator) {
         super(comparator);
         this.elements = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
-    public BinaryHeap(E[] elements, Comparator comparator) {
+    public BinaryHeap(E[] elements, Comparator<E> comparator) {
         super(comparator);
         if (elements == null || elements.length == 0) {
             this.elements = (E[]) new Object[DEFAULT_CAPACITY];
@@ -36,6 +38,23 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
                 this.elements[i] = elements[i];
             }
             this.elements = elements;
+        }
+        heapify();
+    }
+
+    public BinaryHeap(Collection<E> elements, Comparator<E> comparator) {
+        super(comparator);
+        if (elements == null || elements.size() == 0) {
+            this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+        } else {
+            size = elements.size();
+            int capacity = Math.max(DEFAULT_CAPACITY, size);
+            this.elements = (E[]) new Object[capacity];
+            int i = 0;
+            for (E element : elements) {
+                this.elements[i++] = element;
+            }
+            heapify();
         }
     }
 
@@ -91,6 +110,13 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
             siftDown(0);
         }
         return root;
+    }
+
+    @Override
+    public void addAll(Collection<E> elementes) {
+        for (E element : elementes) {
+            add(element);
+        }
     }
 
     /**
@@ -178,7 +204,7 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
             newElements[i] = elements[i];
         }
         elements = newElements;
-        System.out.println("扩容为" + newCapacity);
+        // System.out.println("扩容为" + newCapacity);
     }
 
     @Override

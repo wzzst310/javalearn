@@ -1,5 +1,9 @@
 package com.wjjzst.ads.secondStage.learn._03_graph;
 
+import com.wjjzst.ads.firstStage.learn.common.printer.BinaryTrees;
+import com.wjjzst.ads.firstStage.learn.heap.BinaryHeap;
+import lombok.var;
+
 import java.util.*;
 
 /**
@@ -7,9 +11,17 @@ import java.util.*;
  * @Date: 2020/7/30 10:49 下午
  * @desc:
  */
-public class ListGraph<V, E> implements Graph<V, E> {
+public class ListGraph<V, E> extends Graph<V, E> {
     private Map<V, Vertex<V, E>> vertices = new HashMap<>();
     private Set<Edge<V, E>> edges = new HashSet<>();
+    private Comparator<Edge<V, E>> edgeComparator = (e1, e2) -> {
+        return weightManager.compare(e1.weight, e2.weight);
+    };
+
+
+    public ListGraph(WeightManager<E> weightManager) {
+        super(weightManager);
+    }
 
     @Override
     public int edgesSize() {
@@ -206,9 +218,25 @@ public class ListGraph<V, E> implements Graph<V, E> {
     }
 
     public Set<EdgeInfo<V, E>> prim() {
+        Iterator<Vertex<V, E>> it = vertices.values().iterator();
+        if (!it.hasNext()) return null;
         Set<EdgeInfo<V, E>> edgeInfos = new HashSet<>();
-
-        return null;
+        Set<Vertex<V, E>> addedVertices = new HashSet<>();
+        Vertex<V, E> vertex = it.next();
+        addedVertices.add(vertex);
+        BinaryHeap<Edge<V, E>> heap = new BinaryHeap(vertex.outEdges, edgeComparator);
+        int edgeSize = vertices.size() - 1;
+        while (!heap.isEmpty() && edgeInfos.size() < edgeSize) {
+            Edge<V, E> edge = heap.remove();
+            if (!addedVertices.contains(edge.to)) {
+                edgeInfos.add(edge.info());
+                addedVertices.add(edge.to);
+                heap.addAll(edge.to.outEdges);
+                BinaryTrees.print(heap);
+                System.out.println("\n\n");
+            }
+        }
+        return edgeInfos;
     }
 
     public Set<EdgeInfo<V, E>> kruskal() {
@@ -329,6 +357,10 @@ public class ListGraph<V, E> implements Graph<V, E> {
         @Override
         public String toString() {
             return "Edge {from=" + from + ", to=" + to + ", weight=" + weight + '}';
+        }
+
+        EdgeInfo<V, E> info() {
+            return new EdgeInfo<>(from.value, to.value, weight);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.wjjzst.ads.firstStage.learn.heap;
 
 import java.util.Comparator;
+import java.util.Set;
 
 /**
  * @Author: Wjj
@@ -10,9 +11,9 @@ import java.util.Comparator;
 public abstract class AbstractHeap<E> implements Heap<E> {
 
     protected int size;
-    protected Comparator comparator;
+    protected Comparator<E> comparator;
 
-    public AbstractHeap(Comparator comparator) {
+    public AbstractHeap(Comparator<E> comparator) {
         this.comparator = comparator;
     }
     public AbstractHeap() {
