@@ -1,0 +1,11 @@
+server:
+  port: 8022
+spring:
+  application:
+    name: aa-provider-feign-dynamictarget
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
