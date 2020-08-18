@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @create: 2020/8/17 10:23 上午
  * @Description
  */
-@FeignClient("CLUSTER-ID-provider-feign-dynamictarget")
+@FeignClient(value = "CLUSTER-ID-provider-feign-dynamictarget", fallbackFactory = UserFeignServiceFallback.class)
 public interface UserFeignService {
     @RequestMapping(value = "/user/update", method = RequestMethod.POST)
     String upadateUser(@RequestBody User user);
