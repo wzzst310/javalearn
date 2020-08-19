@@ -27,6 +27,7 @@
         <module>springcloud</module>
         <module>util</module>
         <module>base</module>
+        <module>gui</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
