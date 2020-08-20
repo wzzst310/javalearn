@@ -19,6 +19,7 @@
         <module>consumer</module>
         <module>ribbon</module>
         <module>hystrix</module>
+        <module>springcloudalibaba</module>
     </modules>
 
     <artifactId>springcloud</artifactId>
@@ -31,6 +32,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
