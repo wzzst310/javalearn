@@ -1,5 +1,8 @@
 package com.wjjzst.springcloud.provider.feign.multiparam.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.wjjzst.common.dto.TestDTO;
+import com.wjjzst.common.enums.TestEnum;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +27,13 @@ public class UserController {
     @RequestMapping(value = "/update",method= RequestMethod.POST)
     public String upadateUser(@RequestBody User user) {
         return "hello," + user.getName();
+    }
+
+    @RequestMapping(value = "/testEnum",method= RequestMethod.POST)
+    public String testEnum(@RequestBody TestDTO dto) {
+        TestEnum testEnum = dto.getTestEnum();
+        System.out.println(JSON.toJSONString(dto));
+        return "hello," + testEnum;
     }
 
 }

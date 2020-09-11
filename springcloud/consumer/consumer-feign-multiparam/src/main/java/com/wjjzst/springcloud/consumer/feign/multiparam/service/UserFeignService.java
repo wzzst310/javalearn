@@ -1,5 +1,7 @@
 package com.wjjzst.springcloud.consumer.feign.multiparam.service;
 
+import com.wjjzst.common.dto.TestDTO;
+import com.wjjzst.common.enums.TestEnum;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,4 +20,7 @@ public interface UserFeignService {
 
     @RequestMapping(value = "/user/update", method = RequestMethod.POST)
     String upadateUser(@RequestBody User user);
+
+    @RequestMapping(value = "/user/testEnum",method= RequestMethod.POST)
+    String testEnum(@RequestBody TestDTO dto);
 }
