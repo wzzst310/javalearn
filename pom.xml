@@ -28,7 +28,6 @@
         <module>util</module>
         <module>base</module>
         <module>gui</module>
-        <module>springcloud/springcloudalibaba</module>
         <module>common</module>
         <module>db</module>
     </modules>
@@ -48,6 +47,7 @@
         <netty-all.version>4.1.6.Final</netty-all.version>
         <spring.cloud.version>Hoxton.SR7</spring.cloud.version>
 <!--        <spring.cloud.version>Finchley.SR2</spring.cloud.version>-->
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
     </properties>
 
     <dependencyManagement>
