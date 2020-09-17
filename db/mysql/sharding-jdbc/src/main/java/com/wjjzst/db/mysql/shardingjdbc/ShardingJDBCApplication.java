@@ -2,8 +2,7 @@ package com.wjjzst.db.mysql.shardingjdbc;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @Author: Wjj
@@ -11,7 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @desc:
  */
 @MapperScan("com.wjjzst.db.mysql.shardingjdbc.mapper")
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication
 public class ShardingJDBCApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShardingJDBCApplication.class, args);
