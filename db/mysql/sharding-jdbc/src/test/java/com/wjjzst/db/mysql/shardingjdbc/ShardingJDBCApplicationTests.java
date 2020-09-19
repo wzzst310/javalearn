@@ -7,7 +7,7 @@ import com.wjjzst.db.mysql.shardingjdbc.entity.User;
 import com.wjjzst.db.mysql.shardingjdbc.mapper.CourseMapper;
 import com.wjjzst.db.mysql.shardingjdbc.mapper.UdictMapper;
 import com.wjjzst.db.mysql.shardingjdbc.mapper.UserMapper;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -113,7 +113,7 @@ public class ShardingJDBCApplicationTests {
     @Test
     public void findCourse() {
         QueryWrapper<Course>  wrapper = new QueryWrapper<>();
-        wrapper.eq("cid",465114666322886656L);
+        wrapper.eq("cid",1307155339149357057L);
         Course course = courseMapper.selectOne(wrapper);
         System.out.println(course);
     }
