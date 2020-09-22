@@ -80,7 +80,7 @@ public class ShardingJDBCApplicationTests {
         Course course = new Course();
         course.setCname("javademo1");
         //分库根据user_id
-        course.setUserId(111L);
+        course.setUserId(110L);
         course.setCstatus("Normal1");
         courseMapper.insert(course);
     }
@@ -90,9 +90,9 @@ public class ShardingJDBCApplicationTests {
     public void findCourseDb() {
         QueryWrapper<Course>  wrapper = new QueryWrapper<>();
         //设置userid值
-        wrapper.eq("user_id",100L);
+        wrapper.eq("user_id",110L);
         //设置cid值
-        wrapper.eq("cid",465162909769531393L);
+        wrapper.eq("cid",1308466072415977473L);
         Course course = courseMapper.selectOne(wrapper);
         System.out.println(course);
     }
