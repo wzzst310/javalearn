@@ -48,7 +48,7 @@ public class ShardingJDBCApplicationTests {
     public void deleteDict() {
         QueryWrapper<Udict>  wrapper = new QueryWrapper<>();
         //设置userid值
-        wrapper.eq("dictid",465191484111454209L);
+        wrapper.eq("dictid",1308824330070773762L);
         udictMapper.delete(wrapper);
     }
 
@@ -67,7 +67,7 @@ public class ShardingJDBCApplicationTests {
     public void findUserDb() {
         QueryWrapper<User>  wrapper = new QueryWrapper<>();
         //设置userid值
-        wrapper.eq("user_id",465508031619137537L);
+        wrapper.eq("user_id",1308822140908285954L);
         User user = userMapper.selectOne(wrapper);
         System.out.println(user);
     }
