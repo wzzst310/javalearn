@@ -39,6 +39,7 @@
         <java.version>1.8</java.version>
         <lombok.version>1.18.0</lombok.version>
         <mysql.version>5.1.39</mysql.version>
+        <!--<mysql.version>8.0.21</mysql.version>-->
         <!-- MyBatis Generator -->
         <targetJavaProject>${basedir}/src/main/java</targetJavaProject> <!-- Java接口和实体类 -->
         <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject><!-- XML生成路径 -->
