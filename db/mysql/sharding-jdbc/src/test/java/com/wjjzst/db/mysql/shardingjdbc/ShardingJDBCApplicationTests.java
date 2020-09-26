@@ -38,7 +38,7 @@ public class ShardingJDBCApplicationTests {
     @Test
     public void addDict() {
         Udict udict = new Udict();
-        udict.setUstatus("a");
+        udict.setUstatus("c");
         udict.setUvalue("已启用");
         udictMapper.insert(udict);
     }
@@ -48,7 +48,7 @@ public class ShardingJDBCApplicationTests {
     public void deleteDict() {
         QueryWrapper<Udict>  wrapper = new QueryWrapper<>();
         //设置userid值
-        wrapper.eq("dictid",1308824330070773762L);
+        wrapper.eq("dictid",1309919818501120001L);
         udictMapper.delete(wrapper);
     }
 
@@ -56,10 +56,13 @@ public class ShardingJDBCApplicationTests {
     //添加操作
     @Test
     public void addUserDb() {
-        User user = new User();
-        user.setUsername("lucymary");
-        user.setUstatus("a");
-        userMapper.insert(user);
+        for (int i = 0; i < 1000; i++) {
+            User user = new User();
+            user.setUsername("lucymary");
+            user.setUstatus("a");
+            userMapper.insert(user);
+        }
+
     }
 
     //查询操作
@@ -67,7 +70,7 @@ public class ShardingJDBCApplicationTests {
     public void findUserDb() {
         QueryWrapper<User>  wrapper = new QueryWrapper<>();
         //设置userid值
-        wrapper.eq("user_id",1308822140908285954L);
+        wrapper.eq("user_id",1309920547626336258L);
         User user = userMapper.selectOne(wrapper);
         System.out.println(user);
     }
