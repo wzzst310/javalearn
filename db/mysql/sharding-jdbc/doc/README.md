@@ -192,5 +192,4 @@
      > ![image-20200928022050971](./img/readwrite_pic1.jpg)
      
      > 读取
-     >
      > ![image-20200928022345545](/Users/wjj/IdeaProjects/wjjjavalearn/db/mysql/sharding-jdbc/doc/img/readwrite_pic2.jpg)
