@@ -56,7 +56,7 @@ public class ShardingJDBCApplicationTests {
     //添加操作
     @Test
     public void addUserDb() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             User user = new User();
             user.setUsername("lucymary");
             user.setUstatus("a");
@@ -70,7 +70,7 @@ public class ShardingJDBCApplicationTests {
     public void findUserDb() {
         QueryWrapper<User>  wrapper = new QueryWrapper<>();
         //设置userid值
-        wrapper.eq("user_id",1309920547626336258L);
+        wrapper.eq("user_id",1310271995765641218L);
         User user = userMapper.selectOne(wrapper);
         System.out.println(user);
     }
