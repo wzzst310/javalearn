@@ -2,12 +2,12 @@
 
 ## 一、ShardingJDBC
 
-### 1. shardingjdbc读写分离 单机Docker安装mysql集群(一主两从)
+### a. shardingjdbc读写分离 单机Docker安装mysql集群(一主两从)
 
 * #### 安装mysql主从集群
 
    1. docker 安装三台mysql 并查看ip
-   
+
       ```
       docker pull centos/mysql-57-centos7
       
@@ -27,9 +27,9 @@
       
       PS: 切记 docker restart 重启可能会改变ip!
       ```
-      
+
    2. 配置mysql master-slave模式
-   
+
       ```
       ① 配置master
           docker exec -it --user root shardingjdbc_mysql_master /bin/bash
@@ -101,7 +101,7 @@
           exit
           exit
           
-      ② 配置slave2
+      ③ 配置slave2
           docker exec -it --user root shardingjdbc_mysql_slave2 /bin/bash
           vi /etc/my.cnf
           在末尾处加上
@@ -124,9 +124,9 @@
           exit
           exit
       ```
-      
+
    3. 连接mysql查看主从同步情况
-   
+
       ```
       三种方式进入mysql命令行
       进入容器 输入mysql 此种方式免输入密码

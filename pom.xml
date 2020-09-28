@@ -31,6 +31,7 @@
         <module>gui</module>
         <module>common</module>
         <module>db</module>
+        <module>spring</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
