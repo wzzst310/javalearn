@@ -1,0 +1,84 @@
+schemaName: sharding_master_slave_db
+
+dataSources:
+  ds1:
+    url: jdbc:mysql://127.0.0.1:3307/shardingjdbc_1?serverTimezone=UTC&useSSL=false
+    username: root
+    password: Wzzst310@163.com
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds1_slave0:
+    url: jdbc:mysql://127.0.0.1:3308/shardingjdbc_1?serverTimezone=UTC&useSSL=false
+    username: root
+    password: Wzzst310@163.com
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds1_slave1:
+    url: jdbc:mysql://127.0.0.1:3309/shardingjdbc_1?serverTimezone=UTC&useSSL=false
+    username: root
+    password: Wzzst310@163.com
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds2:
+    url: jdbc:mysql://127.0.0.1:3307/shardingjdbc_2?serverTimezone=UTC&useSSL=false
+    username: root
+    password: Wzzst310@163.com
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds2_slave0:
+    url: jdbc:mysql://127.0.0.1:3308/shardingjdbc_2?serverTimezone=UTC&useSSL=false
+    username: root
+    password: Wzzst310@163.com
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds2_slave1:
+    url: jdbc:mysql://127.0.0.1:3309/shardingjdbc_2?serverTimezone=UTC&useSSL=false
+    username: root
+    password: Wzzst310@163.com
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+
+shardingRule:
+  tables:
+    t_order:
+      actualDataNodes: ms_ds${1..2}.t_order_${0..1}
+      databaseStrategy:
+        inline:
+          shardingColumn: user_id
+          algorithmExpression: ms_ds${user_id % 2 + 1}
+      tableStrategy:
+        inline:
+          shardingColumn: order_id
+          algorithmExpression: t_order_${order_id % 2}
+      keyGenerator:
+        type: SNOWFLAKE
+        column: order_id
+  bindingTables:
+    - t_order
+  defaultTableStrategy:
+    none:
+  masterSlaveRules:
+    ms_ds1:
+      masterDataSourceName: ds1
+      slaveDataSourceNames:
+        - ds1_slave0
+        - ds1_slave1
+      loadBalanceAlgorithmType: ROUND_ROBIN
+    ms_ds2:
+      masterDataSourceName: ds2
+      slaveDataSourceNames: 
+        - ds2_slave0
+        - ds2_slave1
+      loadBalanceAlgorithmType: ROUND_ROBIN
