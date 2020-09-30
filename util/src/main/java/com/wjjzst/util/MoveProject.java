@@ -39,8 +39,12 @@ public class MoveProject {
 //        String targetStr = "cn.wjjzst";
 //        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures/first_stage/src/main/java/com/wjjzst/ads/firstStage/exam/Category.java";
 //        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures/first_stage/src/main/java/cn/wolfcode/ads/firstStage/exam/Category.java";
-        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures/second_stage/src/main/java/com/wjjzst/ads/secondStage/learn";
-        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures/second_stage/src/main/java/cn/wolfcode/ads/secondStage/learn";
+//        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/AlgorithmsAndDataStructures/second_stage/src/main/java/com/wjjzst/ads/secondStage/learn";
+//        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/AlgorithmsAndDataStructures/second_stage/src/main/java/cn/wolfcode/ads/secondStage/learn";
+//        String sourcePath = "/com/wjjzst/";
+//        String targetPath = "/cn/wolfcode/";
+        String sourcefilePath = "/Users/wjj/IdeaProjects/wjjjavalearn/db/mysql/sharding-jdbc/src/main/java/com/wjjzst/db/mysql/shardingjdbc";
+        String targetFilePath = "/Users/wjj/IdeaProjects/javalearn/db/sql/shardingjdbc/src/main/java/cn/wolfcode/db/sql/shardingjdbc";
         String sourcePath = "/com/wjjzst/";
         String targetPath = "/cn/wolfcode/";
         List<String> ignoreFileSuffixs = new ArrayList<>();
@@ -53,8 +57,10 @@ public class MoveProject {
         changeFileSuffixs.add(".java");
         changeFileSuffixs.add(".xml");
         List<ReplaceStr> replaceStrs = new ArrayList<>();
-        String sourceStr1 = "com.wjjzst";
-        String targetStr1 = "cn.wolfcode";
+//        String sourceStr1 = "com.wjjzst";
+//        String targetStr1 = "cn.wolfcode";
+        String sourceStr1 = "com.wjjzst.db.mysql";
+        String targetStr1 = "cn.wolfcode.db.sql";
         String sourceStr2 = "wjjjavalearn";
         String targetStr2 = "javalearn";
         replaceStrs.add(new ReplaceStr(sourceStr1, targetStr1));
