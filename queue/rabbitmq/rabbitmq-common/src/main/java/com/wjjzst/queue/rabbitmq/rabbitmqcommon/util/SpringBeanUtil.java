@@ -1,4 +1,4 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.util;
+package com.wjjzst.queue.rabbitmq.rabbitmqcommon.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

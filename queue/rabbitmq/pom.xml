@@ -16,6 +16,7 @@
         <module>rabbitmq-springboot-consumer</module>
         <module>rabbitmq-springCloudStream-producer</module>
         <module>rabbitmq-springCloudStream-consumer</module>
+        <module>rabbitmq-common</module>
     </modules>
 
     <artifactId>rabbitmq</artifactId>

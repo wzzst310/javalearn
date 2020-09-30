@@ -9,12 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rabbitmq-springboot-consumer</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>com.wjjzst</groupId>
-            <artifactId>rabbitmq-common</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>rabbitmq-common</artifactId>
+
 
 </project>
