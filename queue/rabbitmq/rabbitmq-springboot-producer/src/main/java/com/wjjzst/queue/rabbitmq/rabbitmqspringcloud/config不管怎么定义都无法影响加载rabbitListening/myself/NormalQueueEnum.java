@@ -1,4 +1,4 @@
-package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.config.myself;
+package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.config不管怎么定义都无法影响加载rabbitListening.myself;
 
 import lombok.Getter;
 

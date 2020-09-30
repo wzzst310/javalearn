@@ -524,7 +524,7 @@
              - ds2_slave0
              - ds2_slave1
            loadBalanceAlgorithmType: ROUND_ROBIN
-    ```
+     ```
   
   > 连接sharding-proxy
   
@@ -548,5 +548,7 @@
    3 最终的conf配置文件单独提取出来了
   
   ![image-20200930034006868](./img/conf.jpg)
-
-
+  
+  4 最终效果图
+  
+  ![image-20200930034006869](./img/shardingjdbc分库分表+读写分离.png)

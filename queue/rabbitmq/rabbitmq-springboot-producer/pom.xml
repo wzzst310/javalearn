@@ -10,7 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rabbitmq-springboot-producer</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.wjjzst</groupId>
+            <artifactId>rabbitmq-common</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>

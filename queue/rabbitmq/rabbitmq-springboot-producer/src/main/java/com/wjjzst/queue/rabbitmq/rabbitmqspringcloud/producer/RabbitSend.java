@@ -1,7 +1,7 @@
 package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.producer;
 
 
-import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.entity.Order;
+import com.wjjzst.queue.rabbitmq.rabbitmqcommon.entity.Order;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

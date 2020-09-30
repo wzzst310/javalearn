@@ -1,13 +1,12 @@
 package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud;
 
 import com.rabbitmq.client.Channel;
-import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.entity.Order;
+import com.wjjzst.queue.rabbitmq.rabbitmqcommon.entity.Order;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.handler.annotation.Headers;

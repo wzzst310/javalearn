@@ -1,6 +1,6 @@
 package com.wjjzst.queue.rabbitmq.rabbitmqspringcloud;
 
-import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.entity.Order;
+import com.wjjzst.queue.rabbitmq.rabbitmqcommon.entity.Order;
 import com.wjjzst.queue.rabbitmq.rabbitmqspringcloud.producer.RabbitSend;
 import org.junit.Test;
 import org.junit.runner.RunWith;
