@@ -1,4 +1,4 @@
-package com.wjjzst.web.flayway;
+package com.wjjzst.db.flayway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
