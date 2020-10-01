@@ -5,7 +5,7 @@ spring:
       url: jdbc:mysql://129.204.35.106:3306/flyway?useSSL=false&useUnicode=true&characterEncoding=utf8
       username: root
       password: Wzzst310@163.com
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
   flyway:
     enabled: true
     clean-disabled: true #禁止flyway执行清理
