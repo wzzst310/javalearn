@@ -1,4 +1,4 @@
-package com.wjj.mongodb;
+package com.wjjzst.nosql.mongodb;
 
 import com.mongodb.*;
 

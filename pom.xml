@@ -33,6 +33,7 @@
         <module>db</module>
         <module>spring</module>
         <module>io</module>
+        <module>nosql</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
