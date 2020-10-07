@@ -22,9 +22,7 @@
         <module>juc</module>
         <module>jvm</module>
         <module>web</module>
-        <module>netty</module>
         <module>queue</module>
-        <module>mongodb</module>
         <module>springcloud</module>
         <module>util</module>
         <module>base</module>
