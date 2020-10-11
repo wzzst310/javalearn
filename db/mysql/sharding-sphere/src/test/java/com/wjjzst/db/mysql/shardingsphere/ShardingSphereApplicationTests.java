@@ -1,20 +1,15 @@
 package com.wjjzst.db.mysql.shardingsphere;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.wjjzst.db.mysql.shardingsphere.entity.Course;
-import com.wjjzst.db.mysql.shardingsphere.entity.Order;
-import com.wjjzst.db.mysql.shardingsphere.entity.Udict;
-import com.wjjzst.db.mysql.shardingsphere.entity.User;
-import com.wjjzst.db.mysql.shardingsphere.mapper.CourseMapper;
-import com.wjjzst.db.mysql.shardingsphere.mapper.OrderMapper;
-import com.wjjzst.db.mysql.shardingsphere.mapper.UdictMapper;
-import com.wjjzst.db.mysql.shardingsphere.mapper.UserMapper;
+import com.wjjzst.db.mysql.shardingsphere.entity.*;
+import com.wjjzst.db.mysql.shardingsphere.mapper.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -40,6 +35,8 @@ public class ShardingSphereApplicationTests {
     @Autowired
     private OrderMapper orderMapper;
 
+    @Autowired
+    private RecordMapper recordMapper;
 
     //======================测试shardingproxy==================
     //添加操作
@@ -156,5 +153,19 @@ public class ShardingSphereApplicationTests {
         System.out.println(course);
     }
 
+    //=======================测试按时间分表===================
+    //添加课程的方法
+    @Test
+    public void addRecord() {
+        for (int i = 1; i <= 10; i++) {
+            Record record = new Record();
+            record.setCid((long) i);
+            record.setCname("java" + i);
+            record.setUserId(100L);
+            record.setCstatus("Normal" + i);
+            record.setCreateTime(new Date());
+            recordMapper.insert(record);
+        }
+    }
 
 }

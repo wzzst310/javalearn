@@ -24,5 +24,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.wjjzst</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
