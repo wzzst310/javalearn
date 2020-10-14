@@ -137,6 +137,7 @@ public class ShardingSphereApplicationTests {
     public void addCourse() {
         for (int i = 1; i <= 10; i++) {
             Course course = new Course();
+            course.setCid((long) i);
             course.setCname("java" + i);
             course.setUserId(100L);
             course.setCstatus("Normal" + i);
