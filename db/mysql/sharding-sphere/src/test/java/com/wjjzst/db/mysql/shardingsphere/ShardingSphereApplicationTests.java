@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -158,15 +159,42 @@ public class ShardingSphereApplicationTests {
     //添加课程的方法
     @Test
     public void addRecord() {
-        for (int i = 1; i <= 10; i++) {
+        // 需要先提前创建表
+        // 批量创建表 见批量建表.sql 调用存储过程
+        for (int i = 1; i <= 1000; i++) {
             Record record = new Record();
             record.setCid((long) i);
             record.setCname("java" + i);
             record.setUserId(100L);
             record.setCstatus("Normal" + i);
-            record.setCreateTime(new Date());
+            Date date = randomDate("2019-01-01", "2025-12-31");
+            record.setCreateTime(date);
             recordMapper.insert(record);
         }
     }
 
+    private Date randomDate(String beginDate, String endDate) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date start = format.parse(beginDate);
+            Date end = format.parse(endDate);
+
+            if (start.getTime() >= end.getTime()) {
+                return null;
+            }
+            long date = random(start.getTime(), end.getTime());
+            return new Date(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private long random(long begin, long end) {
+        long rtn = begin + (long) (Math.random() * (end - begin));
+        if (rtn == begin || rtn == end) {
+            return random(begin, end);
+        }
+        return rtn;
+    }
 }
