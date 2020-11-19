@@ -1,0 +1,42 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: base,m1,m2,m3
+      base:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://wjjzst.com:3306/course_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        password: Wzzst310@163.com
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      m1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://wjjzst.com:3306/course_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        password: Wzzst310@163.com
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      m2:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://wjjzst.com:3306/course_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        password: Wzzst310@163.com
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      m3:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://wjjzst.com:3306/course_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        password: Wzzst310@163.com
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+    sharding:
+      default-data-source-name: base
+      default-database-strategy:
+        standard:
+          sharding-column:
+          precise-algorithm-class-name:
+
+
+

@@ -1,0 +1,26 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: m1
+      m1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://wjjzst.com:3306/course_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        password: Wzzst310@163.com
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+    sharding:
+      tables:
+        course:
+          actual-data-nodes: m1.course_$->{1..2}
+          key-generator:
+            column: cid
+            type: SNOWFLAKE
+          table-strategy:
+            inline:
+              algorithm-expression: course_$->{cid % 2 + 1}
+              sharding-column: cid

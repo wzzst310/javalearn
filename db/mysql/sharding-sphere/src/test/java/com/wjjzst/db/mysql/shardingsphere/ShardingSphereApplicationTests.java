@@ -92,6 +92,7 @@ public class ShardingSphereApplicationTests {
             User user = new User();
             user.setUsername("lucymary");
             user.setUstatus("a");
+            user.setPoint("10");
             userMapper.insert(user);
         }
 

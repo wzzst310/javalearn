@@ -16,4 +16,5 @@ public class User {
     private Long userId;
     private String username;
     private String ustatus;
+    private String point;   // bug bug
 }
