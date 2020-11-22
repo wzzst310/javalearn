@@ -15,14 +15,14 @@ spring:
         username: root
     sharding:
       tables:
-        course:
-          actual-data-nodes: m1.course_$->{1..2}
+        record:
+          actual-data-nodes: m1.record_$->{1..2}
           key-generator:
             column: cid
             type: SNOWFLAKE
           table-strategy:
             inline:
-              algorithm-expression: course_$->{cid % 2 + 1}
+              algorithm-expression: record_$->{cid % 2 + 1}
               sharding-column: cid
   flyway:
     enabled: true

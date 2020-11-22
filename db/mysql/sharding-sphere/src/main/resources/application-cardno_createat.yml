@@ -15,12 +15,15 @@ spring:
         username: root
     sharding:
       tables:
-        course:
-          actual-data-nodes: m1.course_$->{1..3}_$->{2020..2023}${(1..12).collect{t ->t.toString().padLeft(2,'0')}}
+        record:
+          actual-data-nodes: m1.record_$->{1..3}_$->{2020..2023}${(1..12).collect{t ->t.toString().padLeft(2,'0')}}
           key-generator:
             column: cid
             type: SNOWFLAKE
           table-strategy:
+#            inline:
+#              algorithm-expression: record_$->{cid % 3 + 1}
+#              sharding-column: cid
             complex:
               precise-algorithm-class-name: com.wjjzst.db.mysql.shardingsphere.config.TimeAndIdShardingAlgorithm
               sharding-columns: cardNo,createAt
