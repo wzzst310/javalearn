@@ -168,7 +168,7 @@ public class ShardingSphereApplicationTests {
             record.setCname("java" + i);
             record.setUserId(100L);
             record.setCstatus("Normal" + i);
-            Date date = randomDate("2020-01-01", "2023-12-31");
+            Date date = randomDate("2020-01-01", "2020-12-31");
             record.setCardNo((long) (Math.random() * 1000000000));
             record.setCreateTime(date);
             record.setCreateAt(date);
