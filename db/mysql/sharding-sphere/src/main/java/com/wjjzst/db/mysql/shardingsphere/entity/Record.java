@@ -17,5 +17,8 @@ public class Record {
     private String cname;
     private Long userId;
     private String cstatus;
+    private String yyyymm;
     private Date createTime;
+    private Long cardNo;
+    private Date createAt;
 }

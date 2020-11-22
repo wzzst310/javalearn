@@ -101,7 +101,7 @@
         </dependency>
     </dependencies>
 
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -110,7 +110,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-    </repositories>
+    </repositories>-->
 
     <build>
         <!-- 使用@@站位符，输出Dockerfile至docker文件夹 -->
