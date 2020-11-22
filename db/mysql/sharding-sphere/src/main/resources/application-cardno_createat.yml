@@ -25,8 +25,8 @@ spring:
 #              algorithm-expression: record_$->{cid % 3 + 1}
 #              sharding-column: cid
             complex:
-              precise-algorithm-class-name: com.wjjzst.db.mysql.shardingsphere.config.TimeAndIdShardingAlgorithm
               sharding-columns: cardNo,createAt
+              algorithm-class-name: com.wjjzst.db.mysql.shardingsphere.config.TimeAndIdShardingAlgorithm
   flyway:
     enabled: true
     clean-disabled: true #禁止flyway执行清理
