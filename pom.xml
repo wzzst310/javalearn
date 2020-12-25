@@ -143,18 +143,18 @@
                     <!-- <configurationFile>${basedir}/src/main/resources/generator/generatorConfig-mysql.xml</configurationFile> -->
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- <configuration> <fork>true</fork> 如果没有该项配置，devtools不会起作用，即应用不会restart <jvmArguments> -Xdebug -Xrunjdwp:transport=dt_socket,_26httpserver=y,suspend=n,address=5005 </jvmArguments> </configuration> -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                &lt;!&ndash; <configuration> <fork>true</fork> 如果没有该项配置，devtools不会起作用，即应用不会restart <jvmArguments> -Xdebug -Xrunjdwp:transport=dt_socket,_26httpserver=y,suspend=n,address=5005 </jvmArguments> </configuration> &ndash;&gt;-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
 
         <pluginManagement>
